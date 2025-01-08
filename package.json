@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "npx standard src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "npx standard --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -20,6 +21,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
-    "@eslint/eslintrc": "^3"
+    "@eslint/eslintrc": "^3",
+    "standard": "^17.1.2"
   }
 }

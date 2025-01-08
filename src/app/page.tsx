@@ -1,11 +1,11 @@
-import styles from "./page.module.css";
+import styles from './page.module.css'
 
-export async function generateMetadata() {
+export async function generateMetadata () {
   return {
-    title: "Contra Track",
-    description: `Veja aqui todos os ducomentos fiscais emitidos para você!`,
-    generator: "Contra Track",
-    applicationName: "Contra Track",
+    title: 'Contra Track',
+    description: 'Veja aqui todos os ducomentos fiscais emitidos para você!',
+    generator: 'Contra Track',
+    applicationName: 'Contra Track',
     keywords: [
       'Notas Fiscais',
       'Cupons fiscais',
@@ -19,24 +19,24 @@ export async function generateMetadata() {
       'MDF-e'
     ],
     authors: [
-      { name: "Contra Track" },
-      { name: "Contra Track", url: "" },
+      { name: 'Contra Track' },
+      { name: 'Contra Track', url: '' }
     ],
-    creator: "Contra Track",
-    publisher: "Contra Track",
-    category: "Documentos Fiscais",
+    creator: 'Contra Track',
+    publisher: 'Contra Track',
+    category: 'Documentos Fiscais',
     formatDetection: {
       email: false,
       address: false,
-      telephone: false,
-    },
+      telephone: false
+    }
   }
 }
 
-export default function Home() {
+export default function Home () {
   return (
     <main className={styles.main}>
       <p>HOME</p>
     </main>
-  );
+  )
 }
