@@ -1,0 +1,60 @@
+import * as I from "../styles";
+
+interface Props {
+  textLabel: string
+  value: string
+  handleChange: (e: React.FormEvent<HTMLInputElement>) => void
+  typeInput?: string
+  isDisabled?: boolean
+  colorBackgroundLabel?: string
+  name?: string
+  innerRef?: React.Ref<HTMLInputElement>;
+  colorLabel?: string
+}
+
+export function InputLabel({
+  typeInput = "text",
+  isDisabled = false,
+  textLabel,
+  value,
+  handleChange,
+  colorBackgroundLabel,
+  name,
+  innerRef,
+  colorLabel,
+}: Props) {
+  const clearInputRequired = () => {
+    if (innerRef && 'current' in innerRef) innerRef.current!.required = false;
+  };
+
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    if (handleChange) {
+      handleChange(e);
+      clearInputRequired();
+    }
+  };
+
+  return (
+    <I.InputGroup>
+      <I.InputText
+        type={typeInput}
+        $isDisabled={isDisabled}
+        value={value || ""}
+        onInput={handleInput}
+        name={name}
+        ref={innerRef}
+        onBlur={clearInputRequired}
+      />
+
+      <I.Label
+        $colorBackgroundLabel={colorBackgroundLabel}
+        $colorLabel={colorLabel}
+      >
+        {textLabel}
+        <I.RequiredField className="requiredField">
+          Campo Obrigatório
+        </I.RequiredField>
+      </I.Label>
+    </I.InputGroup>
+  );
+}
