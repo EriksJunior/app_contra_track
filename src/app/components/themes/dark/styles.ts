@@ -1,0 +1,49 @@
+import { css } from "styled-components";
+
+import { darkTheme } from ".";
+
+import { InputText, InputTextArea } from "../../UI/Inputs/styles";
+import { CustomInputFile } from "../../UI/Inputs/InputFile/styles";
+
+export const DarkTheme = css`
+ .dark-mode {
+    height: 100%;
+    background-color: ${darkTheme.primary};
+
+    ${InputText}, ${InputTextArea} {
+      background-color: ${darkTheme.secondary};
+      border: 1px solid #3d3d3d;
+      color: whitesmoke;
+    }
+
+    ${InputText}:focus, ${InputTextArea}:focus {
+      border: 1px solid ${darkTheme.success};
+    }
+
+    ${CustomInputFile} {
+      border: solid 3px ${darkTheme.success};
+      box-shadow: 0 0 3px 0 ${darkTheme.success};
+    }
+
+    ${CustomInputFile}:hover {
+      background-color: #a1a1a10d;
+      box-shadow: 0 0 5px 0 white;
+    } 
+
+  
+    /* GLOBAl SCROLL BAR */
+    ::-webkit-scrollbar {
+      width: 5px!important;
+      height: 8px!important;
+    }
+  
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  
+    ::-webkit-scrollbar-thumb {
+      background-color: ${darkTheme.success};
+    }
+    /* GLOBAl SCROLL BAR */
+  }
+`

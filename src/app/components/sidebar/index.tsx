@@ -2,8 +2,12 @@
 
 import { useEffect, useState, useContext, ReactNode } from "react";
 import { usePathname, useRouter } from 'next/navigation'
-
 import { ToastContainer } from "react-toastify";
+
+import { ThemeContext } from "@/context/theme";
+import { E_THEME } from "@/utils/enums/theme";
+import { lightTheme } from "@/app/components/themes/light"
+
 
 import { IoHomeOutline } from "react-icons/io5";
 import { TbReportAnalytics } from "react-icons/tb";
@@ -14,8 +18,6 @@ import { PiMoonFill, PiSunFill } from "react-icons/pi";
 
 import { RiNewspaperFill } from "react-icons/ri";
 import * as S from "./styles";
-import { ThemeContext } from "@/context/theme";
-import { E_THEME } from "@/utils/enums/theme";
 
 interface Props {
   children?: ReactNode
@@ -262,13 +264,13 @@ export function Sidebar({ children }: Props) {
                       {theme === E_THEME.darkMode ? (
                         <PiSunFill
                           size={17}
-                          color="black"
+                          color={lightTheme.light}
                           style={{ cursor: "pointer" }}
                         />
                       ) : (
                         <PiMoonFill
                           size={17}
-                          color="white"
+                          color={lightTheme.light}
                           style={{ cursor: "pointer" }}
                         />
                       )}

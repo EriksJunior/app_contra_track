@@ -1,8 +1,11 @@
 "use client"
 
 import { ReactNode } from "react";
-import StyledComponentsRegistry from "./registry";
 import { Poppins } from "next/font/google";
+import { ThemeProvider } from "@/context/theme";
+
+import StyledComponentsRegistry from "./registry";
+
 import { Sidebar } from "./components/sidebar";
 
 import { GlobalStyle } from "./styles";
@@ -19,10 +22,12 @@ export default function RootLayout({ children }: Props) {
     <html lang="pt-BR">
       <body className={poppins.className}>
         <StyledComponentsRegistry>
-          <GlobalStyle />
-          <Sidebar>
-            {children}
-          </Sidebar>
+          <ThemeProvider>
+            <GlobalStyle />
+            <Sidebar>
+              {children}
+            </Sidebar>
+          </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

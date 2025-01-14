@@ -1,8 +1,13 @@
+import Image from "next/image";
 import styled from "styled-components";
+
+import { lightTheme } from "@/app/components/themes/light";
+import { darkTheme } from "@/app/components/themes/dark";
+
 import { BiSolidLock, BiSolidLockOpen } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
+
 import { E_THEME } from "../../../utils/enums/theme";
-import Image from "next/image";
 
 interface StyledProps {
   $theme?: string;
@@ -51,7 +56,7 @@ export const ContentIconLock = styled.div<StyledProps>`
   right: -30px;
   width: 25px;
   height: 25px;
-  background-color: #47d2a9;
+  background-color:rgb(100, 114, 175);
   text-align: center;
   border-radius: 5px;
   box-shadow: 0 0 2px 0 #00000078;
@@ -67,7 +72,7 @@ export const ContentIconLock = styled.div<StyledProps>`
     top: 0.3rem;
     right: -40px;
     transition: ease-in all 0.2s;
-    background-color: #66a3b7;
+    background-color: #5365b3;
 
     ${(props) => props.$isExpanded ?
     `
@@ -128,7 +133,7 @@ export const Ul = styled.ul`
   }
 
   &::-webkit-scrollbar-track {
-    background: #66a3b7!important;
+    background: #5365b3!important;
     border-radius: 10px;
   }
 
@@ -184,14 +189,14 @@ export const InputRadio = styled.input<StyledProps>`
   display: none;
   
   &:checked ~ ${ContentNavItems} {
-    background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#47d2a9'};
-    color: ${props => props.$theme === E_THEME.lightMode ? '#66a3b7' : 'white'};
+    background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.light : darkTheme.darkSuccess};
+    color: ${props => props.$theme === E_THEME.lightMode ? darkTheme.darkSuccess : lightTheme.light};
     transition: ease-in all 0.2s;
   }
 
   &:checked ~ ${ContentNavItemsNotification} {
-    background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#47d2a9'};
-    color: ${props => props.$theme === E_THEME.lightMode ? '#66a3b7' : 'white'};
+    background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.light : darkTheme.darkSuccess};
+    color: ${props => props.$theme === E_THEME.lightMode ? darkTheme.darkSuccess : lightTheme.light};
     transition: ease-in all 0.2s;
   }
 `
@@ -240,7 +245,7 @@ export const Sidebar = styled.div<StyledProps>`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.$theme === E_THEME.lightMode ? '#66a3b7' : '#181818'};
+  background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.secondary : darkTheme.secondary};
   border-radius: 0;
   box-shadow: 0 0 2px 0 #00000063;
   transition: ease all 0.3s;

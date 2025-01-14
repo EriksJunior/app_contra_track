@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
-
+import { LightTheme } from "@/app/components/themes/light/styles";
+import { DarkTheme } from "@/app/components/themes/dark/styles";
 
 export const Container = styled.div`
   width: 100%;
@@ -39,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
-
+    ${LightTheme}
+    ${DarkTheme}
   }
 `;
