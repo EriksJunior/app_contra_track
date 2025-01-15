@@ -16,7 +16,7 @@ export const CustomLabel = styled.label<StyledProps>`
 
   @media screen and (min-width: 1980px){
     & {
-      font-size: 13px;
+      font-size: 0.81rem;
     }
   }
 `

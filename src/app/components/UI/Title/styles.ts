@@ -16,7 +16,7 @@ export const CustomTitle = styled.p<StyledProps>`
 
   @media screen and (min-width: 1500px){
     & {
-      font-size: 23px;
+      font-size: 1.43rem;
     }
   }
 `

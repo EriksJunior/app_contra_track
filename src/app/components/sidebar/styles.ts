@@ -134,7 +134,7 @@ export const Ul = styled.ul<StyledProps>`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
   overflow-y: overlay;
   overflow-x: hidden;
 
@@ -162,7 +162,7 @@ export const Li = styled.li`
 export const ContentNavItems = styled.label`
   display: flex;
   width: auto;
-  height: 43px;
+  height: 33px;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
   color: gray;
@@ -183,7 +183,7 @@ export const ContentNavItemsNotification = styled.label`
   justify-content: space-between;
   gap: 1rem;
   width: auto;
-  height: 43px;
+  height: 33px;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
   color: gray;
@@ -357,13 +357,13 @@ export const Sidebar = styled.div<StyledProps>`
     `
     ${ContentNavItems} {
         justify-content: center;
-        height: 43px;
+        height: 33px;
         padding: 0;
       }
 
     ${ContentNavItemsNotification} {
         justify-content: center;
-        height: 43px;
+        height: 33px;
         padding: 0;
     }
     

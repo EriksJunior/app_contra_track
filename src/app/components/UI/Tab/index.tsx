@@ -48,7 +48,7 @@ export function Tab({ tabs }: Props) {
         {cloneTabs.map((tab, idx) => (
           <div key={tab.text} onClick={() => handleClick(idx)}>
             <div style={{ borderRadius: 5, padding: '0.2rem 0.8rem', cursor: 'pointer', ...(tab.active && { backgroundColor: "#80808024" }) }}>
-              <Label text={tab.text} fontSize="14px" color="black" />
+              <Label text={tab.text} color="black" />
             </div>
           </div>
         ))}
