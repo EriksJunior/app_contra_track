@@ -8,6 +8,7 @@ interface StyledProps {
   $height?: string
   $flexBasic?: string
   $between?: string
+  $gap?: string
   $pointer?: boolean
   $notHoverShadow?: boolean
 }
@@ -20,7 +21,7 @@ export const Container = styled.div<StyledProps>`
   display: flex;
   flex-direction: column;
   justify-content: ${props => props.$between && "space-between"};
-  gap: 2rem;
+  gap: ${props => props.$gap ? props.$gap : "2rem"};
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 0px 2px 1px #00000017;

@@ -10,5 +10,10 @@ export const Row = styled.div<StyledProps>`
   display: flex;
   gap: 1rem;
   flex-wrap: ${props => props.$nowrap ? 'nowrap' : 'wrap'};
-  flex: 1 1 ${props => props.$flexBasic || "250px"};
+
+   ${(props) => props.$flexBasic &&
+    `
+        flex: 1 1 ${props.$flexBasic};
+      `
+  }
 `

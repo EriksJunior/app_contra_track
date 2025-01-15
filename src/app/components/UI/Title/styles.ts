@@ -8,7 +8,6 @@ interface StyledProps {
 export const CustomTitle = styled.p<StyledProps>`
   position: relative;
   font-size: ${props => props.$fontSize || '12px'};
-  padding: 0 0.2em;
   pointer-events: none;
   white-space: nowrap !important;
   text-overflow: ellipsis;

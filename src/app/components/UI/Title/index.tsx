@@ -8,6 +8,6 @@ interface Props {
 
 export function Title({ color, fontSize, text }: Props) {
   return (
-    <CustomTitle $color={color} $fontSize={fontSize}>{text ? text : "Default Label"}</CustomTitle>
+    <CustomTitle $color={color} $fontSize={fontSize}>{text ? text : "Default Title"}</CustomTitle>
   );
 }

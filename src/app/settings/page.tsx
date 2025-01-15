@@ -5,14 +5,24 @@ import { ThemeContext } from "@/context/theme";
 // import { InputLabel } from "@/app/components/UI/Inputs/InputText";
 import { Card } from "@/app/components/UI/Card";
 import { Title } from "@/app/components/UI/Title";
+import { Tab } from "@/app/components/UI/Tab";
 
 export default function Settings() {
   const { theme } = useContext(ThemeContext);
 
+  const items = [
+    { text: "Gerais", component: Title },
+    { text: "Contador", component: Title },
+    { text: "DF-e", component: Title },
+    { text: "Segurança", component: Title },
+  ]
+
   return (
     <div style={{ padding: "15px 15px 15px 0", height: '100%' }}>
       <Card theme={theme} height="100%">
-        <Title fontSize="20px" color="black" text="Configurações"/>
+        <Title fontSize="20px" color="black" text="Configurações" />
+
+        <Tab tabs={items} />
         {/* <InputLabel textLabel="Nome" handleChange={(e) => console.log(e)} value="" /> */}
       </Card>
     </div>
