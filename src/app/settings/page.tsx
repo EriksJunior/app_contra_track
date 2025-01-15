@@ -1,4 +1,5 @@
 "use client"
+
 import { useContext } from "react";
 import { ThemeContext } from "@/context/theme";
 
@@ -12,6 +13,7 @@ export default function Settings() {
 
   const items = [
     { text: "Gerais", component: Title },
+    { text: "Empresas", component: Title },
     { text: "Contador", component: Title },
     { text: "DF-e", component: Title },
     { text: "Segurança", component: Title },
