@@ -1,0 +1,30 @@
+import styled from "styled-components";
+
+interface StyledProps {
+  $width?: string
+  $backgroundColor?: string
+  $hoverColor?: string
+  $activeColor?: string
+}
+
+export const CustomButton = styled.button<StyledProps>`
+  width: ${props => props.$width || "100%"};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  height: 35px;
+  border-radius: 8px;
+  font-size: 13px;
+  box-shadow: 0 1px 4px 0 #00000026;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  transition: ease-in all 0.1s;
+  background-color: ${props => props.$backgroundColor || "#40c29c"}!important;
+
+  &:hover {
+    background-color: ${props => props.$hoverColor || "#3ab08d"}!important;
+    transition: ease-in all 0.1s;
+  };
+`

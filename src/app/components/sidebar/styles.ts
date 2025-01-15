@@ -134,7 +134,7 @@ export const Ul = styled.ul<StyledProps>`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
   overflow-y: overlay;
   overflow-x: hidden;
 
@@ -152,6 +152,10 @@ export const Ul = styled.ul<StyledProps>`
     background-color: white!important;
     border-radius: 10px;
   }
+
+  @media screen and (max-width: 1366px) {
+    gap: 0.8rem;
+  }
 `
 
 export const Li = styled.li`
@@ -162,12 +166,16 @@ export const Li = styled.li`
 export const ContentNavItems = styled.label`
   display: flex;
   width: auto;
-  height: 33px;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
   color: gray;
   font-size: 12px;
   cursor: pointer;
+  height: 43px;
+
+  @media screen and (max-width: 1366px) {
+    height: 33px;
+  }
 `
 
 export const IconAndTitle = styled.div`
@@ -183,12 +191,16 @@ export const ContentNavItemsNotification = styled.label`
   justify-content: space-between;
   gap: 1rem;
   width: auto;
-  height: 33px;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
   color: gray;
   font-size: 12px;
   cursor: pointer;
+  height: 43px;
+
+  @media screen and (max-width: 1366px) {
+    height: 33px;
+  }
 `
 
 export const NavItem = styled.div`
@@ -357,13 +369,11 @@ export const Sidebar = styled.div<StyledProps>`
     `
     ${ContentNavItems} {
         justify-content: center;
-        height: 33px;
         padding: 0;
       }
 
     ${ContentNavItemsNotification} {
         justify-content: center;
-        height: 33px;
         padding: 0;
     }
     

@@ -2,8 +2,9 @@ import { css } from "styled-components";
 
 import { darkTheme } from ".";
 
-import { InputText, InputTextArea } from "../../UI/Inputs/styles";
-import { CustomInputFile } from "../../UI/Inputs/InputFile/styles";
+import { InputText, InputTextArea } from "@/app/components/UI/Inputs/styles";
+import { CustomInputFile } from "@/app/components/UI/Inputs/InputFile/styles";
+import { InputSearch, SearchContent } from "@/app/components/UI/SearchBar/styles";
 
 export const DarkTheme = css`
  .dark-mode {
@@ -30,7 +31,11 @@ export const DarkTheme = css`
       box-shadow: 0 0 5px 0 white;
     } 
 
-  
+    ${InputSearch}, ${SearchContent} {
+      background-color: ${darkTheme.secondary};
+      color: white;
+    }
+
     /* GLOBAl SCROLL BAR */
     ::-webkit-scrollbar {
       width: 5px!important;

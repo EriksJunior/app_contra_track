@@ -5,6 +5,7 @@ import { ThemeContext } from "@/context/theme";
 
 // import { InputLabel } from "@/app/components/UI/Inputs/InputText";
 import { Card } from "@/app/components/UI/Card";
+import { Companies } from "@/app/components/companies";
 import { Title } from "@/app/components/UI/Title";
 import { Tab } from "@/app/components/UI/Tab";
 
@@ -13,7 +14,7 @@ export default function Settings() {
 
   const items = [
     { text: "Gerais", component: Title },
-    { text: "Empresas", component: Title },
+    { text: "Empresas", component: Companies },
     { text: "Contador", component: Title },
     { text: "DF-e", component: Title },
     { text: "Segurança", component: Title },

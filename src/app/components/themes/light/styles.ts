@@ -4,6 +4,7 @@ import { lightTheme } from ".";
 
 import { InputText, InputTextArea } from "../../UI/Inputs/styles";
 import { CustomInputFile } from "../../UI/Inputs/InputFile/styles";
+import { InputSearch, SearchContent } from "@/app/components/UI/SearchBar/styles";
 
 export const LightTheme = css`
   .light-mode {
@@ -25,6 +26,10 @@ export const LightTheme = css`
       box-shadow: 0 0 5px 0 ${lightTheme.darkInfo};
     } 
 
+    ${InputSearch}, ${SearchContent} {
+      background-color: ${lightTheme.light};
+      color: black;
+    }
 
     /* GLOBAL SCROLL BAR */
     ::-webkit-scrollbar {
