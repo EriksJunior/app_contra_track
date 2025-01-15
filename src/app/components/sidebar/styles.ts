@@ -8,11 +8,20 @@ import { BiSolidLock, BiSolidLockOpen } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
 
 import { E_THEME } from "../../../utils/enums/theme";
+import { lightTheme } from "../themes/light";
 
 interface StyledProps {
   $theme?: string;
   $isExpanded?: boolean;
 }
+
+export const Children = styled.div`
+  width: 100%;
+
+  @media screen and (max-width: 1020px){
+    padding-left: 15px!important;
+  } 
+`
 
 export const IconLock = styled(BiSolidLock)`
   size: 18;
@@ -224,11 +233,6 @@ export const ContainerProfile = styled.div`
   @media screen and (max-height: 710px){
     box-shadow: 0 0 1px 0 #000000a8;
   }
-
-  @media screen and (max-width: 1020px){
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
 `
 
 export const ImgProfile = styled(Image)`
@@ -243,15 +247,14 @@ export const EmailText = styled.p`
   margin: 0;
   color: gray;
   font-weight: 600;
+  line-height: 1;
 `
-
 
 export const UserName = styled.p`
   margin: 0;
   color: black;
   font-weight: 600;
   white-space: nowrap;
-  line-height: 1;
 `
 
 export const Logo = styled(Image)`
@@ -304,6 +307,12 @@ export const Sidebar = styled.div<StyledProps>`
   transition: ease all 0.3s;
   /* overflow-y: hidden;
   overflow-x: hidden; */
+
+  .contentProfileTitles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   .menuProfile {
     display: none;
@@ -377,16 +386,17 @@ export const Sidebar = styled.div<StyledProps>`
     }
   `}
 
-    @media screen and (max-width: 1020px){
-      height: 100vh;
-      border-radius: 0;
-      box-shadow: 0 0 2px 2px #00000047;
-      transform: translate(-80px, 0);
+  @media screen and (max-width: 1020px){
+    height: 100vh;
+    border-radius: 0;
+    box-shadow: 0 0 2px 2px #00000047;
+    transform: translate(-80px, 0);
+    background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.primary : darkTheme.primary};
 
-      ${(props) => props.$isExpanded &&
+    ${(props) => props.$isExpanded &&
     `
-          transform: translate(0, 0);
-        `
+        transform: translate(0, 0);
+      `
   }
-    } 
+  } 
 `

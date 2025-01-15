@@ -321,7 +321,7 @@ export function Sidebar({ children }: Props) {
             </S.ContentNavAndFooter>
           </S.Sidebar>
 
-          {/* <S.ContentIconLock
+          <S.ContentIconLock
             $isExpanded={isExpanded}
             onClick={handleLockSidebar}
           >
@@ -350,10 +350,10 @@ export function Sidebar({ children }: Props) {
                 <S.IconMenuMobal size={22} className="menu" />
               </div>
             )}
-          </S.ContentIconLock> */}
+          </S.ContentIconLock>
         </S.ContentSidebar>
 
-        <div style={{ width: "100%" }}>{children}</div>
+        <S.Children>{children}</S.Children>
       </S.ContainerSidebar>
     </div>
   );
