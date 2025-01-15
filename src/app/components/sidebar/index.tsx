@@ -8,7 +8,6 @@ import { ThemeContext } from "@/context/theme";
 import { E_THEME } from "@/utils/enums/theme";
 import { lightTheme } from "@/app/components/themes/light"
 
-
 import { IoHomeOutline } from "react-icons/io5";
 import { TbReportAnalytics } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
@@ -121,10 +120,11 @@ export function Sidebar({ children }: Props) {
             $theme={theme}
           >
             <S.ContentHeader>
-              <S.Logo src="/logo2.png"
+              <S.Logo
+                src="/logo2.png"
                 alt="Logo"
-                width={65}
-                height={55}
+                width={55}
+                height={45}
                 placeholder="blur"
                 blurDataURL={'/logo2.png'}
               />
@@ -147,7 +147,9 @@ export function Sidebar({ children }: Props) {
                   <S.ContentNavItems htmlFor="home">
                     <S.IconAndTitle>
                       <IoHomeOutline size={17} />
-                      <S.NavItem>Home</S.NavItem>
+                      <S.NavItem>
+                        Home
+                      </S.NavItem>
                     </S.IconAndTitle>
                   </S.ContentNavItems>
                 </S.Li>
@@ -229,7 +231,9 @@ export function Sidebar({ children }: Props) {
                   <S.ContentNavItems htmlFor="settings">
                     <S.IconAndTitle>
                       <BsGear size={17} />
-                      <S.NavItem>Configurações</S.NavItem>
+                      <S.NavItem>
+                        Configurações
+                      </S.NavItem>
                     </S.IconAndTitle>
                   </S.ContentNavItems>
                 </S.Li>
@@ -270,7 +274,7 @@ export function Sidebar({ children }: Props) {
                       ) : (
                         <PiMoonFill
                           size={17}
-                          color={lightTheme.light}
+                          color='black'
                           style={{ cursor: "pointer" }}
                         />
                       )}
@@ -280,10 +284,44 @@ export function Sidebar({ children }: Props) {
                   </S.ContentNavItems>
                 </S.Li>
               </S.Ul>
+
+              <S.NavFooter>
+                <S.ContainerProfile>
+                  <S.ImgProfile
+                    src="/logo2.png"
+                    alt="Logo"
+                    width={40}
+                    height={40}
+                    placeholder="blur"
+                    blurDataURL={'/logo2.png'}
+                  />
+
+                  <div
+                    className="contentProfileTitles"
+                    style={{ width: "100%" }}
+                  >
+                    <S.UserName>Usuario Teste</S.UserName>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <S.EmailText>user_test@gmail.com</S.EmailText>
+                      {/* <SlOptionsVertical
+                        className="menuProfile"
+                        size={17}
+                        color="#0000006e"
+                        cursor={"pointer"}
+                      /> */}
+                    </div>
+                  </div>
+                </S.ContainerProfile>
+              </S.NavFooter>
             </S.ContentNavAndFooter>
           </S.Sidebar>
 
-          <S.ContentIconLock
+          {/* <S.ContentIconLock
             $isExpanded={isExpanded}
             onClick={handleLockSidebar}
           >
@@ -312,7 +350,7 @@ export function Sidebar({ children }: Props) {
                 <S.IconMenuMobal size={22} className="menu" />
               </div>
             )}
-          </S.ContentIconLock>
+          </S.ContentIconLock> */}
         </S.ContentSidebar>
 
         <div style={{ width: "100%" }}>{children}</div>

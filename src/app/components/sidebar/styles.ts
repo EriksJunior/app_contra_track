@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-import { lightTheme } from "@/app/components/themes/light";
+// import { lightTheme } from "@/app/components/themes/light";
 import { darkTheme } from "@/app/components/themes/dark";
 
 import { BiSolidLock, BiSolidLockOpen } from "react-icons/bi";
@@ -44,6 +44,7 @@ export const IconMenuMobal = styled(AiOutlineMenu)`
 
 export const ContentHeader = styled.div`
   width: 100%;
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -88,8 +89,8 @@ export const ContentIconLock = styled.div<StyledProps>`
 
 export const ContainerSidebar = styled.div`
   display: flex;
-  gap: 1rem;
   height: 100vh;
+  gap: 0.1rem;
 `
 
 export const ContentSidebar = styled.div<StyledProps>`
@@ -154,7 +155,7 @@ export const ContentNavItems = styled.label`
   height: 43px;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
-  color: white;
+  color: gray;
   font-size: 12px;
   cursor: pointer;
 `
@@ -175,7 +176,7 @@ export const ContentNavItemsNotification = styled.label`
   height: 43px;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
-  color: white;
+  color: gray;
   font-size: 12px;
   cursor: pointer;
 `
@@ -189,21 +190,73 @@ export const InputRadio = styled.input<StyledProps>`
   display: none;
   
   &:checked ~ ${ContentNavItems} {
-    background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.light : darkTheme.darkSuccess};
-    color: ${props => props.$theme === E_THEME.lightMode ? darkTheme.darkSuccess : lightTheme.light};
+    background-color: ${props => props.$theme === E_THEME.lightMode ? '#80808045' : darkTheme.darkSuccess};
+    color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#dbdbdb'};
     transition: ease-in all 0.2s;
   }
 
   &:checked ~ ${ContentNavItemsNotification} {
-    background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.light : darkTheme.darkSuccess};
-    color: ${props => props.$theme === E_THEME.lightMode ? darkTheme.darkSuccess : lightTheme.light};
+    background-color: ${props => props.$theme === E_THEME.lightMode ? '#80808045' : darkTheme.darkSuccess};
+    color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#dbdbdb'};
     transition: ease-in all 0.2s;
   }
 `
 
+export const NavFooter = styled.div`
+  position: relative;
+  padding: 15px;
+`
+
+export const ContainerProfile = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 0.3rem;
+  gap: 0.8rem;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 2px 0 #00000063;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  user-select: none;
+
+  
+  @media screen and (max-height: 710px){
+    box-shadow: 0 0 1px 0 #000000a8;
+  }
+
+  @media screen and (max-width: 1020px){
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+`
+
+export const ImgProfile = styled(Image)`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 1px #00d5ad;
+  object-fit: contain;
+`
+
+export const EmailText = styled.p`
+  margin: 0;
+  color: gray;
+  font-weight: 600;
+`
+
+
+export const UserName = styled.p`
+  margin: 0;
+  color: black;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+`
+
 export const Logo = styled(Image)`
-  width: 65px;
-  height: 55px;
+  width: 55px;
+  height: 45px;
   object-fit: contain;
   cursor: pointer;
   transition: ease all 0.3s;
@@ -245,9 +298,9 @@ export const Sidebar = styled.div<StyledProps>`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.secondary : darkTheme.secondary};
+  background-color: transparent;
   border-radius: 0;
-  box-shadow: 0 0 2px 0 #00000063;
+  /* box-shadow: 0 0 2px 0 #00000063; */
   transition: ease all 0.3s;
   /* overflow-y: hidden;
   overflow-x: hidden; */
@@ -260,6 +313,18 @@ export const Sidebar = styled.div<StyledProps>`
     `
       width: calc(250px - 1rem);
       transition: ease all 0.3s;
+
+       ${EmailText} {
+        font-size: 10px;
+        opacity: 1;
+        transition: ease all 0.3s;
+      }
+
+      ${UserName} {
+        font-size: 12px;
+        opacity: 1;
+        transition: ease all 0.3s;
+      }
 
       ${NavItem} {
         display: block;
@@ -293,6 +358,22 @@ export const Sidebar = styled.div<StyledProps>`
       display: none;
       font-size: 0;
       opacity: 0;
+    }
+
+     ${EmailText}, ${UserName} {
+      font-size: 0;
+      opacity: 0;
+      transition: ease all 0.3s;
+    }
+
+      ${ContainerProfile} {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contentProfileTitles {
+      display: none;
     }
   `}
 
