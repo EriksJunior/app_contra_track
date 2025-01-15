@@ -216,28 +216,6 @@ export function Sidebar({ children }: Props) {
 
                 <hr style={{ color: "whitesmoke" }} />
 
-                <S.Li onClick={() => router.push("/settings")}>
-                  <S.InputRadio
-                    type="radio"
-                    name="default"
-                    id="settings"
-                    $theme={theme}
-                    checked={navChecked.settings}
-                    onChange={({ target }) =>
-                      handleChangeNav(target.checked, "settings")
-                    }
-                  />
-
-                  <S.ContentNavItems htmlFor="settings">
-                    <S.IconAndTitle>
-                      <BsGear size={17} />
-                      <S.NavItem>
-                        Configurações
-                      </S.NavItem>
-                    </S.IconAndTitle>
-                  </S.ContentNavItems>
-                </S.Li>
-
                 <S.Li onClick={() => router.push("/")}>
                   <S.InputRadio
                     type="radio"
@@ -286,6 +264,30 @@ export function Sidebar({ children }: Props) {
               </S.Ul>
 
               <S.NavFooter>
+                <S.Ul $ulPadding="0">
+                  <S.Li onClick={() => router.push("/settings")}>
+                    <S.InputRadio
+                      type="radio"
+                      name="default"
+                      id="settings"
+                      $theme={theme}
+                      checked={navChecked.settings}
+                      onChange={({ target }) =>
+                        handleChangeNav(target.checked, "settings")
+                      }
+                    />
+
+                    <S.ContentNavItems htmlFor="settings">
+                      <S.IconAndTitle>
+                        <BsGear size={17} />
+                        <S.NavItem>
+                          Configurações
+                        </S.NavItem>
+                      </S.IconAndTitle>
+                    </S.ContentNavItems>
+                  </S.Li>
+                </S.Ul>
+
                 <S.ContainerProfile>
                   <S.ImgProfile
                     src="/logo2.png"

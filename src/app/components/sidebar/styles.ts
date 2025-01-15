@@ -13,6 +13,7 @@ import { lightTheme } from "../themes/light";
 interface StyledProps {
   $theme?: string;
   $isExpanded?: boolean;
+  $ulPadding?: string
 }
 
 export const Children = styled.div`
@@ -127,9 +128,9 @@ export const ContentSidebar = styled.div<StyledProps>`
   }
 `
 
-export const Ul = styled.ul`
+export const Ul = styled.ul<StyledProps>`
   list-style-type: none;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: ${props => props.$ulPadding || "1rem 1rem 1rem 1rem"};
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -213,6 +214,9 @@ export const InputRadio = styled.input<StyledProps>`
 
 export const NavFooter = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
   padding: 15px;
 `
 
