@@ -266,7 +266,10 @@ export function Sidebar({ children }: Props) {
 
               <S.NavFooter>
                 <S.Ul $ulPadding="0">
-                  <S.Li onClick={() => router.push("/settings")}>
+                  <S.Li onClick={() => {
+                    if (pathname !== '/settings')
+                      router.push("/settings")
+                  }}>
                     <S.InputRadio
                       type="radio"
                       name="default"
