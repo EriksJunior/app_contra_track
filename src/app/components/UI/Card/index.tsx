@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 import * as C from "./styles";
 
 interface Props {
@@ -13,7 +13,8 @@ interface Props {
   notHoverShadow?: boolean
 }
 
-export function Card({
+
+const Card = memo(function Card({
   children,
   flexBasic = "250px",
   height,
@@ -39,4 +40,6 @@ export function Card({
       {children}
     </C.Container>
   );
-}
+})
+
+export { Card }

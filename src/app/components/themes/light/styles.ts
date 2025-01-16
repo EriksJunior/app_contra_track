@@ -2,9 +2,10 @@ import { css } from "styled-components";
 
 import { lightTheme } from ".";
 
-import { InputText, InputTextArea } from "../../UI/Inputs/styles";
-import { CustomInputFile } from "../../UI/Inputs/InputFile/styles";
+import { InputText, InputTextArea } from "@/app/components/UI/Inputs/styles";
+import { CustomInputFile } from "@/app/components/UI/Inputs/InputFile/styles";
 import { InputSearch, SearchContent } from "@/app/components/UI/SearchBar/styles";
+import { Content as OffCanvasContent, Title as OffCanvasTitle, Label as OffCanvasLabel } from "@/app/components/UI/OffCanvas/styles";
 
 export const LightTheme = css`
   .light-mode {
@@ -14,7 +15,6 @@ export const LightTheme = css`
     ${InputText}:focus, ${InputTextArea}:focus {
       border: 1px solid ${lightTheme.info};
     }
-
 
     ${CustomInputFile} {
       border: solid 3px #06c8d375;
@@ -29,6 +29,18 @@ export const LightTheme = css`
     ${InputSearch}, ${SearchContent} {
       background-color: ${lightTheme.light};
       color: black;
+    }
+
+    ${OffCanvasContent} {
+      background-color: ${lightTheme.primary};
+    }
+
+    ${OffCanvasTitle} {
+      color: '#454545';
+    }
+
+    ${OffCanvasLabel}:hover {
+      border: solid 2px #40c29c;
     }
 
     /* GLOBAL SCROLL BAR */

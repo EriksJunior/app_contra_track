@@ -1,9 +1,5 @@
 "use client"
 
-import { useContext } from "react"
-import { ThemeContext } from "@/context/theme"
-
-import { Card } from "./components/UI/Card"
 import { Title } from "./components/UI/Title"
 
 // export async function generateMetadata() {
@@ -40,13 +36,10 @@ import { Title } from "./components/UI/Title"
 // }
 
 export default function Home() {
-  const { theme } = useContext(ThemeContext)
 
   return (
     <div style={{ padding: "15px 15px 15px 0", height: '100%' }}>
-      <Card theme={theme} height="100%">
-        <Title fontSize="20px" color="black" text="Home" />
-      </Card>
+      <Title fontSize="20px" color="black" text="Home" />
     </div>
   )
 }

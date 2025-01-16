@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useRef, useEffect } from "react";
 import { InputLabel } from "@/app/components/UI/Inputs/InputText";

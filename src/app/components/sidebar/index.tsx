@@ -17,6 +17,7 @@ import { PiMoonFill, PiSunFill } from "react-icons/pi";
 
 import { RiNewspaperFill } from "react-icons/ri";
 import * as S from "./styles";
+import { Card } from "../UI/Card";
 
 interface Props {
   children?: ReactNode
@@ -355,7 +356,13 @@ export function Sidebar({ children }: Props) {
           </S.ContentIconLock>
         </S.ContentSidebar>
 
-        <S.Children>{children}</S.Children>
+        <S.Children>
+          <div style={{ padding: "15px 15px 15px 0", height: '100%' }}>
+            <Card theme={theme} height="100%">
+              {children}
+            </Card>
+          </div>
+        </S.Children>
       </S.ContainerSidebar>
     </div>
   );
