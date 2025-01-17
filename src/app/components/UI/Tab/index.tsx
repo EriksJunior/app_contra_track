@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react"
 import { Row } from "@/app/components/UI/Row"
-import { Label } from "@/app/components/UI/Label"
+import { ContentTabText, TabText } from "./styles"
 
 interface Tabs {
   text: string
@@ -47,9 +47,13 @@ export function Tab({ tabs }: Props) {
       <Row>
         {cloneTabs.map((tab, idx) => (
           <div key={tab.text} onClick={() => handleClick(idx)}>
-            <div style={{ borderRadius: 5, padding: '0.2rem 0.8rem', cursor: 'pointer', ...(tab.active && { backgroundColor: "#80808024" }) }}>
-              <Label text={tab.text} color={tab.active ? 'black' : '#6b6b6bdd'} />
-            </div>
+            <ContentTabText style={{
+              ...(tab.active && { backgroundColor: "#80808024" })
+            }}>
+              <TabText $color={tab.active ? 'black' : '#6b6b6bdd'}>
+                {tab.text}
+              </TabText>
+            </ContentTabText>
           </div>
         ))}
       </Row>

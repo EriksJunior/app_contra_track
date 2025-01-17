@@ -71,7 +71,7 @@ export const InputSearch = styled.input`
   font-size: 0.85rem;
 
   @media screen and (max-width: 1366px){
-    height: 2rem;
+    height: 2.3rem;
   }
 `
 export const containerFilterOptionsBox = styled.label`
@@ -85,7 +85,7 @@ export const containerFilterOptionsBox = styled.label`
   border-radius: 8px;
 
   @media screen and (max-width: 1366px){
-    width: 30px;
+    width: 35px;
   }
 `
 
