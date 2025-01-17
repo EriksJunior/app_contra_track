@@ -9,6 +9,9 @@ export interface FormValues {
   numero: string | null
   uf: string | null
   crc: string | null
+
+  certificado?: string
+  senha?: string
 };
 
 export const INITIAL_STATE_COMPANY: FormValues = {

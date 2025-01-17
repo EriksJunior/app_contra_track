@@ -23,6 +23,10 @@ export const SearchContent = styled.div`
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 1px 4px 0 #00000026;
+
+  @media screen and (max-width: 1366px){
+    padding: 0rem 0.2rem;
+  }
 `
 
 export const Label = styled.label`
@@ -39,6 +43,11 @@ export const SearchIcon = styled(FiSearch) <StyledProps>`
   border-radius: 8px;
   cursor: pointer;
   user-select: none!important;
+
+  @media screen and (max-width: 1366px){
+    width: 25px;
+    height: 25px;
+  }
 `
 
 export const FilterIcon = styled(FaFilter) <StyledProps>`
@@ -47,6 +56,11 @@ export const FilterIcon = styled(FaFilter) <StyledProps>`
   color: ${props => props.$filterIconColor || "red"};
   cursor: pointer;
   user-select: none!important;
+
+  @media screen and (max-width: 1366px){
+    width: 15px;
+    height: 15px;
+  }
 `
 
 export const InputSearch = styled.input`
@@ -55,6 +69,10 @@ export const InputSearch = styled.input`
   border: none;
   outline: none;
   font-size: 0.85rem;
+
+  @media screen and (max-width: 1366px){
+    height: 2rem;
+  }
 `
 export const containerFilterOptionsBox = styled.label`
   width: 43px;
@@ -65,6 +83,10 @@ export const containerFilterOptionsBox = styled.label`
   box-shadow: 0 1px 4px 0 #00000026;
   background-color: white;
   border-radius: 8px;
+
+  @media screen and (max-width: 1366px){
+    width: 30px;
+  }
 `
 
 export const InputFilterBoxOptions = styled.input`
@@ -110,6 +132,10 @@ ${(props) => props.$isFilterBoxOpen ?
       user-select: none;
       max-height: 262px;
       overflow: auto;
+
+      @media screen and (max-width: 1366px){
+         top: 45px;
+      }
     `
     :
     `

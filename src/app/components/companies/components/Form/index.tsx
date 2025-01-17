@@ -45,41 +45,41 @@ export function FormCompany({ getValues }: Props) {
             </Col>
 
             <Col>
-              <InputLabel textLabel='Nome Fantasia' value='' handleChange={handleChange} />
+              <InputLabel name='nomeFantasia' textLabel='Nome Fantasia' value={form.nomeFantasia || ''} handleChange={handleChange} />
             </Col>
           </Row>
 
           <Row>
             <Col>
-              <InputLabel textLabel='CNPJ' value='' handleChange={handleChange} />
+              <InputLabel name='cnpj' textLabel='CNPJ' value={form.cnpj || ''} handleChange={handleChange} />
             </Col>
 
             <Col>
-              <InputLabel textLabel='I.E' value='' handleChange={handleChange} />
+              <InputLabel name='ie' textLabel='I.E' value={form.ie || ''} handleChange={handleChange} />
             </Col>
           </Row>
 
           <Row>
             <Col width='20%' minWidth='100px'>
-              <InputLabel textLabel='CEP' value='' handleChange={handleChange} />
+              <InputLabel name='cep' textLabel='CEP' value={form.cep || ''} handleChange={handleChange} />
             </Col>
 
             <Col width='70%'>
-              <InputLabel textLabel='Endereço' value='' handleChange={handleChange} />
+              <InputLabel name='endereco' textLabel='Endereço' value={form.endereco || ''} handleChange={handleChange} />
             </Col>
           </Row>
 
           <Row>
             <Col width='50%'>
-              <InputLabel textLabel='Bairro' value='' handleChange={handleChange} />
+              <InputLabel name='bairro' textLabel='Bairro' value={form.bairro || ''} handleChange={handleChange} />
             </Col>
 
             <Col width='20%' minWidth='100px'>
-              <InputLabel textLabel='Numero' value='' handleChange={handleChange} />
+              <InputLabel name='numero' textLabel='Numero' value={form.numero || ''} handleChange={handleChange} />
             </Col>
 
             <Col width='10%' minWidth='100px'>
-              <InputLabel textLabel='UF' value='' handleChange={handleChange} />
+              <InputLabel name='uf' textLabel='UF' value={form.uf || ''} handleChange={handleChange} />
             </Col>
           </Row>
         </Row>
