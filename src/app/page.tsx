@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { Title } from "./components/UI/Title"
+import { Title } from './components/UI/Title'
 
 // export async function generateMetadata() {
 //   return {
@@ -35,11 +35,10 @@ import { Title } from "./components/UI/Title"
 //   }
 // }
 
-export default function Home() {
-
+export default function Home () {
   return (
-    <div style={{ padding: "15px 15px 15px 0", height: '100%' }}>
-      <Title fontSize="20px" color="black" text="Home" />
+    <div style={{ padding: '15px 15px 15px 0', height: '100%' }}>
+      <Title fontSize='20px' color='black' text='Home' />
     </div>
   )
 }

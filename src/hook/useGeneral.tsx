@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState } from 'react'
 
-export function UseGeneral() {
-  const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false);
+export function UseGeneral () {
+  const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false)
 
   const toggleOffCanvas = () => {
-    setIsOffCanvasOpen((prevState) => !prevState);
-  };
+    setIsOffCanvasOpen((prevState) => !prevState)
+  }
 
   const closeOffCanvas = () => {
-    setIsOffCanvasOpen(false);
-  };
+    setIsOffCanvasOpen(false)
+  }
 
-  return {isOffCanvasOpen, toggleOffCanvas, closeOffCanvas}
+  return { isOffCanvasOpen, toggleOffCanvas, closeOffCanvas }
 }

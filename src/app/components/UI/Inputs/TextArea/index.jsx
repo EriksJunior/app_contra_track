@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import * as I from "../styles";
+import * as I from '../styles'
 
-export function InputTextArea({
-  typeInput = "text",
+export function InputTextArea ({
+  typeInput = 'text',
   isDisabled = false,
   labelFixed = false,
   textLabel,
@@ -12,21 +12,20 @@ export function InputTextArea({
   name,
   maxLength,
   innerRef,
-  colorLabel,
+  colorLabel
 }) {
   const clearInputRequired = () => {
-    if (innerRef) innerRef.current.required = false;
-  };
+    if (innerRef) innerRef.current.required = false
+  }
 
   return (
     <I.CustomInputGroup>
       <I.InputTextArea
-        
         type={typeInput}
         $isDisabled={isDisabled}
-        value={value || ""}
+        value={value || ''}
         onInput={(e) => {
-          handleChange(e), clearInputRequired();
+          handleChange(e), clearInputRequired()
         }}
         name={name}
         maxLength={maxLength}
@@ -40,10 +39,10 @@ export function InputTextArea({
         $colorLabel={colorLabel}
       >
         {textLabel}
-        <I.RequiredField className="requiredField">
+        <I.RequiredField className='requiredField'>
           Campo Obrigatório
         </I.RequiredField>
       </I.Label>
     </I.CustomInputGroup>
-  );
+  )
 }

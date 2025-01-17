@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
-import { LightTheme } from "@/app/components/themes/light/styles";
-import { DarkTheme } from "@/app/components/themes/dark/styles";
+import styled, { createGlobalStyle } from 'styled-components'
+
+import { LightTheme } from '@/app/components/themes/light/styles'
+import { DarkTheme } from '@/app/components/themes/dark/styles'
 
 export const Container = styled.div`
   width: 100%;
@@ -43,4 +43,4 @@ export const GlobalStyle = createGlobalStyle`
     ${LightTheme}
     ${DarkTheme}
   }
-`;
+`
