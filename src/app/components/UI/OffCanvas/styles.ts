@@ -44,21 +44,6 @@ export const Content = styled.div<StyledProps>`
   z-index: 9999;
   box-shadow: -2px 0 4px 0 #00000042;
   transition: ease-in all 0.2s;
-  padding: 1rem;
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    width: 5px!important;
-    height: 8px!important;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: white!important;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #44d2db!important;
-  }
 
   ${(props) => props.$isOpen ?
     `
@@ -74,6 +59,46 @@ export const Content = styled.div<StyledProps>`
   @media screen and (max-width: 750px){
     width: 100%
   }
+`
+
+export const Header = styled.div`
+  height: 55px;
+  border-bottom: solid 1px rgb(197, 197, 197);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
+  z-index: 9999;
+  position: relative;
+`
+
+export const Body = styled.div`
+  height: calc(100% - 110px);
+  overflow: auto;
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    width: 5px!important;
+    height: 8px!important;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: white!important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #44d2db!important;
+  }
+`
+
+export const Footer = styled.div`
+  height: 55px;
+  padding: 0 1rem;
+  border-top: solid 1px rgb(197, 197, 197);
+  box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.14);
+  position: relative;
+  display: flex;
+  align-items: center;
 `
 
 export const ContainerTitleAndIcon = styled.span`
@@ -108,7 +133,7 @@ export const Label = styled.label<StyledProps>`
 `
 
 export const Title = styled.span<StyledProps>`
-  font-size: ${props => props.$fontSizeTitle || "20px"};
+  font-size: ${props => props.$fontSizeTitle || "19px"};
   font-weight: 600;
   color: ${props => props.$colorTitle || "#454545"};
 `

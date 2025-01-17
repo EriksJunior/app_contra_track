@@ -1,6 +1,7 @@
 import { SearchBar } from "@/app/components/UI/SearchBar";
 import { Button } from "@/app/components/UI/Button";
 import { OffCanvas } from "@/app/components/UI/OffCanvas";
+import { FormCompany } from "@/app/components/companies/components/Form";
 
 import { UseGeneral } from "../../../hook/useGeneral";
 
@@ -22,9 +23,22 @@ export function Companies() {
       <OffCanvas
         expanded={isOffCanvasOpen}
         onClose={closeOffCanvas}
-        title={'Cadastre uma nova Empresa'}
+        title={'Nova Empresa'}
         clearValues={() => console.log('limpando')}
-      ></OffCanvas>
+        footer={
+          <div style={{ display: 'flex', gap: '1rem' }}>
+            <div style={{ width: '70px' }}>
+              <Button text="Novo" height="30px" backgroundColor="rgb(117, 129, 180)" hoverColor="rgb(100,114,175)" />
+            </div>
+
+            <div style={{ width: '90px' }}>
+              <Button text="Salvar" height="30px" />
+            </div>
+          </div>
+        }
+      >
+        <FormCompany />
+      </OffCanvas>
     </div>
   )
 }

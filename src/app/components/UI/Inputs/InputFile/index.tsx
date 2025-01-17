@@ -7,8 +7,8 @@ import { BiImageAdd } from "react-icons/bi";
 import * as I from "./styles";
 
 interface Props {
-  isLarge: boolean
-  nameFileMaxWidth: string
+  isLarge?: boolean
+  nameFileMaxWidth?: string
   getValues: ({ nome_imagem, base64 }: { nome_imagem: string, base64: string }) => void
 }
 

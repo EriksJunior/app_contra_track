@@ -1,9 +1,10 @@
 import * as I from "../styles";
 
 interface Props {
-  textLabel: string
   value: string
+  textLabel?: string
   handleChange: (e: React.FormEvent<HTMLInputElement>) => void
+  placeholder?: string
   typeInput?: string
   isDisabled?: boolean
   colorBackgroundLabel?: string
@@ -16,6 +17,7 @@ export function InputLabel({
   typeInput = "text",
   isDisabled = false,
   textLabel,
+  placeholder,
   value,
   handleChange,
   colorBackgroundLabel,
@@ -44,6 +46,7 @@ export function InputLabel({
         name={name}
         ref={innerRef}
         onBlur={clearInputRequired}
+        placeholder={placeholder && placeholder}
       />
 
       <I.Label

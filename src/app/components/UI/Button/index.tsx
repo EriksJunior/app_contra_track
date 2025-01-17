@@ -5,8 +5,9 @@ import * as C from "./styles";
 interface Props {
   backgroundColor?: string
   width?: string
+  height?: string
   hoverColor?: string
-  activeColor?: string
+  color?: string
   click?: () => void
   icon?: ReactNode
   text?: string
@@ -15,8 +16,9 @@ interface Props {
 export function Button({
   backgroundColor,
   width,
+  height,
   hoverColor,
-  activeColor,
+  color,
   click,
   icon,
   text,
@@ -25,8 +27,9 @@ export function Button({
     <C.CustomButton
       $backgroundColor={backgroundColor}
       $width={width}
+      $height={height}
       $hoverColor={hoverColor}
-      $activeColor={activeColor}
+      $color={color}
       onClick={click}
     >
       {icon && icon}

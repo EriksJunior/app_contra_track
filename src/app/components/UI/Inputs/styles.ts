@@ -10,6 +10,7 @@ export const InputGroup = styled.div`
   display: flex;
   flex-direction: column-reverse;
   gap: 0.1rem;
+  width: 100%;
 `
 
 export const Label = styled.label<StyledProps>`
@@ -59,7 +60,7 @@ export const RequiredField = styled.span`
 export const InputText = styled.input<StyledProps>`
   font-size: 14px;
   width: 100%;
-  height: 40px;
+  height: 35px;
   border: 1px solid #d5d3d3;
   outline: none;
   transition: ease-in 0.1s all;
@@ -94,6 +95,12 @@ export const InputText = styled.input<StyledProps>`
   @media screen and (min-width: 1980px){
     & {
       font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: 1500px){
+    & {
+      height: 30px;
     }
   }
 

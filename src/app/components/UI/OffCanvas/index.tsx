@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 
 import { HiPlus } from "react-icons/hi";
 import * as Off from "./styles";
@@ -12,13 +12,14 @@ interface Props {
   clearValues: () => void
   backgroundColor?: string
   width?: string
-  children?: string
+  children?: ReactNode
   colorCloseIcon?: string
   backgroundCloseIconColor?: string
   sizeCloseText?: string
   colorCloseText?: string
   colorTitle?: string
   fontSizeTitle?: string
+  footer?: ReactNode
 }
 
 export function OffCanvas({
@@ -35,6 +36,7 @@ export function OffCanvas({
   colorCloseText,
   colorTitle,
   fontSizeTitle,
+  footer
 }: Props) {
   const [isExpanded, setIsExpanded] = useState(expanded);
 
@@ -65,29 +67,39 @@ export function OffCanvas({
         $width={width}
         className="offCanvas"
       >
-        <Off.ContainerTitleAndIcon>
-          <Off.Title $colorTitle={colorTitle} $fontSizeTitle={fontSizeTitle}>
-            {title}
-          </Off.Title>
+        <Off.Header>
+          <Off.ContainerTitleAndIcon>
+            <Off.Title $colorTitle={colorTitle} $fontSizeTitle={fontSizeTitle}>
+              {title}
+            </Off.Title>
 
-          <Off.Label
-            onClick={handleClose}
-            $sizeCloseText={sizeCloseText}
-            $colorCloseText={colorCloseText}
-          >
-            <span>fechar</span>
+            <Off.Label
+              onClick={handleClose}
+              $sizeCloseText={sizeCloseText}
+              $colorCloseText={colorCloseText}
+            >
+              <span>fechar</span>
 
-            <Off.CloseIcon $backgroundCloseIconColor={backgroundCloseIconColor}>
-              <HiPlus
-                size={18}
-                color={colorCloseIcon || "white"}
-                style={{ transform: "rotate(45deg)" }}
-              />
-            </Off.CloseIcon>
-          </Off.Label>
-        </Off.ContainerTitleAndIcon>
+              <Off.CloseIcon $backgroundCloseIconColor={backgroundCloseIconColor}>
+                <HiPlus
+                  size={18}
+                  color={colorCloseIcon || "white"}
+                  style={{ transform: "rotate(45deg)" }}
+                />
+              </Off.CloseIcon>
+            </Off.Label>
+          </Off.ContainerTitleAndIcon>
+        </Off.Header>
 
-        {children}
+        <Off.Body>
+          {children}
+        </Off.Body>
+
+        {footer && (
+          <Off.Footer>
+            {footer}
+          </Off.Footer>
+        )}
       </Off.Content>
     </Off.Container>
   );
