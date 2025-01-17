@@ -6,9 +6,20 @@ import { FormCompany } from '@/app/components/companies/components/Form'
 import { UseGeneral } from '../../../hook/useGeneral'
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
+import { useState } from 'react'
+import { FormValues } from './components/initialStates'
 
-export function Companies () {
+export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = UseGeneral()
+  const [company, setCompany] = useState<FormValues | null>(null)
+
+  const getFormValues = (values: FormValues) => {
+    setCompany(values)
+  }
+
+  const save = () => {
+    console.log(company)
+  }
 
   return (
     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -28,7 +39,7 @@ export function Companies () {
         footer={
           <div style={{ display: 'flex', gap: '1rem' }}>
             <div style={{ width: '70px' }}>
-              <Button text='Novo' height='30px' backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' />
+              <Button text='Novo' height='30px' backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' click={save} />
             </div>
 
             <div style={{ width: '90px' }}>
@@ -37,7 +48,7 @@ export function Companies () {
           </div>
         }
       >
-        <FormCompany />
+        <FormCompany getValues={getFormValues}/>
       </OffCanvas>
     </div>
   )

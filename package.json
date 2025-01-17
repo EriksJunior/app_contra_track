@@ -10,13 +10,15 @@
     "lint:fix": "npx standard --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
     "@types/react-toastify": "^4.1.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
     "react-toastify": "^11.0.2",
-    "styled-components": "^6.1.14"
+    "styled-components": "^6.1.14",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Col } from '@/app/components/UI/Col'
 import { InputFilePfx } from '@/app/components/UI/Inputs/InputFilePfx'
 import { InputLabel } from '@/app/components/UI/Inputs/InputText'
@@ -7,7 +9,28 @@ import { SectionInputs } from '@/app/components/UI/SectionInputs'
 import { BsPersonVcard } from 'react-icons/bs'
 import { TbCertificate } from 'react-icons/tb'
 
-export function FormCompany () {
+import { FormValues, INITIAL_STATE_COMPANY } from '../initialStates'
+
+
+interface Props {
+  getValues: (values: FormValues) => void
+}
+
+export function FormCompany({ getValues }: Props) {
+  const [form, setForm] = useState<FormValues>(INITIAL_STATE_COMPANY)
+
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const newState = { ...form, [e?.currentTarget?.name]: e?.currentTarget?.value }
+    setForm(newState)
+
+    handleGetValues(newState)
+  }
+
+  const handleGetValues = (values: FormValues) => {
+    if (getValues)
+      getValues(values)
+  }
+
   return (
     <Col margin='0.5rem 0 0 0' gap='1.3rem'>
       <SectionInputs
@@ -18,45 +41,45 @@ export function FormCompany () {
         <Row>
           <Row>
             <Col>
-              <InputLabel textLabel='Razão social' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel name='razaoSocial' textLabel='Razão social' value={form.razaoSocial || ''} handleChange={handleChange} />
             </Col>
 
             <Col>
-              <InputLabel textLabel='Nome Fantasia' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='Nome Fantasia' value='' handleChange={handleChange} />
             </Col>
           </Row>
 
           <Row>
             <Col>
-              <InputLabel textLabel='CNPJ' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='CNPJ' value='' handleChange={handleChange} />
             </Col>
 
             <Col>
-              <InputLabel textLabel='I.E' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='I.E' value='' handleChange={handleChange} />
             </Col>
           </Row>
 
           <Row>
             <Col width='20%' minWidth='100px'>
-              <InputLabel textLabel='CEP' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='CEP' value='' handleChange={handleChange} />
             </Col>
 
             <Col width='70%'>
-              <InputLabel textLabel='Endereço' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='Endereço' value='' handleChange={handleChange} />
             </Col>
           </Row>
 
           <Row>
             <Col width='50%'>
-              <InputLabel textLabel='Bairro' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='Bairro' value='' handleChange={handleChange} />
             </Col>
 
             <Col width='20%' minWidth='100px'>
-              <InputLabel textLabel='Numero' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='Numero' value='' handleChange={handleChange} />
             </Col>
 
             <Col width='10%' minWidth='100px'>
-              <InputLabel textLabel='UF' value='' handleChange={() => console.log('jfsdjjkll')} />
+              <InputLabel textLabel='UF' value='' handleChange={handleChange} />
             </Col>
           </Row>
         </Row>
@@ -71,7 +94,7 @@ export function FormCompany () {
           <InputFilePfx getValues={(file) => console.log(file)} />
 
           <div style={{ width: '200px' }}>
-            <InputLabel placeholder='Senha do certificado' value='' handleChange={() => console.log('jfsdjjkll')} />
+            <InputLabel placeholder='Senha do certificado' value='' handleChange={handleChange} />
           </div>
         </div>
       </SectionInputs>

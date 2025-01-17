@@ -87,7 +87,7 @@ export const Body = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #44d2db!important;
+    background-color: rgb(100,114,175)!important;
   }
 `
 

@@ -13,7 +13,7 @@ export const LightTheme = css`
     background-color: ${lightTheme.primary};
 
     ${InputText}:focus, ${InputTextArea}:focus {
-      border: 1px solid ${lightTheme.info};
+      box-shadow: 0 0 1px 1px ${lightTheme.info};
     }
 
     ${CustomInputFile} {
@@ -50,7 +50,7 @@ export const LightTheme = css`
     }
   
     ::-webkit-scrollbar-track {
-      background: transparent;
+      background: transparent!important;;
     }
   
     ::-webkit-scrollbar-thumb {

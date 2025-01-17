@@ -144,12 +144,11 @@ export const Ul = styled.ul<StyledProps>`
   }
 
   &::-webkit-scrollbar-track {
-    background: #5365b3!important;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: white!important;
+    background-color: rgb(100,114,175)!important;
     border-radius: 10px;
   }
 

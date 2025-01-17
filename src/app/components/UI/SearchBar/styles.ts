@@ -88,7 +88,7 @@ export const ContentBoxOptions = styled.div<StyledProps>`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #44d2db!important;
+    background-color: rgb(100,114,175)!important;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
