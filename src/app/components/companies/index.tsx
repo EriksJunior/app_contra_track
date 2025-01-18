@@ -30,7 +30,7 @@ export function Companies() {
   }
 
   const save = async () => {
-    if(!isValid()) return
+    if (!isValid()) return
 
     const id = await SaveCompany(company)
     console.log(id)

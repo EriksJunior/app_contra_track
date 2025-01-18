@@ -1,17 +1,16 @@
-import { useState } from "react";
-
 import { convertFileToBase64 } from "@/utils/convertFileToBase64";
 
 import { PiCertificateFill } from "react-icons/pi";
+import { LuFileCheck } from "react-icons/lu";
 import * as I from "./styles";
 
 interface Props {
   nameFileMaxWidth?: string
   getValues: (pfx: string) => void
+  isSelected: boolean
 }
 
-export function InputFilePfx({ nameFileMaxWidth = "300px", getValues }: Props) {
-  const [pfx, setPfx] = useState<string>("");
+export function InputFilePfx({ nameFileMaxWidth = "300px", getValues, isSelected = false }: Props) {
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -21,10 +20,9 @@ export function InputFilePfx({ nameFileMaxWidth = "300px", getValues }: Props) {
 
     const file = files[0];
     const base64 = await convertFileToBase64(file);
-    setPfx(base64 as string);
 
     if (getValues) {
-      getValues(pfx);
+      getValues(base64 as string || '');
     }
   };
 
@@ -32,10 +30,15 @@ export function InputFilePfx({ nameFileMaxWidth = "300px", getValues }: Props) {
     <>
       <I.Container>
         <I.Content>
-          <I.NameFile $nameFileMaxWidth={nameFileMaxWidth}>Selecione um certificado</I.NameFile>
+          <I.NameFile $nameFileMaxWidth={nameFileMaxWidth} $isSelected={isSelected}>{isSelected ? 'Certificado Selecionado!' : 'Selecione um certificado'}</I.NameFile>
 
-          <I.CustomInputFile htmlFor="inputFile">
-            <PiCertificateFill size={100} color="rgb(6 200 211 / 24%)" />
+          <I.CustomInputFile htmlFor="inputFile" $isSelected={isSelected}>
+            {isSelected ? (
+              <LuFileCheck size={100} color={isSelected ? '#40c29c' : 'rgb(6 200 211 / 24%)'} />
+            ) : (
+              <PiCertificateFill size={100} color={isSelected ? '#40c29c' : 'rgb(6 200 211 / 24%)'} />
+            )}
+
           </I.CustomInputFile>
 
           <I.Input

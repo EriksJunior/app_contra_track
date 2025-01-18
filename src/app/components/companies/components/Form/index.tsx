@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Col } from '@/app/components/UI/Col'
 import { InputFilePfx } from '@/app/components/UI/Inputs/InputFilePfx'
@@ -29,9 +29,13 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
   const [form, setForm] = useState<FormValues>(INITIAL_STATE_COMPANY)
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const newState = { ...form, [e?.currentTarget?.name]: e?.currentTarget?.value }
-    setForm(newState)
+    const newState = e?.currentTarget?.name === 'passwordCert'
+      ?
+      { ...form, certification: { ...form.certification, [e?.currentTarget?.name]: e?.currentTarget?.value } }
+      :
+      { ...form, [e?.currentTarget?.name]: e?.currentTarget?.value }
 
+    setForm(newState)
     handleGetValues(newState)
   }
 
@@ -39,6 +43,17 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
     if (getValues)
       getValues(values)
   }
+
+  const handleCertificate = (base64: string) => {
+    const payload: FormValues = { ...form, certification: { ...form.certification, certBase64: base64 } }
+    setForm(payload)
+
+    handleGetValues(form)
+  }
+
+  useEffect(() => {
+    console.log(form)
+  }, [form])
 
   return (
     <Col margin='0.5rem 0 0 0' gap='1.3rem'>
@@ -104,10 +119,10 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
       >
 
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
-          <InputFilePfx getValues={(file) => console.log(file)} />
+          <InputFilePfx getValues={(base64) => handleCertificate(base64)} isSelected={form?.certification?.certBase64 ? true : false} />
 
           <div style={{ width: '200px' }}>
-            <InputLabel placeholder='Senha do certificado' value='' handleChange={handleChange} />
+            <InputLabel name='passwordCert' placeholder='Senha do certificado' value={form.certification?.passwordCert || ''} handleChange={handleChange} />
           </div>
         </div>
       </SectionInputs>

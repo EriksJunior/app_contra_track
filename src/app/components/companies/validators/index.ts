@@ -50,7 +50,7 @@ const ValidateCompany = (company: FormValues): Errors[] => {
         message: e?.message || '',
         keyError: e?.path[0] || ''
       }
-    })
+    }).reverse()
   }
 
   return []
