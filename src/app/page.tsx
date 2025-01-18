@@ -35,6 +35,8 @@ import { Title } from './components/UI/Title'
 //   }
 // }
 
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Home () {
   return (
     <div style={{ padding: '15px 15px 15px 0', height: '100%' }}>

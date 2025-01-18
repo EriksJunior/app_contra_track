@@ -16,7 +16,7 @@ export const Container = styled.div<StyledProps>`
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 9999;
+  z-index: 200;
   transition: ease-in all 0.2s;
 
 
@@ -41,7 +41,7 @@ export const Content = styled.div<StyledProps>`
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 9999;
+  z-index: 200;
   box-shadow: -2px 0 4px 0 #00000042;
   transition: ease-in all 0.2s;
 
@@ -68,7 +68,7 @@ export const Header = styled.div`
   align-items: center;
   padding: 0 1rem;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
-  z-index: 9999;
+  z-index: 200;
   position: relative;
 `
 

@@ -11,6 +11,7 @@ interface Props {
   name?: string
   innerRef?: React.Ref<HTMLInputElement>;
   colorLabel?: string
+  maxLength?: string | number
 }
 
 export function InputLabel({
@@ -24,6 +25,7 @@ export function InputLabel({
   name,
   innerRef,
   colorLabel,
+  maxLength
 }: Props) {
   const clearInputRequired = () => {
     if (innerRef && 'current' in innerRef) innerRef.current!.required = false;
@@ -47,6 +49,7 @@ export function InputLabel({
         ref={innerRef}
         onBlur={clearInputRequired}
         placeholder={placeholder && placeholder}
+        maxLength={maxLength as number}
       />
 
       <I.Label

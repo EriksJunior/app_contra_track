@@ -10,6 +10,7 @@ interface Props {
   name?: string
   innerRef?: React.Ref<HTMLInputElement>;
   colorLabel?: string
+  maxLength?: string | number
 }
 
 export function InputCep({
@@ -22,6 +23,7 @@ export function InputCep({
   name,
   innerRef = null,
   colorLabel,
+  maxLength
 }: Props) {
   const format = (value: string) => {
     if (value) {
@@ -54,7 +56,7 @@ export function InputCep({
         value={format(value)}
         onInput={handleInput}
         name={name}
-        maxLength={8}
+        maxLength={maxLength as number}
         ref={innerRef}
         onBlur={clearInputRequired}
       />

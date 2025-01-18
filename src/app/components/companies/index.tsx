@@ -1,24 +1,57 @@
+import { useState, useRef } from 'react'
+
 import { SearchBar } from '@/app/components/UI/SearchBar'
 import { Button } from '@/app/components/UI/Button'
 import { OffCanvas } from '@/app/components/UI/OffCanvas'
 import { FormCompany } from '@/app/components/companies/components/Form'
 
-import { UseGeneral } from '../../../hook/useGeneral'
-
 import { BsFillPersonPlusFill } from 'react-icons/bs'
-import { useState } from 'react'
-import { FormValues } from './components/initialStates'
+
+import { UseGeneral } from '../../../hook/useGeneral'
+import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
+import { ValidateCompany } from './validators'
+import { SaveCompany } from './services'
+
+type RefValidateKeys = "razaoSocial" | "nomeFantasia" | "cnpj" | "uf";
 
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = UseGeneral()
-  const [company, setCompany] = useState<FormValues | null>(null)
+  const [company, setCompany] = useState<FormValues>(INITIAL_STATE_COMPANY)
+
+  const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
+    razaoSocial: useRef<HTMLInputElement>(null),
+    nomeFantasia: useRef<HTMLInputElement>(null),
+    cnpj: useRef<HTMLInputElement>(null),
+    uf: useRef<HTMLInputElement>(null),
+  }
 
   const getFormValues = (values: FormValues) => {
     setCompany(values)
   }
 
-  const save = () => {
-    console.log(company)
+  const save = async () => {
+    if(!isValid()) return
+
+    const id = await SaveCompany(company)
+    console.log(id)
+  }
+
+  const isValid = () => {
+    const errors = ValidateCompany(company as FormValues)
+
+    if (errors && Object.keys(errors).length) {
+      errors.forEach((e) => {
+        const ref = refValidate[e.keyError as keyof typeof refValidate];
+        if (ref.current) {
+          ref.current.setAttribute("required", "true");
+          ref.current.focus();
+        }
+      });
+
+      return false
+    }
+
+    return true
   }
 
   return (
@@ -39,16 +72,16 @@ export function Companies() {
         footer={
           <div style={{ display: 'flex', gap: '1rem' }}>
             <div style={{ width: '70px' }}>
-              <Button text='Novo' height='30px' backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' click={save} />
+              <Button text='Novo' height='30px' backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' />
             </div>
 
             <div style={{ width: '90px' }}>
-              <Button text='Salvar' height='30px' />
+              <Button text='Salvar' height='30px' click={save} />
             </div>
           </div>
         }
       >
-        <FormCompany getValues={getFormValues}/>
+        <FormCompany getValues={getFormValues} refsToValidate={refValidate} />
       </OffCanvas>
     </div>
   )
