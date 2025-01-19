@@ -25,6 +25,7 @@ export const CustomButton = styled.button<StyledProps>`
   color: ${props => props.$color || "white"}!important;
   background-color: ${props => props.$backgroundColor || "#40c29c"}!important;
   letter-spacing: 1px;
+  position: relative;
 
   &:hover {
     background-color: ${props => props.$hoverColor || "#3ab08d"}!important;

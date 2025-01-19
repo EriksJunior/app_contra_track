@@ -1,4 +1,4 @@
- 
+
 import { ReactNode } from "react";
 import * as C from "./styles";
 
@@ -11,6 +11,8 @@ interface Props {
   click?: () => void
   icon?: ReactNode
   text?: string
+  isLoading?: boolean
+  disabled?: boolean
 }
 
 export function Button({
@@ -22,6 +24,8 @@ export function Button({
   click,
   icon,
   text,
+  isLoading,
+  disabled
 }: Props) {
   return (
     <C.CustomButton
@@ -34,6 +38,7 @@ export function Button({
     >
       {icon && icon}
       {text && text}
+      {isLoading && <p>loading</p>}
     </C.CustomButton>
   );
 }

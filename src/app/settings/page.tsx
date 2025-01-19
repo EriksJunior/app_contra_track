@@ -14,7 +14,7 @@ export default function Settings () {
   ]
 
   return (
-    <div style={{ padding: '15px 15px 15px 0', height: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div style={{ padding: '0 15px', height: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <Title fontSize='20px' color='black' text='Configurações' />
 
       <Tab tabs={items} />
