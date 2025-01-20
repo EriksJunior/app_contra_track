@@ -21,7 +21,6 @@ export async function SaveCompany(company: FormValues) {
 
       throw error
     } else {
-      console.log(error)
       toast.error("Erro inesperado. Tente novamente.");
     }
   }

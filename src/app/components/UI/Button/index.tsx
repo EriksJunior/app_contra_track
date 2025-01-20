@@ -1,6 +1,8 @@
 
 import { ReactNode } from "react";
+
 import * as C from "./styles";
+import { CgSpinner } from "react-icons/cg";
 
 interface Props {
   backgroundColor?: string
@@ -34,11 +36,14 @@ export function Button({
       $height={height}
       $hoverColor={hoverColor}
       $color={color}
+      $disabled={isLoading || disabled}
       onClick={click}
     >
       {icon && icon}
-      {text && text}
-      {isLoading && <p>loading</p>}
+
+      {isLoading ? (
+        <CgSpinner size={20} className="spinner" color="white"/>
+      ) : text && text}
     </C.CustomButton>
   );
 }

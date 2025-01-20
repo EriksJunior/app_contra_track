@@ -17,6 +17,7 @@ type RefValidateKeys = "razaoSocial" | "nomeFantasia" | "cnpj" | "uf";
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = UseGeneral()
   const [company, setCompany] = useState<FormValues>(INITIAL_STATE_COMPANY)
+  const [isLoading, setIsloading] = useState<boolean>(false)
 
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
     razaoSocial: useRef<HTMLInputElement>(null),
@@ -30,10 +31,15 @@ export function Companies() {
   }
 
   const save = async () => {
-    if (!isValid()) return
+    try {
+      setIsloading(true)
+      if (!isValid()) return
 
-    const id = await SaveCompany(company)
-    console.log(id)
+      const id = await SaveCompany(company)
+      console.log(id)
+    } finally {
+      setIsloading(false)
+    }
   }
 
   const isValid = () => {
@@ -71,12 +77,12 @@ export function Companies() {
         clearValues={() => console.log('limpando')}
         footer={
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <div style={{ width: '70px' }}>
+            <div>
               <Button text='Novo' height='30px' backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' />
             </div>
 
-            <div style={{ width: '90px' }}>
-              <Button text='Salvar' height='30px' click={save} />
+            <div>
+              <Button text='Salvar' height='30px' click={save}  isLoading={isLoading} />
             </div>
           </div>
         }

@@ -6,6 +6,7 @@ interface StyledProps {
   $backgroundColor?: string
   $hoverColor?: string
   $color?: string
+  $disabled?: boolean
 }
 
 export const CustomButton = styled.button<StyledProps>`
@@ -27,8 +28,29 @@ export const CustomButton = styled.button<StyledProps>`
   letter-spacing: 1px;
   position: relative;
 
-  &:hover {
-    background-color: ${props => props.$hoverColor || "#3ab08d"}!important;
-    transition: ease-in all 0.1s;
-  };
+  @keyframes rotating {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+  }
+
+  .spinner {
+    animation: rotating 1.3s linear infinite;
+  }
+
+  ${props => props.$disabled ?
+    `
+      pointer-events: none;
+    `
+    :
+    `
+      &:hover {
+        background-color: ${props.$hoverColor || "#3ab08d"}!important;
+        transition: ease-in all 0.1s;
+      }
+    `
+  }
 `
