@@ -20,8 +20,8 @@ export default function Login() {
         <p style={{ color: 'whitesmoke', fontSize: '12px' }}>TRACKER</p>
       </div>
 
-      <div style={{ width: '70%', height: '100%', padding: '2rem 5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <div style={{width: '400px', display: 'flex', flexDirection: 'column', gap: '1.3rem'}}>
+      <div style={{ width: '70%', height: '100%', padding: '3rem 5rem 2rem 5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ width: '400px', display: 'flex', flexDirection: 'column', gap: '1.3rem' }}>
           <div>
             <p style={{ fontSize: '1.3rem' }}>Nova Conta</p>
 
