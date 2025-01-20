@@ -48,6 +48,7 @@ export function Companies() {
     if (errors && Object.keys(errors).length) {
       errors.forEach((e) => {
         const ref = refValidate[e.keyError as keyof typeof refValidate];
+        
         if (ref.current) {
           ref.current.setAttribute("required", "true");
           ref.current.focus();

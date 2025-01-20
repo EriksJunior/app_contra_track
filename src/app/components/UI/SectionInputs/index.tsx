@@ -15,7 +15,7 @@ export function SectionInputs({ icon, children, divider = false, textLabel }: Pr
     <Col>
       <Row alignCenter>
         {icon && icon}
-        <Label text={textLabel} fontSize="14px" color="rgb(117, 129, 180)" />
+        {textLabel && <Label text={textLabel} fontSize="14px" color="rgb(117, 129, 180)" />}
       </Row>
 
       <Row>

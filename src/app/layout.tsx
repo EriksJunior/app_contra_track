@@ -9,6 +9,8 @@ import StyledComponentsRegistry from "./registry";
 import { Sidebar } from "./components/sidebar";
 
 import { GlobalStyle } from "./styles";
+import { usePathname } from "next/navigation";
+import Login from "./login/page";
 
 
 const poppins = Poppins({ subsets: ["latin"], weight: "600" });
@@ -18,15 +20,24 @@ interface Props {
 }
 
 export default function RootLayout({ children }: Props) {
+  const pathname = usePathname();
+
   return (
     <html lang="pt-BR">
       <body className={poppins.className}>
         <StyledComponentsRegistry>
           <ThemeProvider>
             <GlobalStyle />
-            <Sidebar>
-              {children}
-            </Sidebar>
+
+            {
+              pathname !== '/login'
+                ?
+                <Sidebar>
+                  {children}
+                </Sidebar>
+                :
+                <Login />
+            }
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
