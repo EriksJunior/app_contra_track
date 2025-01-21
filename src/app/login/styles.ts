@@ -124,6 +124,7 @@ export const Right = styled.div`
 
   @media screen and (min-width: 1366px) {
     width: 65%;
+    margin-top: 5rem;
   }
 
   @media screen and (max-width: 1020px) {
