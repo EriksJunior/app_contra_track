@@ -13,6 +13,7 @@ interface Props {
   click?: () => void
   icon?: ReactNode
   text?: string
+  fontSize?: string
   isLoading?: boolean
   disabled?: boolean
 }
@@ -26,6 +27,7 @@ export function Button({
   click,
   icon,
   text,
+  fontSize,
   isLoading,
   disabled
 }: Props) {
@@ -37,6 +39,7 @@ export function Button({
       $hoverColor={hoverColor}
       $color={color}
       $disabled={isLoading || disabled}
+      $fontSize={fontSize}
       onClick={click}
     >
       {icon && icon}

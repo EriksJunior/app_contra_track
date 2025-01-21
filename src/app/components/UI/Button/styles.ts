@@ -6,6 +6,7 @@ interface StyledProps {
   $backgroundColor?: string
   $hoverColor?: string
   $color?: string
+  $fontSize?: string
   $disabled?: boolean
 }
 
@@ -18,7 +19,7 @@ export const CustomButton = styled.button<StyledProps>`
   border: none;
   height: ${props => props.$height || "35px"} ;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: ${props => props.$fontSize || '13px'};
   box-shadow: 0 1px 4px 0 #00000026;
   padding: 0.375rem 0.75rem;
   cursor: pointer;

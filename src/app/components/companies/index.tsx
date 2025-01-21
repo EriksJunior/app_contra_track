@@ -12,7 +12,7 @@ import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { SaveCompany } from './services'
 
-type RefValidateKeys = "razaoSocial" | "nomeFantasia" | "cnpj" | "uf";
+type RefValidateKeys = "name" | "tradeName" | "cnpj" | "uf";
 
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = UseGeneral()
@@ -20,8 +20,8 @@ export function Companies() {
   const [isLoading, setIsloading] = useState<boolean>(false)
 
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
-    razaoSocial: useRef<HTMLInputElement>(null),
-    nomeFantasia: useRef<HTMLInputElement>(null),
+    name: useRef<HTMLInputElement>(null),
+    tradeName: useRef<HTMLInputElement>(null),
     cnpj: useRef<HTMLInputElement>(null),
     uf: useRef<HTMLInputElement>(null),
   }

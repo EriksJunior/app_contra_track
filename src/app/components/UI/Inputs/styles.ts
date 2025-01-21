@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 interface StyledProps {
-  $colorLabel?: string;
-  $isDisabled?: boolean;
+  $isDisabled?: boolean
+  $isLarge?: boolean
+  $colorLabel?: string
   $colorBackgroundLabel?: string
+  $backColor?: string
+  $padding?: string
+  $border?: string
+  $color?: string
 }
 
 export const InputGroup = styled.div`
@@ -60,18 +65,22 @@ export const RequiredField = styled.span`
 export const InputText = styled.input<StyledProps>`
   font-size: 14px;
   width: 100%;
-  height: 35px;
-  border: 1px solid #d5d3d3;
+  border: ${props => props.$border || '1px solid #d5d3d3'};
   outline: none;
   transition: ease-in 0.1s all;
-  padding-left: 5px;
-  padding-right: 4px;
-  color: #5f5c5b;
-  background-color: white; /*#e9e9e9*/
+  padding: ${props => props.$padding || '0 4px 0 5px'};
+  color: ${props => props.$color || '#5f5c5b'};
+  background-color: ${props => props.$backColor || 'white'}; /*#e9e9e9*/
   border-radius: 5px!important;
+
+  &::placeholder {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+  }
 
   &:focus {
     transition: ease-in 0.1s all;
+    box-shadow: 0 0 2px 1px rgb(255, 255, 255);
   }
 
   &:required {
@@ -98,11 +107,24 @@ export const InputText = styled.input<StyledProps>`
     }
   }
 
-  @media screen and (max-width: 1500px){
-    & {
-      height: 30px;
-    }
+  height: ${props => props.$isLarge ? '45px' : '35px'};
+
+  ${(props) => props.$isLarge
+    ?
+    `
+        height: 45px;
+      `
+    :
+    `
+       height: 35px;
+       @media screen and (max-width: 1500px){
+         & {
+           height: 35px;
+         }
+       }
+      `
   }
+  
 
   ${(props) => props.$isDisabled && `
     background-color: #fafafa;

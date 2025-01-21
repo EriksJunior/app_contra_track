@@ -1,10 +1,11 @@
 export interface FormValues {
-  razaoSocial: string | null
-  nomeFantasia: string | null
+  name: string | null
+  tradeName: string | null
   cnpj: string | null
   ie?: string | null
   cep?: string | null
   email?: string | null
+  cidade?: string | null
   endereco?: string | null
   bairro?: string | null
   numero?: string | null
@@ -18,12 +19,13 @@ export interface FormValues {
 };
 
 export const INITIAL_STATE_COMPANY: FormValues = {
-  razaoSocial: null,
-  nomeFantasia: null,
+  name: null,
+  tradeName: null,
   cnpj: null,
   ie: null,
   cep: null,
   email: null,
+  cidade: null,
   endereco: null,
   bairro: null,
   numero: null,

@@ -11,7 +11,6 @@ interface Props {
 }
 
 export function InputFilePfx({ nameFileMaxWidth = "300px", getValues, isSelected = false }: Props) {
-
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) {

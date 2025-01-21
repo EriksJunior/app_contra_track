@@ -14,8 +14,8 @@ import { TbCertificate } from 'react-icons/tb'
 import { FormValues, INITIAL_STATE_COMPANY } from '../../initialStates'
 
 interface RefsToValidate {
-  razaoSocial: React.Ref<HTMLInputElement>
-  nomeFantasia: React.Ref<HTMLInputElement>
+  name: React.Ref<HTMLInputElement>
+  tradeName: React.Ref<HTMLInputElement>
   cnpj: React.Ref<HTMLInputElement>
   uf: React.Ref<HTMLInputElement>
 }
@@ -65,11 +65,11 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
         <Row>
           <Row>
             <Col>
-              <InputLabel name='razaoSocial' textLabel='Razão social' innerRef={refsToValidate.razaoSocial} value={form.razaoSocial || ''} handleChange={handleChange} />
+              <InputLabel name='name' textLabel='Razão social' innerRef={refsToValidate.name} value={form.name || ''} handleChange={handleChange} />
             </Col>
 
             <Col>
-              <InputLabel name='nomeFantasia' textLabel='Nome Fantasia' innerRef={refsToValidate.nomeFantasia} value={form.nomeFantasia || ''} handleChange={handleChange} />
+              <InputLabel name='tradeName' textLabel='Nome Fantasia' innerRef={refsToValidate.tradeName} value={form.tradeName || ''} handleChange={handleChange} />
             </Col>
           </Row>
 

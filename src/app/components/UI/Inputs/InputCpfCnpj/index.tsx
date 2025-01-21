@@ -1,27 +1,39 @@
 import * as I from "../styles";
 
 interface Props {
-  textLabel: string
+  textLabel?: string
   value: string
   handleChange: (e: React.FormEvent<HTMLInputElement>) => void
+  placeholder?: string
   typeInput?: string
   isDisabled?: boolean
   colorBackgroundLabel?: string
   name?: string
-  innerRef?: React.Ref<HTMLInputElement>;
+  innerRef?: React.Ref<HTMLInputElement>
   colorLabel?: string
+  isLarge?: boolean
+  backColorInput?: string
+  paddingInput?: string
+  borderInput?: string
+  colorInput?: string
 }
 
 export function InputCpfCnpj({
   typeInput = "text",
   isDisabled = false,
   textLabel,
+  placeholder,
   value,
   handleChange,
   colorBackgroundLabel,
   name,
   innerRef,
   colorLabel,
+  isLarge,
+  backColorInput,
+  paddingInput,
+  borderInput,
+  colorInput
 }: Props) {
   const format = (value: string) => {
     if (value) {
@@ -60,13 +72,19 @@ export function InputCpfCnpj({
       <I.InputText
         type={typeInput}
         $isDisabled={isDisabled}
+        $isLarge={isLarge}
+        $backColor={backColorInput}
         $colorLabel={colorLabel}
+        $padding={paddingInput}
+        $border={borderInput}
+        $color={colorInput}
         value={format(value)}
         onInput={handleInput}
         name={name}
         maxLength={18}
         ref={innerRef}
         onBlur={clearInputRequired}
+        placeholder={placeholder && placeholder}
       />
 
       <I.Label

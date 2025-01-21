@@ -13,10 +13,14 @@ interface Props {
 export function SectionInputs({ icon, children, divider = false, textLabel }: Props) {
   return (
     <Col>
-      <Row alignCenter>
-        {icon && icon}
-        {textLabel && <Label text={textLabel} fontSize="14px" color="rgb(117, 129, 180)" />}
-      </Row>
+      {
+        (textLabel || icon) && (
+          <Row alignCenter>
+            {icon && icon}
+            {textLabel && <Label text={textLabel} fontSize="14px" color="rgb(117, 129, 180)" />}
+          </Row>
+        )
+      }
 
       <Row>
         {children}

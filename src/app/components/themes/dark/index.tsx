@@ -4,4 +4,7 @@ export const darkTheme = {
   success: '#3c76b5b5',
   darkSuccess: '#5365b3',
   modalsBackground: '#202020'
+
+  // primary: rgb(43,42,55)
+  // secondary: rgb(60 58 75) || #3d3b4e
 }

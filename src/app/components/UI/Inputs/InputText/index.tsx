@@ -12,6 +12,11 @@ interface Props {
   innerRef?: React.Ref<HTMLInputElement>;
   colorLabel?: string
   maxLength?: string | number
+  isLarge?: boolean
+  backColorInput?: string
+  paddingInput?: string
+  borderInput?: string
+  colorInput?: string
 }
 
 export function InputLabel({
@@ -25,7 +30,12 @@ export function InputLabel({
   name,
   innerRef,
   colorLabel,
-  maxLength
+  maxLength,
+  isLarge,
+  backColorInput,
+  paddingInput,
+  borderInput,
+  colorInput
 }: Props) {
   const clearInputRequired = () => {
     if (innerRef && 'current' in innerRef) innerRef.current!.required = false;
@@ -43,6 +53,11 @@ export function InputLabel({
       <I.InputText
         type={typeInput}
         $isDisabled={isDisabled}
+        $isLarge={isLarge}
+        $backColor={backColorInput}
+        $padding={paddingInput}
+        $border={borderInput}
+        $color={colorInput}
         value={value || ""}
         onInput={handleInput}
         name={name}

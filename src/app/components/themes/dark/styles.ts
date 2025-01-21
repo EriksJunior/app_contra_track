@@ -13,13 +13,13 @@ export const DarkTheme = css`
     background-color: ${darkTheme.primary};
 
     ${InputText}, ${InputTextArea} {
-      background-color: ${darkTheme.secondary};
-      border: 1px solid #3d3d3d;
-      color: whitesmoke;
+      background-color: ${darkTheme.secondary}!important;
+      border: 1px solid #3d3d3d!important;
+      color: whitesmoke!important;
     }
 
     ${InputText}:focus, ${InputTextArea}:focus {
-      border: 1px solid ${darkTheme.success};
+     box-shadow: 0 0 1px 1px ${darkTheme.success}!important;
     }
 
     ${CustomInputFile} {
