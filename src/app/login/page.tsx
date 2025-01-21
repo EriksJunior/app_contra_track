@@ -43,7 +43,7 @@ export default function Login() {
         <L.Left style={{ backgroundImage: `url(${loginImg.src})` }}>
           <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
             <div>
-              <p style={{ color: 'whitesmoke', fontSize: '1.5rem' }}>TRACKER</p>
+              <L.TextName>TRACKER</L.TextName>
             </div>
 
             <L.ContentBack>
@@ -54,202 +54,203 @@ export default function Login() {
           </div>
         </L.Left>
 
-        <L.Right>
-          <div>
-            <L.CreateAccountText>Crie sua conta</L.CreateAccountText>
+        <L.ContentRight>
+          <L.Right>
+            <div>
+              <L.CreateAccountText>Crie sua conta</L.CreateAccountText>
 
-            <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'gray' }}>
-              Crie uma nova conta e vincule empresas para gerenciá-las!
-            </p>
-            <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'white' }}>
-              Já tem uma conta ? <span style={{ color: '#32f9f2', borderBottom: 'solid 1px #32f9f2', cursor: 'pointer' }}>Log in</span>
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.3rem' }}>
-            <SectionInputs>
-              <Col gap="1.3rem">
-                <Row>
-                  <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
-                    <InputLabel
-                      name='name'
-                      placeholder="Nome"
-                      backColorInput="#323141"
-                      borderInput="none"
-                      paddingInput="0 1rem"
-                      colorInput="white"
-                      isLarge
-                      value={payload.user.name || ''}
-                      handleChange={handleChange}
-                    />
-                  </div>
-
-                  <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
-                    <InputLabel
-                      name='lastname'
-                      placeholder="Sobrenome"
-                      backColorInput="#323141"
-                      borderInput="none"
-                      paddingInput="0 1rem"
-                      colorInput="white"
-                      isLarge
-                      value={payload.user.lastname || ''}
-                      handleChange={handleChange}
-                    />
-                  </div>
-                </Row>
-
-                <Row>
-                  <InputLabel
-                    name='email'
-                    placeholder="Email"
-                    backColorInput="#323141"
-                    borderInput="none"
-                    paddingInput="0 1rem"
-                    colorInput="white"
-                    isLarge
-                    value={payload.user.email || ''}
-                    handleChange={handleChange}
-                  />
-                </Row>
-
-                <Row>
-                  <InputLabel
-                    name='password'
-                    placeholder="Password"
-                    backColorInput="#323141"
-                    borderInput="none"
-                    paddingInput="0 1rem"
-                    colorInput="white"
-                    isLarge
-                    value={payload.user.password || ''}
-                    handleChange={handleChange}
-                  />
-                </Row>
-              </Col>
-            </SectionInputs>
-
-            <div style={{ display: 'flex', justifyContent: `${!companyIsShow ? 'flex-end' : 'space-between'}` }}>
-              {companyIsShow && (
-                <p style={{ fontSize: '0.8rem', color: 'white', marginLeft: '2px' }} onClick={toggleCompany}>
-                  Cadastre uma nova empresa
-                </p>
-              )}
-
-              <p style={{ fontSize: '0.8rem', color: '#32f9f2', borderBottom: 'solid 1px #32f9f2', cursor: 'pointer' }} onClick={toggleCompany}>
-                Criar empresa <span>{companyIsShow ? '-' : '+'}</span>
+              <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'gray' }}>
+                Crie uma nova conta e vincule empresas para gerenciá-las!
+              </p>
+              <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'white' }}>
+                Já tem uma conta ? <span style={{ color: '#32f9f2', borderBottom: 'solid 1px #32f9f2', cursor: 'pointer' }}>Log in</span>
               </p>
             </div>
 
-            {companyIsShow && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.3rem' }}>
               <SectionInputs>
                 <Col gap="1.3rem">
                   <Row>
                     <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
                       <InputLabel
                         name='name'
-                        placeholder="Razao Social"
+                        placeholder="Nome"
                         backColorInput="#323141"
                         borderInput="none"
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
-                        value={payload.company.name || ''}
-                        handleChange={(e) => handleChange(e, 'company')}
+                        value={payload.user.name || ''}
+                        handleChange={handleChange}
                       />
                     </div>
 
                     <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
                       <InputLabel
-                        name='tradeName'
-                        placeholder="Nome Fantasia"
+                        name='lastname'
+                        placeholder="Sobrenome"
                         backColorInput="#323141"
                         borderInput="none"
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
-                        value={payload.company.tradeName || ''}
-                        handleChange={(e) => handleChange(e, 'company')}
+                        value={payload.user.lastname || ''}
+                        handleChange={handleChange}
                       />
                     </div>
                   </Row>
 
                   <Row>
-                    <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
-                      <InputLabel
-                        name='email'
-                        placeholder="Email"
-                        backColorInput="#323141"
-                        borderInput="none"
-                        paddingInput="0 1rem"
-                        colorInput="white"
-                        isLarge
-                        value={payload.company.email || ''}
-                        handleChange={(e) => handleChange(e, 'company')}
-                      />
-                    </div>
-
-                    <div style={{ flex: '1 1 100px', minWidth: '100px' }}>
-                      <InputCpfCnpj
-                        name='cnpj'
-                        placeholder="CNPJ"
-                        backColorInput="#323141"
-                        borderInput="none"
-                        paddingInput="0 1rem"
-                        colorInput="white"
-                        isLarge
-                        value={payload.company.cnpj || ''}
-                        handleChange={(e) => handleChange(e, 'company')}
-                      />
-                    </div>
+                    <InputLabel
+                      name='email'
+                      placeholder="Email"
+                      backColorInput="#323141"
+                      borderInput="none"
+                      paddingInput="0 1rem"
+                      colorInput="white"
+                      isLarge
+                      value={payload.user.email || ''}
+                      handleChange={handleChange}
+                    />
                   </Row>
 
                   <Row>
-                    <div style={{ flex: '1 1 50px', minWidth: '100px' }}>
-                      <InputLabel
-                        name='uf'
-                        placeholder="UF"
-                        backColorInput="#323141"
-                        borderInput="none"
-                        paddingInput="0 1rem"
-                        colorInput="white"
-                        isLarge
-                        value={payload.company.uf || ''}
-                        handleChange={(e) => handleChange(e, 'company')}
-                      />
-                    </div>
-
-                    <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
-                      <InputLabel
-                        name='cidade'
-                        placeholder="Cidade"
-                        backColorInput="#323141"
-                        borderInput="none"
-                        paddingInput="0 1rem"
-                        colorInput="white"
-                        isLarge
-                        value={payload.company.cidade || ''}
-                        handleChange={(e) => handleChange(e, 'company')}
-                      />
-                    </div>
+                    <InputLabel
+                      name='password'
+                      placeholder="Password"
+                      backColorInput="#323141"
+                      borderInput="none"
+                      paddingInput="0 1rem"
+                      colorInput="white"
+                      isLarge
+                      value={payload.user.password || ''}
+                      handleChange={handleChange}
+                    />
                   </Row>
                 </Col>
               </SectionInputs>
-            )}
 
-            <Row>
-              <Button
-                text="Criar conta"
-                height="50px"
-                color="white"
-                fontSize={'20px'}
-                backgroundColor="#3ab08db1"
-                hoverColor="#2f8f72b0"
-                click={() => console.log('clicou')}
-              />
-            </Row>
-          </div>
-        </L.Right>
+              <div style={{ display: 'flex', justifyContent: `${!companyIsShow ? 'flex-end' : 'space-between'}` }}>
+                {companyIsShow && (
+                  <p style={{ fontSize: '0.7rem', color: 'white', marginLeft: '2px' }} onClick={toggleCompany}>
+                    Cadastre uma nova empresa
+                  </p>
+                )}
+
+                <L.TextAddCompany onClick={toggleCompany}>
+                  Criar empresa <span>{companyIsShow ? '-' : '+'}</span>
+                </L.TextAddCompany>
+              </div>
+
+              {companyIsShow && (
+                <SectionInputs>
+                  <Col gap="1.3rem">
+                    <Row>
+                      <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
+                        <InputLabel
+                          name='name'
+                          placeholder="Razao Social"
+                          backColorInput="#323141"
+                          borderInput="none"
+                          paddingInput="0 1rem"
+                          colorInput="white"
+                          isLarge
+                          value={payload.company.name || ''}
+                          handleChange={(e) => handleChange(e, 'company')}
+                        />
+                      </div>
+
+                      <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
+                        <InputLabel
+                          name='tradeName'
+                          placeholder="Nome Fantasia"
+                          backColorInput="#323141"
+                          borderInput="none"
+                          paddingInput="0 1rem"
+                          colorInput="white"
+                          isLarge
+                          value={payload.company.tradeName || ''}
+                          handleChange={(e) => handleChange(e, 'company')}
+                        />
+                      </div>
+                    </Row>
+
+                    <Row>
+                      <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
+                        <InputLabel
+                          name='email'
+                          placeholder="Email"
+                          backColorInput="#323141"
+                          borderInput="none"
+                          paddingInput="0 1rem"
+                          colorInput="white"
+                          isLarge
+                          value={payload.company.email || ''}
+                          handleChange={(e) => handleChange(e, 'company')}
+                        />
+                      </div>
+
+                      <div style={{ flex: '1 1 100px', minWidth: '100px' }}>
+                        <InputCpfCnpj
+                          name='cnpj'
+                          placeholder="CNPJ"
+                          backColorInput="#323141"
+                          borderInput="none"
+                          paddingInput="0 1rem"
+                          colorInput="white"
+                          isLarge
+                          value={payload.company.cnpj || ''}
+                          handleChange={(e) => handleChange(e, 'company')}
+                        />
+                      </div>
+                    </Row>
+
+                    <Row>
+                      <div style={{ flex: '1 1 50px', minWidth: '100px' }}>
+                        <InputLabel
+                          name='uf'
+                          placeholder="UF"
+                          backColorInput="#323141"
+                          borderInput="none"
+                          paddingInput="0 1rem"
+                          colorInput="white"
+                          isLarge
+                          value={payload.company.uf || ''}
+                          handleChange={(e) => handleChange(e, 'company')}
+                        />
+                      </div>
+
+                      <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
+                        <InputLabel
+                          name='cidade'
+                          placeholder="Cidade"
+                          backColorInput="#323141"
+                          borderInput="none"
+                          paddingInput="0 1rem"
+                          colorInput="white"
+                          isLarge
+                          value={payload.company.cidade || ''}
+                          handleChange={(e) => handleChange(e, 'company')}
+                        />
+                      </div>
+                    </Row>
+                  </Col>
+                </SectionInputs>
+              )}
+
+              <Row>
+                <Button
+                  isLoginButton
+                  text="Criar conta"
+                  color="white"
+                  backgroundColor="#3ab08db1"
+                  hoverColor="#2f8f72b0"
+                  click={() => console.log('clicou')}
+                />
+              </Row>
+            </div>
+          </L.Right>
+        </L.ContentRight>
       </L.Content>
     </L.Container>
   )

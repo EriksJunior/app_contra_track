@@ -16,6 +16,7 @@ interface Props {
   fontSize?: string
   isLoading?: boolean
   disabled?: boolean
+  isLoginButton?: boolean
 }
 
 export function Button({
@@ -29,7 +30,8 @@ export function Button({
   text,
   fontSize,
   isLoading,
-  disabled
+  disabled,
+  isLoginButton
 }: Props) {
   return (
     <C.CustomButton
@@ -40,6 +42,7 @@ export function Button({
       $color={color}
       $disabled={isLoading || disabled}
       $fontSize={fontSize}
+      $isLoginButton={isLoginButton}
       onClick={click}
     >
       {icon && icon}

@@ -36,6 +36,7 @@ export const Left = styled.div`
   @media screen and (max-width: 1366px) {
     border-radius: 0 50px 50px 0;
     box-shadow: 5px 0 3px 0 #00000024;
+    width: 35%;
   }
 `
 
@@ -55,27 +56,68 @@ export const ContentBack = styled.div`
     background-color: rgba(97, 102, 117, 0.81);
     transition: ease-in all 0.1s;
   }
+
+  @media screen and (max-width: 1366px) {
+    padding: 0.1rem 0.5rem 0.1rem 0.8rem; 
+    gap: 0.3rem;
+  }
 `
 
 export const BackToSite = styled.p`
   font-size: 0.8rem;
+
+  @media screen and (max-width: 1366px) {
+    font-size: 0.7rem;
+  }
+`
+
+export const TextName = styled.p`
+  color: whitesmoke;
+  font-size: 1.5rem;
+
+  @media screen and (max-width: 1366px) {
+    font-size: 1rem;
+  }
+`
+
+export const ContentRight = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  @media screen and (max-width: 1366px) {
+    width: 65%;
+    padding-top: 1rem;
+  }
 `
 
 export const Right = styled.div`
-  width: 50%;
+  width: 65%;
   height: 100%;
-  padding: 3rem 3rem 2rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
 
-  @media screen and (max-width: 1366px) {
-    padding: 1rem 3rem;
-  }
 `
 
 export const CreateAccountText = styled.p`
   margin: 0;
   font-size: 2rem;
   color: white;
+
+  @media screen and (max-width: 1366px) {
+    font-size: 1.5rem;
+  }
+`
+
+export const TextAddCompany = styled.p`
+  font-size: 0.8rem;
+  color: #32f9f2;
+  border-bottom: solid 1px #32f9f2;
+  cursor: pointer;
+
+  
+  @media screen and (max-width: 1366px) {
+    font-size: 0.65rem;
+  }
 `

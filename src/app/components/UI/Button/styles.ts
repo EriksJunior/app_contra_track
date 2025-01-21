@@ -8,6 +8,7 @@ interface StyledProps {
   $color?: string
   $fontSize?: string
   $disabled?: boolean
+  $isLoginButton?: boolean
 }
 
 export const CustomButton = styled.button<StyledProps>`
@@ -40,6 +41,20 @@ export const CustomButton = styled.button<StyledProps>`
 
   .spinner {
     animation: rotating 1.3s linear infinite;
+  }
+
+  ${props => props.$isLoginButton &&
+    `
+      height: 50px;
+      font-size: 20px;
+      
+      @media screen and (max-width: 1366px){
+        & {
+            height: 35px;
+            font-size: 15px;
+        }
+      }
+    `
   }
 
   ${props => props.$disabled ?
