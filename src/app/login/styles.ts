@@ -12,9 +12,9 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   height: 80%;
-  max-width: 1200px;
+  max-width: 1300px;
   display: flex;
-  gap: 2rem;
+  gap: 5rem;
 
   @media screen and (max-width: 1366px) {
     height: 100%;
@@ -89,6 +89,10 @@ export const ContentRight = styled.div`
     width: 65%;
     padding-top: 1rem;
   }
+
+  @media screen and (min-width: 1366px) {
+    width: 50%;
+  }
 `
 
 export const Right = styled.div`
@@ -98,6 +102,9 @@ export const Right = styled.div`
   flex-direction: column;
   gap: 1.3rem;
 
+  @media screen and (min-width: 1366px) {
+    width: 100%;
+  }
 `
 
 export const CreateAccountText = styled.p`
