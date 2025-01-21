@@ -7,16 +7,12 @@ export const Container = styled.div`
   background-color: rgb(43, 42, 55);
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 `
 
 export const Content = styled.div`
   width: 100%;
-  height: 80%;
-  max-width: 1300px;
+  height: 100%;
   display: flex;
-  gap: 5rem;
 
   @media screen and (max-width: 1366px) {
     height: 100%;
@@ -31,7 +27,7 @@ export const Content = styled.div`
 `
 
 export const Left = styled.div`
-  width: 50%;
+  width: 40%;
   height: 100%;
   background-color: rgb(31, 39, 59);
   padding: 2rem;
@@ -103,7 +99,7 @@ export const ContentRight = styled.div`
   }
 
   @media screen and (min-width: 1366px) {
-    width: 50%;
+    width: 60%;
   }
 
   @media screen and (max-width: 1020px) {
@@ -121,14 +117,13 @@ export const ContentRight = styled.div`
 `
 
 export const Right = styled.div`
-  width: 65%;
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
 
   @media screen and (min-width: 1366px) {
-    width: 100%;
+    width: 65%;
   }
 
   @media screen and (max-width: 1020px) {
