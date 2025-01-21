@@ -113,6 +113,11 @@ export const InputText = styled.input<StyledProps>`
     ?
     `
         height: 45px;
+        @media screen and (max-width: 1366px){
+         & {
+           height: 38px;
+         }
+       }
       `
     :
     `
