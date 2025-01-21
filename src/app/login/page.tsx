@@ -19,21 +19,23 @@ import { Button } from "../components/UI/Button"
 
 export default function Login() {
   const [companyIsShow, setCompanyIsShow] = useState(false)
-  const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
+  const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: { ...INITIAL_STATE_USER }, company: { ...INITIAL_STATE_COMPANY } })
 
   const toggleCompany = () => {
     setCompanyIsShow(state => !state)
   }
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>, type: string = 'user') => {
-    let newState = { ...payload }
-    if (type === 'company')
-      newState = { ...newState, company: { ...newState.company, [e?.currentTarget?.name]: e?.currentTarget?.value } }
-    else
-      newState = { ...newState, user: { ...newState.user, [e?.currentTarget?.name]: e?.currentTarget?.value } }
+  const handleChange = (e: React.FormEvent<HTMLInputElement>, type: 'user' | 'company' = 'user') => {
+    const { name, value } = e.currentTarget;
 
-    setPayload(newState)
-  }
+    setPayload((prevState) => ({
+      ...prevState,
+      [type]: {
+        ...prevState[type],
+        [name]: value,
+      },
+    }));
+  };
 
   return (
     <L.Container>
