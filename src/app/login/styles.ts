@@ -7,6 +7,8 @@ export const Container = styled.div`
   background-color: rgb(43, 42, 55);
   justify-content: center;
   align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 
 export const Content = styled.div`
@@ -20,6 +22,11 @@ export const Content = styled.div`
     height: 100%;
     max-width: none;
     gap: 0;
+  }
+
+  @media screen and (max-width: 1020px) {
+    justify-content: center;
+    align-items: center;
   }
 `
 
@@ -38,6 +45,10 @@ export const Left = styled.div`
     border-radius: 0 50px 50px 0;
     box-shadow: 5px 0 3px 0 #00000024;
     width: 35%;
+  }
+
+  @media screen and (max-width: 1020px) {
+    display: none;
   }
 `
 
@@ -94,6 +105,18 @@ export const ContentRight = styled.div`
   @media screen and (min-width: 1366px) {
     width: 50%;
   }
+
+  @media screen and (max-width: 1020px) {
+    height: 100%;
+  }
+
+  @media screen and (max-width: 825px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `
 
 export const Right = styled.div`
@@ -105,6 +128,16 @@ export const Right = styled.div`
 
   @media screen and (min-width: 1366px) {
     width: 100%;
+  }
+
+  @media screen and (max-width: 1020px) {
+    height: 100%;
+    margin-top: 5rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    padding: 0 1.8rem;
   }
 `
 
@@ -123,7 +156,6 @@ export const TextAddCompany = styled.p`
   color: #32f9f2;
   border-bottom: solid 1px #32f9f2;
   cursor: pointer;
-
   
   @media screen and (max-width: 1366px) {
     font-size: 0.65rem;
