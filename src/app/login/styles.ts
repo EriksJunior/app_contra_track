@@ -19,6 +19,7 @@ export const Content = styled.div`
   @media screen and (max-width: 1366px) {
     height: 100%;
     max-width: none;
+    gap: 0;
   }
 `
 
