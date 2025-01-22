@@ -18,12 +18,7 @@ import * as L from "./styles"
 import { Button } from "../components/UI/Button"
 
 export default function Login() {
-  const [companyIsShow, setCompanyIsShow] = useState(false)
   const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: { ...INITIAL_STATE_USER }, company: { ...INITIAL_STATE_COMPANY } })
-
-  const toggleCompany = () => {
-    setCompanyIsShow(state => !state)
-  }
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>, type: 'user' | 'company' = 'user') => {
     const { name, value } = e.currentTarget;
@@ -71,33 +66,17 @@ export default function Login() {
               <SectionInputs>
                 <Col gap="1.3rem">
                   <Row>
-                    <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
-                      <InputLabel
-                        name='name'
-                        placeholder="Nome"
-                        backColorInput="#323141"
-                        borderInput="none"
-                        paddingInput="0 1rem"
-                        colorInput="white"
-                        isLarge
-                        value={payload.user.name || ''}
-                        handleChange={handleChange}
-                      />
-                    </div>
-
-                    <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
-                      <InputLabel
-                        name='lastname'
-                        placeholder="Sobrenome"
-                        backColorInput="#323141"
-                        borderInput="none"
-                        paddingInput="0 1rem"
-                        colorInput="white"
-                        isLarge
-                        value={payload.user.lastname || ''}
-                        handleChange={handleChange}
-                      />
-                    </div>
+                    <InputLabel
+                      name='name'
+                      placeholder="Nome"
+                      backColorInput="#323141"
+                      borderInput="none"
+                      paddingInput="0 1rem"
+                      colorInput="white"
+                      isLarge
+                      value={payload.user.name || ''}
+                      handleChange={handleChange}
+                    />
                   </Row>
 
                   <Row>
@@ -130,113 +109,103 @@ export default function Login() {
                 </Col>
               </SectionInputs>
 
-              <div style={{ display: 'flex', justifyContent: `${!companyIsShow ? 'flex-end' : 'space-between'}` }}>
-                {companyIsShow && (
-                  <p style={{ fontSize: '0.7rem', color: 'white', marginLeft: '2px' }} onClick={toggleCompany}>
-                    Cadastre uma nova empresa
-                  </p>
-                )}
+              <L.TextAddCompany>
+                Cadastre uma nova empresa
+              </L.TextAddCompany>
 
-                <L.TextAddCompany onClick={toggleCompany}>
-                  Criar empresa <span>{companyIsShow ? '-' : '+'}</span>
-                </L.TextAddCompany>
-              </div>
+              <SectionInputs>
+                <Col gap="1.3rem">
+                  <Row>
+                    <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
+                      <InputLabel
+                        name='name'
+                        placeholder="Razao Social"
+                        backColorInput="#323141"
+                        borderInput="none"
+                        paddingInput="0 1rem"
+                        colorInput="white"
+                        isLarge
+                        value={payload.company.name || ''}
+                        handleChange={(e) => handleChange(e, 'company')}
+                      />
+                    </div>
 
-              {companyIsShow && (
-                <SectionInputs>
-                  <Col gap="1.3rem">
-                    <Row>
-                      <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
-                        <InputLabel
-                          name='name'
-                          placeholder="Razao Social"
-                          backColorInput="#323141"
-                          borderInput="none"
-                          paddingInput="0 1rem"
-                          colorInput="white"
-                          isLarge
-                          value={payload.company.name || ''}
-                          handleChange={(e) => handleChange(e, 'company')}
-                        />
-                      </div>
+                    <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
+                      <InputLabel
+                        name='tradeName'
+                        placeholder="Nome Fantasia"
+                        backColorInput="#323141"
+                        borderInput="none"
+                        paddingInput="0 1rem"
+                        colorInput="white"
+                        isLarge
+                        value={payload.company.tradeName || ''}
+                        handleChange={(e) => handleChange(e, 'company')}
+                      />
+                    </div>
+                  </Row>
 
-                      <div style={{ flex: '1 1 auto', minWidth: '100px' }}>
-                        <InputLabel
-                          name='tradeName'
-                          placeholder="Nome Fantasia"
-                          backColorInput="#323141"
-                          borderInput="none"
-                          paddingInput="0 1rem"
-                          colorInput="white"
-                          isLarge
-                          value={payload.company.tradeName || ''}
-                          handleChange={(e) => handleChange(e, 'company')}
-                        />
-                      </div>
-                    </Row>
+                  <Row>
+                    <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
+                      <InputLabel
+                        name='email'
+                        placeholder="Email"
+                        backColorInput="#323141"
+                        borderInput="none"
+                        paddingInput="0 1rem"
+                        colorInput="white"
+                        isLarge
+                        value={payload.company.email || ''}
+                        handleChange={(e) => handleChange(e, 'company')}
+                      />
+                    </div>
 
-                    <Row>
-                      <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
-                        <InputLabel
-                          name='email'
-                          placeholder="Email"
-                          backColorInput="#323141"
-                          borderInput="none"
-                          paddingInput="0 1rem"
-                          colorInput="white"
-                          isLarge
-                          value={payload.company.email || ''}
-                          handleChange={(e) => handleChange(e, 'company')}
-                        />
-                      </div>
+                    <div style={{ flex: '1 1 100px', minWidth: '100px' }}>
+                      <InputCpfCnpj
+                        name='cnpj'
+                        placeholder="CNPJ"
+                        backColorInput="#323141"
+                        borderInput="none"
+                        paddingInput="0 1rem"
+                        colorInput="white"
+                        isLarge
+                        value={payload.company.cnpj || ''}
+                        handleChange={(e) => handleChange(e, 'company')}
+                      />
+                    </div>
+                  </Row>
 
-                      <div style={{ flex: '1 1 100px', minWidth: '100px' }}>
-                        <InputCpfCnpj
-                          name='cnpj'
-                          placeholder="CNPJ"
-                          backColorInput="#323141"
-                          borderInput="none"
-                          paddingInput="0 1rem"
-                          colorInput="white"
-                          isLarge
-                          value={payload.company.cnpj || ''}
-                          handleChange={(e) => handleChange(e, 'company')}
-                        />
-                      </div>
-                    </Row>
+                  <Row>
+                    <div style={{ flex: '1 1 50px', minWidth: '100px' }}>
+                      <InputLabel
+                        name='uf'
+                        placeholder="UF"
+                        backColorInput="#323141"
+                        borderInput="none"
+                        paddingInput="0 1rem"
+                        colorInput="white"
+                        isLarge
+                        value={payload.company.uf || ''}
+                        handleChange={(e) => handleChange(e, 'company')}
+                      />
+                    </div>
 
-                    <Row>
-                      <div style={{ flex: '1 1 50px', minWidth: '100px' }}>
-                        <InputLabel
-                          name='uf'
-                          placeholder="UF"
-                          backColorInput="#323141"
-                          borderInput="none"
-                          paddingInput="0 1rem"
-                          colorInput="white"
-                          isLarge
-                          value={payload.company.uf || ''}
-                          handleChange={(e) => handleChange(e, 'company')}
-                        />
-                      </div>
-
-                      <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
-                        <InputLabel
-                          name='cidade'
-                          placeholder="Cidade"
-                          backColorInput="#323141"
-                          borderInput="none"
-                          paddingInput="0 1rem"
-                          colorInput="white"
-                          isLarge
-                          value={payload.company.cidade || ''}
-                          handleChange={(e) => handleChange(e, 'company')}
-                        />
-                      </div>
-                    </Row>
-                  </Col>
-                </SectionInputs>
-              )}
+                    <div style={{ flex: '1 1 250px', minWidth: '100px' }}>
+                      <InputLabel
+                        name='cidade'
+                        placeholder="Cidade"
+                        backColorInput="#323141"
+                        borderInput="none"
+                        paddingInput="0 1rem"
+                        colorInput="white"
+                        isLarge
+                        value={payload.company.cidade || ''}
+                        handleChange={(e) => handleChange(e, 'company')}
+                      />
+                    </div>
+                  </Row>
+                </Col>
+              </SectionInputs>
 
               <Row>
                 <Button

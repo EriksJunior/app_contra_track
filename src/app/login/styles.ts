@@ -7,6 +7,10 @@ export const Container = styled.div`
   background-color: rgb(43, 42, 55);
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 1020px) {
+    overflow: auto;
+  }
 `
 
 export const Content = styled.div`
@@ -18,11 +22,6 @@ export const Content = styled.div`
     height: 100%;
     max-width: none;
     gap: 0;
-  }
-
-  @media screen and (max-width: 1020px) {
-    justify-content: center;
-    align-items: center;
   }
 `
 
@@ -149,12 +148,7 @@ export const CreateAccountText = styled.p`
 `
 
 export const TextAddCompany = styled.p`
-  font-size: 0.8rem;
-  color: #32f9f2;
-  border-bottom: solid 1px #32f9f2;
+  font-size: 0.7rem;
+  color: white;
   cursor: pointer;
-  
-  @media screen and (max-width: 1366px) {
-    font-size: 0.65rem;
-  }
 `

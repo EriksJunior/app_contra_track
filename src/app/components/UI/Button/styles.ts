@@ -54,6 +54,12 @@ export const CustomButton = styled.button<StyledProps>`
             font-size: 15px;
         }
       }
+
+      @media screen and (max-width: 1020px){
+        & {
+            margin-bottom: 5rem
+        }
+      }
     `
   }
 
