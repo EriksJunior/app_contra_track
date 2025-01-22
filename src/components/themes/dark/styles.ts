@@ -2,10 +2,10 @@ import { css } from 'styled-components'
 
 import { darkTheme } from '.'
 
-import { InputText, InputTextArea } from '@/app/components/UI/Inputs/styles'
-import { CustomInputFile } from '@/app/components/UI/Inputs/InputFile/styles'
-import { InputSearch, SearchContent } from '@/app/components/UI/SearchBar/styles'
-import { Content as OffCanvasContent, Title as OffCanvasTitle, Label as OffCanvasLabel } from '@/app/components/UI/OffCanvas/styles'
+import { InputText, InputTextArea } from '@/components/UI/Inputs/styles'
+import { CustomInputFile } from '@/components/UI/Inputs/InputFile/styles'
+import { InputSearch, SearchContent } from '@/components/UI/SearchBar/styles'
+import { Content as OffCanvasContent, Title as OffCanvasTitle, Label as OffCanvasLabel } from '@/components/UI/OffCanvas/styles'
 
 export const DarkTheme = css`
  .dark-mode {

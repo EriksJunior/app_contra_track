@@ -6,11 +6,11 @@ import { ThemeProvider } from "@/context/theme";
 
 import StyledComponentsRegistry from "./registry";
 
-import { Sidebar } from "./components/sidebar";
+import { Sidebar } from "../components/sidebar";
 
 import { GlobalStyle } from "./styles";
 import { usePathname } from "next/navigation";
-import Login from "./login/page";
+import { Login } from "@/components/login";
 
 
 const poppins = Poppins({ subsets: ["latin"], weight: "600" });
@@ -28,16 +28,7 @@ export default function RootLayout({ children }: Props) {
         <StyledComponentsRegistry>
           <ThemeProvider>
             <GlobalStyle />
-
-            {
-              pathname !== '/login'
-                ?
-                <Sidebar>
-                  {children}
-                </Sidebar>
-                :
-                <Login />
-            }
+            {pathname === "/" ? <Login /> : <Sidebar>{children}</Sidebar>}
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>

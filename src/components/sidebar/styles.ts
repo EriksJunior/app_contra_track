@@ -2,12 +2,12 @@ import Image from "next/image";
 import styled from "styled-components";
 
 // import { lightTheme } from "@/app/components/themes/light";
-import { darkTheme } from "@/app/components/themes/dark";
+import { darkTheme } from "@/components/themes/dark";
 
 import { BiSolidLock, BiSolidLockOpen } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
 
-import { E_THEME } from "../../../utils/enums/theme";
+import { E_THEME } from "../../utils/enums/theme";
 import { lightTheme } from "../themes/light";
 
 interface StyledProps {

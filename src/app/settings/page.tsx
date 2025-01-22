@@ -1,8 +1,8 @@
 'use client'
 
-import { Companies } from '@/app/components/companies'
-import { Title } from '@/app/components/UI/Title'
-import { Tab } from '@/app/components/UI/Tab'
+import { Companies } from '@/components/companies'
+import { Title } from '@/components/UI/Title'
+import { Tab } from '@/components/UI/Tab'
 
 export default function Settings () {
   const items = [

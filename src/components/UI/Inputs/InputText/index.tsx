@@ -66,7 +66,7 @@ export function InputLabel({
         placeholder={placeholder && placeholder}
         maxLength={maxLength as number}
       />
-
+      
       <I.Label
         $colorBackgroundLabel={colorBackgroundLabel}
         $colorLabel={colorLabel}

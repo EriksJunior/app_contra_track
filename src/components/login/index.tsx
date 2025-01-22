@@ -2,23 +2,23 @@
 
 import { useState } from "react"
 
-import { SectionInputs } from "../components/UI/SectionInputs"
-import { Col } from "../components/UI/Col"
-import { Row } from "../components/UI/Row"
-import { InputLabel } from "../components/UI/Inputs/InputText"
-import { InputCpfCnpj } from "../components/UI/Inputs/InputCpfCnpj"
+import { SectionInputs } from "../UI/SectionInputs"
+import { Col } from "../UI/Col"
+import { Row } from "../UI/Row"
+import { InputLabel } from "../UI/Inputs/InputText"
+import { InputCpfCnpj } from "../UI/Inputs/InputCpfCnpj"
 
 import { RiArrowRightSLine } from "react-icons/ri";
 import loginImg from "../../../public/login1.png"
 
 import { FormValues as FormUser, INITIAL_STATE_USER } from "./initialStates"
-import { FormValues as FormCompany, INITIAL_STATE_COMPANY } from "../components/companies/initialStates"
+import { FormValues as FormCompany, INITIAL_STATE_COMPANY } from "../companies/initialStates"
 
 import * as L from "./styles"
-import { Button } from "../components/UI/Button"
+import { Button } from "../UI/Button"
 
-export default function Login() {
-  const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: { ...INITIAL_STATE_USER }, company: { ...INITIAL_STATE_COMPANY } })
+export function Login() {
+  const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>, type: 'user' | 'company' = 'user') => {
     const { name, value } = e.currentTarget;
@@ -214,7 +214,7 @@ export default function Login() {
                   color="white"
                   backgroundColor="#3ab08db1"
                   hoverColor="#2f8f72b0"
-                  click={() => console.log('clicou')}
+                  click={() => console.log(payload)}
                 />
               </Row>
             </div>

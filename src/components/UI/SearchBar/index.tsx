@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useState, useRef, useEffect } from "react";
-import { InputLabel } from "@/app/components/UI/Inputs/InputText";
+import { InputLabel } from "@/components/UI/Inputs/InputText";
 import * as S from "./styles";
 
 import {

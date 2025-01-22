@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 import { ThemeContext } from "@/context/theme";
 import { E_THEME } from "@/utils/enums/theme";
-import { lightTheme } from "@/app/components/themes/light"
+import { lightTheme } from "@/components/themes/light"
 
 import { IoHomeOutline } from "react-icons/io5";
 import { TbReportAnalytics } from "react-icons/tb";

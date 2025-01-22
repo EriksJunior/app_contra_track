@@ -1,13 +1,13 @@
 import { useState, useRef } from 'react'
 
-import { SearchBar } from '@/app/components/UI/SearchBar'
-import { Button } from '@/app/components/UI/Button'
-import { OffCanvas } from '@/app/components/UI/OffCanvas'
-import { FormCompany } from '@/app/components/companies/components/Form'
+import { SearchBar } from '@/components/UI/SearchBar'
+import { Button } from '@/components/UI/Button'
+import { OffCanvas } from '@/components/UI/OffCanvas'
+import { FormCompany } from '@/components/companies/components/Form'
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 
-import { UseGeneral } from '../../../hook/useGeneral'
+import { UseGeneral } from '../../hook/useGeneral'
 import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { SaveCompany } from './services'

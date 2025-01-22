@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
-import { LightTheme } from '@/app/components/themes/light/styles'
-import { DarkTheme } from '@/app/components/themes/dark/styles'
+import { LightTheme } from '@/components/themes/light/styles'
+import { DarkTheme } from '@/components/themes/dark/styles'
 
 export const Container = styled.div`
   width: 100%;

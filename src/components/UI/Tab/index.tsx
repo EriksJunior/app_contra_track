@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react"
-import { Row } from "@/app/components/UI/Row"
+import { Row } from "@/components/UI/Row"
 import { ContentTabText, TabText } from "./styles"
 
 interface Tabs {
