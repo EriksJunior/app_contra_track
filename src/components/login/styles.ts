@@ -150,5 +150,4 @@ export const CreateAccountText = styled.p`
 export const TextAddCompany = styled.p`
   font-size: 0.7rem;
   color: white;
-  cursor: pointer;
 `

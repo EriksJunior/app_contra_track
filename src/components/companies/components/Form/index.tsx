@@ -16,7 +16,7 @@ import { FormValues, INITIAL_STATE_COMPANY } from '../../initialStates'
 interface RefsToValidate {
   name: React.Ref<HTMLInputElement>
   tradeName: React.Ref<HTMLInputElement>
-  cnpj: React.Ref<HTMLInputElement>
+  cpfCnpj: React.Ref<HTMLInputElement>
   uf: React.Ref<HTMLInputElement>
 }
 
@@ -75,7 +75,7 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
 
           <Row>
             <Col>
-              <InputCpfCnpj name='cnpj' textLabel='CNPJ' innerRef={refsToValidate.cnpj} value={form.cnpj || ''} handleChange={handleChange} />
+              <InputCpfCnpj name='cnpj' textLabel='CNPJ' innerRef={refsToValidate.cpfCnpj} value={form.cpfCnpj || ''} handleChange={handleChange} />
             </Col>
 
             <Col>

@@ -1,14 +1,16 @@
-import api from "@/utils/configs/api";
-import { FormValues } from "../initialStates";
-import { toast } from "react-toastify";
 import axios from "axios";
+import api from "@/utils/configs/api";
+import { FormValues as FormCompany } from "@/components/companies/initialStates";
 
-export async function SaveCompany(company: FormValues) {
+import { toast } from "react-toastify";
+
+export async function SaveCompany(company: FormCompany) {
   try {
     const { data } = await api.post('/companies', company)
 
     return data
   } catch (error: unknown) {
+    console.log(error)
     if (axios.isAxiosError(error)) {
       toast.error(
         `${error?.response?.data?.message ||

@@ -8,11 +8,12 @@ import { FormCompany } from '@/components/companies/components/Form'
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 
 import { UseGeneral } from '../../hook/useGeneral'
+import { SaveCompany } from '@/services/CompanyService'
+
 import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
-import { SaveCompany } from './services'
 
-type RefValidateKeys = "name" | "tradeName" | "cnpj" | "uf";
+type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "uf";
 
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = UseGeneral()
@@ -22,7 +23,7 @@ export function Companies() {
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
     name: useRef<HTMLInputElement>(null),
     tradeName: useRef<HTMLInputElement>(null),
-    cnpj: useRef<HTMLInputElement>(null),
+    cpfCnpj: useRef<HTMLInputElement>(null),
     uf: useRef<HTMLInputElement>(null),
   }
 
@@ -48,8 +49,8 @@ export function Companies() {
     if (errors && Object.keys(errors).length) {
       errors.forEach((e) => {
         const ref = refValidate[e.keyError as keyof typeof refValidate];
-        
-        if (ref.current) {
+
+        if (ref?.current) {
           ref.current.setAttribute("required", "true");
           ref.current.focus();
         }
@@ -83,7 +84,7 @@ export function Companies() {
             </div>
 
             <div>
-              <Button text='Salvar' height='30px' click={save}  isLoading={isLoading} />
+              <Button text='Salvar' height='30px' click={save} isLoading={isLoading} />
             </div>
           </div>
         }

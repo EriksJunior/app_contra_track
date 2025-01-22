@@ -8,11 +8,11 @@ interface Errors {
 
 const ValidateCompany = (company: FormValues): Errors[] => {
   const schema = z.object({
-    razaoSocial: z.string({
+    name: z.string({
       required_error: "(Razão Social) deve ser informado!",
       message: "(Razão Social) deve ser informado!"
     }).max(200).nonempty("(Razão Social) deve ser informado!"),
-    nomeFantasia: z.string({
+    tradeName: z.string({
       required_error: "(Nome Fantasia) deve ser informado!",
       message: "(Nome Fantasia) deve ser informado!"
     }).max(200).nonempty("(Nome Fantasia) deve ser informado!"),

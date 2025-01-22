@@ -1,7 +1,7 @@
 export interface FormValues {
   name: string | null
   tradeName: string | null
-  cnpj: string | null
+  cpfCnpj: string | null
   ie?: string | null
   cep?: string | null
   email?: string | null
@@ -21,7 +21,7 @@ export interface FormValues {
 export const INITIAL_STATE_COMPANY: FormValues = {
   name: null,
   tradeName: null,
-  cnpj: null,
+  cpfCnpj: null,
   ie: null,
   cep: null,
   email: null,

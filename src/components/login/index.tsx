@@ -1,5 +1,7 @@
 "use client"
 
+import "react-toastify/dist/ReactToastify.css";
+
 import { useState } from "react"
 
 import { SectionInputs } from "../UI/SectionInputs"
@@ -13,6 +15,8 @@ import loginImg from "../../../public/login1.png"
 
 import { FormValues as FormUser, INITIAL_STATE_USER } from "./initialStates"
 import { FormValues as FormCompany, INITIAL_STATE_COMPANY } from "../companies/initialStates"
+
+import { CreateAccount } from "@/services/UserService"
 
 import * as L from "./styles"
 import { Button } from "../UI/Button"
@@ -31,6 +35,18 @@ export function Login() {
       },
     }));
   };
+
+
+  const createAccount = async () => {
+    try {
+      // if (!isValid()) return
+
+      const id = await CreateAccount(payload)
+      console.log(id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <L.Container>
@@ -81,14 +97,14 @@ export function Login() {
 
                   <Row>
                     <InputLabel
-                      name='email'
+                      name='login'
                       placeholder="Email"
                       backColorInput="#323141"
                       borderInput="none"
                       paddingInput="0 1rem"
                       colorInput="white"
                       isLarge
-                      value={payload.user.email || ''}
+                      value={payload.user.login || ''}
                       handleChange={handleChange}
                     />
                   </Row>
@@ -162,14 +178,14 @@ export function Login() {
 
                     <div style={{ flex: '1 1 100px', minWidth: '100px' }}>
                       <InputCpfCnpj
-                        name='cnpj'
-                        placeholder="CNPJ"
+                        name='cpfCnpj'
+                        placeholder="CPF/CNPJ"
                         backColorInput="#323141"
                         borderInput="none"
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
-                        value={payload.company.cnpj || ''}
+                        value={payload.company.cpfCnpj || ''}
                         handleChange={(e) => handleChange(e, 'company')}
                       />
                     </div>
@@ -214,7 +230,7 @@ export function Login() {
                   color="white"
                   backgroundColor="#3ab08db1"
                   hoverColor="#2f8f72b0"
-                  click={() => console.log(payload)}
+                  click={createAccount}
                 />
               </Row>
             </div>

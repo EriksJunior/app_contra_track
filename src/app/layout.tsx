@@ -1,5 +1,7 @@
 "use client"
 
+import "react-toastify/dist/ReactToastify.css";
+
 import { ReactNode } from "react";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/context/theme";
