@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 
 import { Col } from '@/components/UI/Col'
 import { InputFilePfx } from '@/components/UI/Inputs/InputFilePfx'
@@ -50,10 +50,6 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
 
     handleGetValues(form)
   }
-
-  useEffect(() => {
-    console.log(form)
-  }, [form])
 
   return (
     <Col margin='0.5rem 0 0 0' gap='1.3rem'>

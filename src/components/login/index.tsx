@@ -1,60 +1,20 @@
 "use client"
 
-import "react-toastify/dist/ReactToastify.css";
-
-import { useState, useRef } from "react"
-import { useRouter } from 'next/navigation'
-
 import { SectionInputs } from "../UI/SectionInputs"
 import { Col } from "../UI/Col"
 import { Row } from "../UI/Row"
 import { InputLabel } from "../UI/Inputs/InputText"
 import { InputCpfCnpj } from "../UI/Inputs/InputCpfCnpj"
+import { Button } from "../UI/Button"
 
+import * as L from "./styles"
 import { RiArrowRightSLine } from "react-icons/ri";
 import loginImg from "../../../public/login1.png"
 
-import { FormValues as FormUser, INITIAL_STATE_USER } from "./initialStates"
-import { FormValues as FormCompany, INITIAL_STATE_COMPANY } from "../companies/initialStates"
-
-import { CreateAccount } from "@/services/UserService"
-
-import * as L from "./styles"
-import { Button } from "../UI/Button"
-
-type RefValidateKeys = "password";
+import { UseLogin } from "./hook"
 
 export function Login() {
-  const router = useRouter()
-
-  const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
-  const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
-    password: useRef<HTMLInputElement>(null),
-  }
-
-  const handleChange = (e: React.FormEvent<HTMLInputElement>, type: 'user' | 'company' = 'user') => {
-    const { name, value } = e.currentTarget;
-
-    setPayload((prevState) => ({
-      ...prevState,
-      [type]: {
-        ...prevState[type],
-        [name]: value,
-      },
-    }));
-  };
-
-
-  const createAccount = async () => {
-    try {
-      // if (!isValid()) return
-
-      await CreateAccount(payload)
-      router.push("/home")
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const { createAccount, handleChange, isLoading, messageError, payload, refValidate } = UseLogin()
 
   return (
     <L.Container>
@@ -98,6 +58,7 @@ export function Login() {
                       paddingInput="0 1rem"
                       colorInput="white"
                       isLarge
+                      innerRef={refValidate.name}
                       value={payload.user.name || ''}
                       handleChange={handleChange}
                     />
@@ -112,6 +73,7 @@ export function Login() {
                       paddingInput="0 1rem"
                       colorInput="white"
                       isLarge
+                      innerRef={refValidate.email}
                       value={payload.user.login || ''}
                       handleChange={handleChange}
                     />
@@ -151,6 +113,7 @@ export function Login() {
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
+                        innerRef={refValidate.companyName}
                         value={payload.company.name || ''}
                         handleChange={(e) => handleChange(e, 'company')}
                       />
@@ -165,6 +128,7 @@ export function Login() {
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
+                        innerRef={refValidate.tradeName}
                         value={payload.company.tradeName || ''}
                         handleChange={(e) => handleChange(e, 'company')}
                       />
@@ -181,6 +145,7 @@ export function Login() {
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
+                        innerRef={refValidate.email}
                         value={payload.company.email || ''}
                         handleChange={(e) => handleChange(e, 'company')}
                       />
@@ -195,6 +160,7 @@ export function Login() {
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
+                        innerRef={refValidate.cpfCnpj}
                         value={payload.company.cpfCnpj || ''}
                         handleChange={(e) => handleChange(e, 'company')}
                       />
@@ -211,8 +177,10 @@ export function Login() {
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
-                        value={payload.company.uf || ''}
+                        innerRef={refValidate.uf}
+                        value={payload.company.uf?.toUpperCase() || ''}
                         handleChange={(e) => handleChange(e, 'company')}
+                        maxLength={2}
                       />
                     </div>
 
@@ -225,6 +193,7 @@ export function Login() {
                         paddingInput="0 1rem"
                         colorInput="white"
                         isLarge
+                        innerRef={refValidate.cidade}
                         value={payload.company.cidade || ''}
                         handleChange={(e) => handleChange(e, 'company')}
                       />
@@ -234,12 +203,17 @@ export function Login() {
               </SectionInputs>
 
               <Row>
+                <L.TextAddCompany style={{ color: 'brown' }}>
+                  {messageError && `* ${messageError}`}
+                </L.TextAddCompany>
+
                 <Button
                   isLoginButton
                   text="Criar conta"
                   color="white"
                   backgroundColor="#3ab08db1"
                   hoverColor="#2f8f72b0"
+                  isLoading={isLoading}
                   click={createAccount}
                 />
               </Row>
