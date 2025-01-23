@@ -119,16 +119,15 @@ export const Right = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.3rem;
 
   @media screen and (min-width: 1366px) {
     width: 65%;
-    margin-top: 5rem;
   }
 
   @media screen and (max-width: 1020px) {
     height: 100%;
-    margin-top: 5rem;
   }
 
   @media screen and (max-width: 500px) {

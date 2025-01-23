@@ -1,4 +1,6 @@
+import { useState } from "react";
 import * as I from "../styles";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 interface Props {
   value: string
@@ -17,6 +19,7 @@ interface Props {
   paddingInput?: string
   borderInput?: string
   colorInput?: string
+  isPassword?: boolean
 }
 
 export function InputLabel({
@@ -35,8 +38,11 @@ export function InputLabel({
   backColorInput,
   paddingInput,
   borderInput,
-  colorInput
+  colorInput,
+  isPassword = false
 }: Props) {
+  const [pass, setPass] = useState(false)
+
   const clearInputRequired = () => {
     if (innerRef && 'current' in innerRef) innerRef.current!.required = false;
   };
@@ -48,25 +54,49 @@ export function InputLabel({
     }
   };
 
+  const toggleToPassword = () => {
+    setPass(state => !state)
+  }
+
   return (
     <I.InputGroup>
-      <I.InputText
-        type={typeInput}
-        $isDisabled={isDisabled}
-        $isLarge={isLarge}
-        $backColor={backColorInput}
-        $padding={paddingInput}
-        $border={borderInput}
-        $color={colorInput}
-        value={value || ""}
-        onInput={handleInput}
-        name={name}
-        ref={innerRef}
-        onBlur={clearInputRequired}
-        placeholder={placeholder && placeholder}
-        maxLength={maxLength as number}
-      />
-      
+      {pass ? (
+        <I.InputText
+          type={'password'}
+          $isDisabled={isDisabled}
+          $isLarge={isLarge}
+          $backColor={backColorInput}
+          $padding={paddingInput}
+          $border={borderInput}
+          $color={colorInput}
+          $isPassword={isPassword}
+          value={value || ""}
+          onInput={handleInput}
+          name={name}
+          ref={innerRef}
+          onBlur={clearInputRequired}
+          placeholder={placeholder && placeholder}
+          maxLength={maxLength as number}
+        />
+      ) : (
+        <I.InputText
+          type={typeInput}
+          $isDisabled={isDisabled}
+          $isLarge={isLarge}
+          $backColor={backColorInput}
+          $padding={paddingInput}
+          $border={borderInput}
+          $color={colorInput}
+          value={value || ""}
+          onInput={handleInput}
+          name={name}
+          ref={innerRef}
+          onBlur={clearInputRequired}
+          placeholder={placeholder && placeholder}
+          maxLength={maxLength as number}
+        />
+      )}
+
       <I.Label
         $colorBackgroundLabel={colorBackgroundLabel}
         $colorLabel={colorLabel}
@@ -76,6 +106,24 @@ export function InputLabel({
           Campo Obrigatório
         </I.RequiredField>
       </I.Label>
+
+
+      {isPassword && (
+        <div style={{
+          height: '100%',
+          width: 45,
+          position: 'absolute',
+          right: 0,
+          top: 0,
+          zIndex: 99999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer'
+        }} onClick={toggleToPassword}>
+          {pass ? <FiEye size={20} color="gray" /> : <FiEyeOff size={20} color="gray" />}
+        </div>
+      )}
     </I.InputGroup>
   );
 }

@@ -4,6 +4,7 @@ interface StyledProps {
   $isDisabled?: boolean
   $isLarge?: boolean
   $colorLabel?: string
+  $isPassword?: boolean
   $colorBackgroundLabel?: string
   $backColor?: string
   $padding?: string
@@ -16,6 +17,7 @@ export const InputGroup = styled.div`
   flex-direction: column-reverse;
   gap: 0.1rem;
   width: 100%;
+  position: relative;
 `
 
 export const Label = styled.label<StyledProps>`
@@ -27,6 +29,7 @@ export const Label = styled.label<StyledProps>`
   text-overflow: ellipsis;
   color: ${props => props.$colorLabel || '#a1a1a1'};
   font-weight: 500;
+  display: flex;
 
   @media screen and (min-width: 1980px){
     & {
@@ -63,12 +66,14 @@ export const RequiredField = styled.span`
 `
 
 export const InputText = styled.input<StyledProps>`
-  font-size: 14px;
   width: 100%;
+  height: ${props => props.$isLarge ? '45px' : '35px'};
+  padding: ${props => props.$padding || `0 4px 0 5px`};
+  font-size: 14px;
+  position: relative;
   border: ${props => props.$border || '1px solid #d5d3d3'};
   outline: none;
   transition: ease-in 0.1s all;
-  padding: ${props => props.$padding || '0 4px 0 5px'};
   color: ${props => props.$color || '#5f5c5b'};
   background-color: ${props => props.$backColor || 'white'}; /*#e9e9e9*/
   border-radius: 5px!important;
@@ -107,7 +112,6 @@ export const InputText = styled.input<StyledProps>`
     }
   }
 
-  height: ${props => props.$isLarge ? '45px' : '35px'};
 
   ${(props) => props.$isLarge
     ?

@@ -2,7 +2,7 @@
 
 import "react-toastify/dist/ReactToastify.css";
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 import { SectionInputs } from "../UI/SectionInputs"
 import { Col } from "../UI/Col"
@@ -21,8 +21,13 @@ import { CreateAccount } from "@/services/UserService"
 import * as L from "./styles"
 import { Button } from "../UI/Button"
 
+type RefValidateKeys = "password";
+
 export function Login() {
   const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
+  const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
+    password: useRef<HTMLInputElement>(null),
+  }
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>, type: 'user' | 'company' = 'user') => {
     const { name, value } = e.currentTarget;
@@ -115,9 +120,11 @@ export function Login() {
                       placeholder="Password"
                       backColorInput="#323141"
                       borderInput="none"
-                      paddingInput="0 1rem"
+                      paddingInput="0 45px 0 1rem"
                       colorInput="white"
                       isLarge
+                      isPassword
+                      innerRef={refValidate.password}
                       value={payload.user.password || ''}
                       handleChange={handleChange}
                     />
