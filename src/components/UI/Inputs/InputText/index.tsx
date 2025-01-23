@@ -41,7 +41,7 @@ export function InputLabel({
   colorInput,
   isPassword = false
 }: Props) {
-  const [pass, setPass] = useState(false)
+  const [pass, setPass] = useState(isPassword)
 
   const clearInputRequired = () => {
     if (innerRef && 'current' in innerRef) innerRef.current!.required = false;

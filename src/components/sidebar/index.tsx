@@ -133,7 +133,7 @@ export function Sidebar({ children }: Props) {
 
             <S.ContentNavAndFooter>
               <S.Ul>
-                <S.Li onClick={() => router.push("/")}>
+                <S.Li onClick={() => router.push("/home")}>
                   <S.InputRadio
                     type="radio"
                     name="default"

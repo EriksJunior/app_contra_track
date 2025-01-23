@@ -3,6 +3,7 @@
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState, useRef } from "react"
+import { useRouter } from 'next/navigation'
 
 import { SectionInputs } from "../UI/SectionInputs"
 import { Col } from "../UI/Col"
@@ -24,6 +25,8 @@ import { Button } from "../UI/Button"
 type RefValidateKeys = "password";
 
 export function Login() {
+  const router = useRouter()
+
   const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
     password: useRef<HTMLInputElement>(null),
@@ -46,8 +49,8 @@ export function Login() {
     try {
       // if (!isValid()) return
 
-      const id = await CreateAccount(payload)
-      console.log(id)
+      await CreateAccount(payload)
+      router.push("/home")
     } catch (error) {
       console.log(error)
     }
