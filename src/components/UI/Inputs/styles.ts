@@ -38,18 +38,19 @@ export const Label = styled.label<StyledProps>`
   }
 `
 
-export const RequiredField = styled.span`
+export const RequiredField = styled.span<StyledProps>`
   display: none;
   width: auto;
   position: absolute;
   background-color: red;
   z-index: 200;
   left: 0;
-  top: -0.2rem;
   border-radius: 5px;
   padding: 0.2rem 0.3rem;
   color: white;
   font-size: 10px;
+
+  ${(props) => props.$isLarge ? `top: -1.2rem;` : `top: -0.2rem;`}
 
   &::after {
     content: '';
