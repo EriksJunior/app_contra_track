@@ -10,7 +10,7 @@ export interface FormValues {
   bairro?: string | null
   numero?: string | null
   uf: string | null
-
+  
   certification?: {
     name?: string | null
     certBase64?: string | null

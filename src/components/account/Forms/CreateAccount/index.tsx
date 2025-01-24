@@ -57,7 +57,7 @@ export function CreateAccount({ toggle }: Props) {
                 paddingInput="0 1rem"
                 colorInput="white"
                 isLarge
-                innerRef={refValidate.email}
+                innerRef={refValidate.login}
                 value={account.user.login || ''}
                 handleChange={handleChange}
               />
