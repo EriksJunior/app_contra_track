@@ -3,7 +3,7 @@ import { useState, useRef } from 'react'
 import { SearchBar } from '@/components/UI/SearchBar'
 import { Button } from '@/components/UI/Button'
 import { OffCanvas } from '@/components/UI/OffCanvas'
-import { FormCompany } from '@/components/companies/components/Form'
+import { FormCompany } from './Forms'
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 

@@ -10,7 +10,6 @@ export async function SaveCompany(company: FormCompany) {
 
     return data
   } catch (error: unknown) {
-    console.log(error)
     if (axios.isAxiosError(error)) {
       toast.error(
         `${error?.response?.data?.message ||

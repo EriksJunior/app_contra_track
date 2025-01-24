@@ -16,10 +16,10 @@ import { ValidateCreateAccount } from "../validators";
 
 type RefValidateKeys = "name" | "login" | "password" | "companyName" | "tradeName" | "email" | "cpfCnpj" | "uf" | "cidade";
 
-export function UseLogin() {
+export function UseCreateAccount() {
   const router = useRouter()
 
-  const [payload, setPayload] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
+  const [account, setAccount] = useState<{ user: FormUser, company: FormCompany }>({ user: INITIAL_STATE_USER, company: INITIAL_STATE_COMPANY })
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [messageError, setMessageError] = useState<string | undefined>('')
 
@@ -38,7 +38,7 @@ export function UseLogin() {
   const handleChange = (e: React.FormEvent<HTMLInputElement>, type: 'user' | 'company' = 'user') => {
     const { name, value } = e.currentTarget;
 
-    setPayload((prevState) => ({
+    setAccount((prevState) => ({
       ...prevState,
       [type]: {
         ...prevState[type],
@@ -49,7 +49,7 @@ export function UseLogin() {
 
 
   const isValid = () => {
-    const errors = ValidateCreateAccount(payload)
+    const errors = ValidateCreateAccount(account)
 
     if (errors && Object.keys(errors).length) {
       errors.forEach((e) => {
@@ -73,7 +73,7 @@ export function UseLogin() {
       setIsLoading(true)
       if (!isValid()) return
 
-      await CreateAccount(payload)
+      await CreateAccount(account)
       router.push("/home")
     } catch (error: unknown) {
       const axiosErr = error as AxiosError<IErrorResponseData>;
@@ -85,5 +85,5 @@ export function UseLogin() {
     }
   }
 
-  return { handleChange, createAccount, isLoading, messageError, refValidate, payload }
+  return { handleChange, createAccount, isLoading, messageError, refValidate, account }
 }

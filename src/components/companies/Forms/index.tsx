@@ -11,7 +11,7 @@ import { SectionInputs } from '@/components/UI/SectionInputs'
 import { BsPersonVcard } from 'react-icons/bs'
 import { TbCertificate } from 'react-icons/tb'
 
-import { FormValues, INITIAL_STATE_COMPANY } from '../../initialStates'
+import { FormValues, INITIAL_STATE_COMPANY } from '../initialStates'
 
 interface RefsToValidate {
   name: React.Ref<HTMLInputElement>
