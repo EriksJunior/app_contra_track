@@ -5,15 +5,16 @@ import { FormValues as FormCompany } from "@/components/companies/initialStates"
 interface Errors {
   message: string
   keyError: string | number
+  principalKey: string | number
 }
 
 const ValidateCreateAccount = (payload: { user: FormUser, company: FormCompany }): Errors | null => {
   const schema = z.object({
     user: z.object({
       name: z.string({
-        required_error: "(Razão Social) deve ser informado!",
-        message: "(Razão Social) deve ser informado!"
-      }).max(255).nonempty("(Razão Social) deve ser informado!"),
+        required_error: "(Nome) deve ser informado!",
+        message: "(Nome) deve ser informado!"
+      }).max(255).nonempty("(Nome) deve ser informado!"),
       login: z.string().email({
         message: "(Email) deve ser informado e valido!",
       }).nonempty("(Email) deve ser informado e valido!"),
@@ -54,6 +55,7 @@ const ValidateCreateAccount = (payload: { user: FormUser, company: FormCompany }
   if (error?.issues && error?.issues.length) {
     const errors = {
       message: error?.issues[0].message || '',
+      principalKey: error?.issues[0].path[0] || '',
       keyError: error?.issues[0].path[1] || ''
     }
 

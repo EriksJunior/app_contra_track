@@ -42,7 +42,7 @@ export function CreateAccount({ toggle }: Props) {
                 paddingInput="0 1rem"
                 colorInput="white"
                 isLarge
-                innerRef={refValidate.name}
+                innerRef={refValidate.user.name}
                 value={account.user.name || ''}
                 handleChange={handleChange}
               />
@@ -57,7 +57,7 @@ export function CreateAccount({ toggle }: Props) {
                 paddingInput="0 1rem"
                 colorInput="white"
                 isLarge
-                innerRef={refValidate.login}
+                innerRef={refValidate.user.login}
                 value={account.user.login || ''}
                 handleChange={handleChange}
               />
@@ -73,7 +73,7 @@ export function CreateAccount({ toggle }: Props) {
                 colorInput="white"
                 isLarge
                 isPassword
-                innerRef={refValidate.password}
+                innerRef={refValidate.user.password}
                 value={account.user.password || ''}
                 handleChange={handleChange}
               />
@@ -97,7 +97,7 @@ export function CreateAccount({ toggle }: Props) {
                   paddingInput="0 1rem"
                   colorInput="white"
                   isLarge
-                  innerRef={refValidate.companyName}
+                  innerRef={refValidate.company.name}
                   value={account.company.name || ''}
                   handleChange={(e) => handleChange(e, 'company')}
                 />
@@ -112,7 +112,7 @@ export function CreateAccount({ toggle }: Props) {
                   paddingInput="0 1rem"
                   colorInput="white"
                   isLarge
-                  innerRef={refValidate.tradeName}
+                  innerRef={refValidate.company.tradeName}
                   value={account.company.tradeName || ''}
                   handleChange={(e) => handleChange(e, 'company')}
                 />
@@ -129,7 +129,7 @@ export function CreateAccount({ toggle }: Props) {
                   paddingInput="0 1rem"
                   colorInput="white"
                   isLarge
-                  innerRef={refValidate.email}
+                  innerRef={refValidate.company.email}
                   value={account.company.email || ''}
                   handleChange={(e) => handleChange(e, 'company')}
                 />
@@ -144,7 +144,7 @@ export function CreateAccount({ toggle }: Props) {
                   paddingInput="0 1rem"
                   colorInput="white"
                   isLarge
-                  innerRef={refValidate.cpfCnpj}
+                  innerRef={refValidate.company.cpfCnpj}
                   value={account.company.cpfCnpj || ''}
                   handleChange={(e) => handleChange(e, 'company')}
                 />
@@ -161,7 +161,7 @@ export function CreateAccount({ toggle }: Props) {
                   paddingInput="0 1rem"
                   colorInput="white"
                   isLarge
-                  innerRef={refValidate.uf}
+                  innerRef={refValidate.company.uf}
                   value={account.company.uf?.toUpperCase() || ''}
                   handleChange={(e) => handleChange(e, 'company')}
                   maxLength={2}
@@ -177,7 +177,7 @@ export function CreateAccount({ toggle }: Props) {
                   paddingInput="0 1rem"
                   colorInput="white"
                   isLarge
-                  innerRef={refValidate.cidade}
+                  innerRef={refValidate.company.cidade}
                   value={account.company.cidade || ''}
                   handleChange={(e) => handleChange(e, 'company')}
                 />

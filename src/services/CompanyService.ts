@@ -11,6 +11,7 @@ export async function SaveCompany(company: FormCompany) {
     return data
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
+      console.log(error)
       toast.error(
         `${error?.response?.data?.message ||
         "Opa, ocorreu um problema ao registrar essa empresa 🤯"

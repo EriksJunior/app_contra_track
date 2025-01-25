@@ -71,7 +71,7 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
 
           <Row>
             <Col>
-              <InputCpfCnpj name='cnpj' textLabel='CNPJ' innerRef={refsToValidate.cpfCnpj} value={form.cpfCnpj || ''} handleChange={handleChange} />
+              <InputCpfCnpj name='cpfCnpj' textLabel='CNPJ' innerRef={refsToValidate.cpfCnpj} value={form.cpfCnpj || ''} handleChange={handleChange} />
             </Col>
 
             <Col>

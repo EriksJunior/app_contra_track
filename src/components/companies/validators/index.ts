@@ -16,7 +16,7 @@ const ValidateCompany = (company: FormValues): Errors[] => {
       required_error: "(Nome Fantasia) deve ser informado!",
       message: "(Nome Fantasia) deve ser informado!"
     }).max(200).nonempty("(Nome Fantasia) deve ser informado!"),
-    cnpj: z.string({
+    cpfCnpj: z.string({
       required_error: "(CNPJ) deve ser informado!",
       message: "(CNPJ) deve ser informado!",
     }).min(11).max(14).nonempty("(CNPJ deve ser informado!"),

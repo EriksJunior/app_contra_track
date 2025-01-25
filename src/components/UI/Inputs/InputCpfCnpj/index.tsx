@@ -91,7 +91,7 @@ export function InputCpfCnpj({
         $colorBackgroundLabel={colorBackgroundLabel}
       >
         {textLabel}
-        <I.RequiredField className="requiredField">
+        <I.RequiredField className="requiredField" $isLarge={isLarge}>
           Campo Obrigatório
         </I.RequiredField>
       </I.Label>
