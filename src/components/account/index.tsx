@@ -30,7 +30,7 @@ export function Account() {
         </L.Left>
 
         <L.ContentRight>
-          {isCreateAccount ? <CreateAccount toggle={toggle} /> : <Login toggle={toggle} />}
+          {!isCreateAccount ? <Login toggle={toggle} /> : <CreateAccount toggle={toggle} />}
         </L.ContentRight>
 
       </L.Content>

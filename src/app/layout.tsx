@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { ReactNode } from "react";
 import { Poppins } from "next/font/google";
-import { ThemeProvider } from "@/context/theme";
+import { GeneralProvider } from "@/context";
 
 import StyledComponentsRegistry from "./registry";
 
@@ -28,10 +28,10 @@ export default function RootLayout({ children }: Props) {
     <html lang="pt-BR">
       <body className={poppins.className}>
         <StyledComponentsRegistry>
-          <ThemeProvider>
+          <GeneralProvider>
             <GlobalStyle />
             {pathname === "/" ? <Account /> : <Sidebar>{children}</Sidebar>}
-          </ThemeProvider>
+          </GeneralProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

@@ -11,7 +11,7 @@ import { CreateAccount } from "@/services/UserService"
 import { handleResponseErrors } from "@/utils/handleResponseErrors";
 import { IErrorResponseData } from "@/interfaces/ErrorResponse";
 
-import { ValidateCreateAccount } from "../validators";
+import { ValidateCreateAccount } from "../validators/createAccount";
 
 type RefValidate = {
   user: {
@@ -69,7 +69,7 @@ export function UseCreateAccount() {
 
     if (erro && Object.keys(erro).length) {
       const { keyError, principalKey } = erro
-      
+
       const group = refValidate[principalKey as keyof RefValidate];
       const ref = group[keyError as keyof typeof group] as React.RefObject<HTMLInputElement>;
 

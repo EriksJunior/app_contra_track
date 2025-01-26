@@ -7,7 +7,7 @@ import { FormCompany } from './Forms'
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 
-import { UseGeneral } from '../../hook/useGeneral'
+import { useOffCanvas } from '../../hook/useOffCanvas'
 import { SaveCompany } from '@/services/CompanyService'
 
 import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
@@ -16,7 +16,7 @@ import { ValidateCompany } from './validators'
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "uf";
 
 export function Companies() {
-  const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = UseGeneral()
+  const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = useOffCanvas()
   const [company, setCompany] = useState<FormValues>(INITIAL_STATE_COMPANY)
   const [isLoading, setIsloading] = useState<boolean>(false)
 

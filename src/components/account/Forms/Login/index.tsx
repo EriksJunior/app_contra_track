@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function Login({ toggle }: Props) {
-  const { handleChange, isLoading, payload, sendLogin, messageError, refValidate } = UseLogin()
+  const { handleChange, isLoading, payload, sendLogin, messageError } = UseLogin()
 
   return (
     <L.Right>
@@ -41,7 +41,6 @@ export function Login({ toggle }: Props) {
                 paddingInput="0 1rem"
                 colorInput="white"
                 isLarge
-                innerRef={refValidate.login}
                 value={payload.login || ''}
                 handleChange={handleChange}
               />
@@ -57,7 +56,6 @@ export function Login({ toggle }: Props) {
                 colorInput="white"
                 isLarge
                 isPassword
-                innerRef={refValidate.password}
                 value={payload.password || ''}
                 handleChange={handleChange}
               />

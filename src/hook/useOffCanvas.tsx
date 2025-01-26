@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
+ 
 import { useState } from 'react'
 
-export function UseGeneral () {
+export function useOffCanvas () {
   const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false)
 
   const toggleOffCanvas = () => {

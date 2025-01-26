@@ -4,7 +4,7 @@ import { useEffect, useState, useContext, ReactNode } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import { ToastContainer } from "react-toastify";
 
-import { ThemeContext } from "@/context/theme";
+import { GeneralContext } from "@/context";
 import { E_THEME } from "@/utils/enums/theme";
 import { lightTheme } from "@/components/themes/light"
 
@@ -28,7 +28,7 @@ export function Sidebar({ children }: Props) {
   const [lockSidebar, setLockSidebar] = useState(false);
   const [media, setMedia] = useState(0);
 
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(GeneralContext);
 
   const [navChecked, setNavChecked] = useState({
     home: false,
