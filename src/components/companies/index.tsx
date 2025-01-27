@@ -1,4 +1,6 @@
 import { useState, useRef } from 'react'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 import { SearchBar } from '@/components/UI/SearchBar'
 import { Button } from '@/components/UI/Button'
@@ -18,7 +20,7 @@ type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "uf";
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = useOffCanvas()
   const [company, setCompany] = useState<FormValues>(INITIAL_STATE_COMPANY)
-  const [isLoading, setIsloading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
     name: useRef<HTMLInputElement>(null),
@@ -33,13 +35,28 @@ export function Companies() {
 
   const save = async () => {
     try {
-      setIsloading(true)
+      setIsLoading(true)
       if (!isValid()) return
 
-      const id = await SaveCompany(company)
-      console.log(id)
+      await SaveCompany(company)
+      toast.success("Nova empresa registrada ✅");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          `${error?.response?.data?.message ||
+          "Opa, ocorreu um problema ao registrar essa empresa 🤯"
+          }`,
+          {
+            position: "top-right",
+          }
+        );
+
+        throw error
+      } else {
+        toast.error("Erro inesperado. Tente novamente.");
+      }
     } finally {
-      setIsloading(false)
+      setIsLoading(false)
     }
   }
 
