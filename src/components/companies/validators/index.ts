@@ -29,6 +29,9 @@ const ValidateCompany = (company: FormValues): Errors[] => {
     endereco: z.string().optional().nullable(),
     bairro: z.string().max(14).optional().nullable(),
     numero: z.string().max(14).optional().nullable(),
+    email: z.string().email({
+      message: "(Email) deve ser informado e valido!",
+    }),
     certification: z.object({
       name: z.string().optional().nullable(),
       certBase64: z.string({

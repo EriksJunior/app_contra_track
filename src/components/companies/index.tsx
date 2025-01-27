@@ -12,16 +12,17 @@ import { BsFillPersonPlusFill } from 'react-icons/bs'
 import { useOffCanvas } from '../../hook/useOffCanvas'
 import { SaveCompany } from '@/services/CompanyService'
 
-import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
+import { INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
+import { FormCompanyHandle } from './interfaces'
 
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "uf";
 
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = useOffCanvas()
-  const [company, setCompany] = useState<FormValues>(INITIAL_STATE_COMPANY)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  const formRef = useRef<FormCompanyHandle>(null);
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
     name: useRef<HTMLInputElement>(null),
     tradeName: useRef<HTMLInputElement>(null),
@@ -29,8 +30,12 @@ export function Companies() {
     uf: useRef<HTMLInputElement>(null),
   }
 
-  const getFormValues = (values: FormValues) => {
-    setCompany(values)
+  const getFormValues = () => {
+    if (formRef.current) {
+      return formRef.current?.payloadForm();
+    }
+
+    return INITIAL_STATE_COMPANY
   }
 
   const save = async () => {
@@ -38,8 +43,9 @@ export function Companies() {
       setIsLoading(true)
       if (!isValid()) return
 
-      await SaveCompany(company)
+      await SaveCompany(getFormValues())
       toast.success("Nova empresa registrada ✅");
+      handleClearForm()
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(
@@ -61,7 +67,7 @@ export function Companies() {
   }
 
   const isValid = () => {
-    const errors = ValidateCompany(company as FormValues)
+    const errors = ValidateCompany(getFormValues())
 
     if (errors && Object.keys(errors).length) {
       errors.forEach((e) => {
@@ -77,6 +83,12 @@ export function Companies() {
     }
 
     return true
+  }
+
+  const handleClearForm = () => {
+    if (formRef.current) {
+      formRef.current?.clear();
+    }
   }
 
   return (
@@ -106,7 +118,7 @@ export function Companies() {
           </div>
         }
       >
-        <FormCompany getValues={getFormValues} refsToValidate={refValidate} />
+        <FormCompany getValues={getFormValues} refsToValidate={refValidate} ref={formRef} />
       </OffCanvas>
     </div>
   )

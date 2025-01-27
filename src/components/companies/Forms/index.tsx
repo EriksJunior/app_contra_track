@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { forwardRef, useImperativeHandle, useState } from 'react'
 
 import { Col } from '@/components/UI/Col'
 import { InputFilePfx } from '@/components/UI/Inputs/InputFilePfx'
@@ -13,6 +13,8 @@ import { TbCertificate } from 'react-icons/tb'
 
 import { FormValues, INITIAL_STATE_COMPANY } from '../initialStates'
 
+import { FormCompanyHandle } from '../interfaces'
+
 interface RefsToValidate {
   name: React.Ref<HTMLInputElement>
   tradeName: React.Ref<HTMLInputElement>
@@ -25,7 +27,8 @@ interface Props {
   refsToValidate: RefsToValidate
 }
 
-export function FormCompany({ getValues, refsToValidate }: Props) {
+
+function Form({ getValues, refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>) {
   const [form, setForm] = useState<FormValues>(INITIAL_STATE_COMPANY)
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -50,6 +53,12 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
 
     handleGetValues(form)
   }
+
+  useImperativeHandle(innerRef, () => ({
+    clear: () => setForm(INITIAL_STATE_COMPANY),
+    payloadForm: () => form
+  }));
+
 
   return (
     <Col margin='0.5rem 0 0 0' gap='1.3rem'>
@@ -125,3 +134,5 @@ export function FormCompany({ getValues, refsToValidate }: Props) {
     </Col>
   )
 }
+
+export const FormCompany = forwardRef(Form)
