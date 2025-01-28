@@ -43,7 +43,10 @@ export function InputCep({
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    handleChange(e);
+    if (handleChange) {
+      handleChange(e);
+    }
+    
     clearInputRequired();
   };
 

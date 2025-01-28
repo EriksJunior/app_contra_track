@@ -48,8 +48,9 @@ export function InputPhone({
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     if (handleChange) {
       handleChange(e);
-      clearInputRequired();
     }
+    
+    clearInputRequired();
   };
 
   return (

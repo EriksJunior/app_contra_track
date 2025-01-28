@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@types/luxon": "^3.4.2",
     "@types/react-toastify": "^4.1.0",
     "axios": "^1.7.9",
+    "luxon": "^3.5.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
