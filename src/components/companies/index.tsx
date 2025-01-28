@@ -16,7 +16,7 @@ import { INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { FormCompanyHandle } from './interfaces'
 
-type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "uf";
+type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
 
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = useOffCanvas()
@@ -27,6 +27,7 @@ export function Companies() {
     name: useRef<HTMLInputElement>(null),
     tradeName: useRef<HTMLInputElement>(null),
     cpfCnpj: useRef<HTMLInputElement>(null),
+    email: useRef<HTMLInputElement>(null),
     uf: useRef<HTMLInputElement>(null),
   }
 
@@ -67,17 +68,16 @@ export function Companies() {
   }
 
   const isValid = () => {
-    const errors = ValidateCompany(getFormValues())
+    console.log(getFormValues())
+    const error = ValidateCompany(getFormValues())
 
-    if (errors && Object.keys(errors).length) {
-      errors.forEach((e) => {
-        const ref = refValidate[e.keyError as keyof typeof refValidate];
-
-        if (ref?.current) {
-          ref.current.setAttribute("required", "true");
-          ref.current.focus();
-        }
-      });
+    if (error && Object.keys(error).length) {
+      console.log(error)
+      const ref = refValidate[error.keyError as keyof typeof refValidate];
+      if (ref?.current) {
+        ref.current.setAttribute("required", "true");
+        ref.current.focus();
+      }
 
       return false
     }
@@ -105,7 +105,7 @@ export function Companies() {
         expanded={isOffCanvasOpen}
         onClose={closeOffCanvas}
         title='Nova Empresa'
-        clearValues={() => console.log('limpando')}
+        clearValues={() => handleClearForm()}
         footer={
           <div style={{ display: 'flex', gap: '1rem' }}>
             <div>
@@ -118,7 +118,7 @@ export function Companies() {
           </div>
         }
       >
-        <FormCompany getValues={getFormValues} refsToValidate={refValidate} ref={formRef} />
+        <FormCompany refsToValidate={refValidate} ref={formRef} />
       </OffCanvas>
     </div>
   )

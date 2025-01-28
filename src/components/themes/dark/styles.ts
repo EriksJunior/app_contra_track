@@ -19,7 +19,7 @@ export const DarkTheme = css`
     }
 
     ${InputText}:focus, ${InputTextArea}:focus {
-     box-shadow: 0 0 1px 1px ${darkTheme.success}!important;
+      box-shadow: 0 0 1px 1px ${darkTheme.success}!important;
     }
 
     ${CustomInputFile} {

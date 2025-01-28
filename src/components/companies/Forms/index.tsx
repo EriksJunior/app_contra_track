@@ -19,16 +19,16 @@ interface RefsToValidate {
   name: React.Ref<HTMLInputElement>
   tradeName: React.Ref<HTMLInputElement>
   cpfCnpj: React.Ref<HTMLInputElement>
+  email: React.Ref<HTMLInputElement>
   uf: React.Ref<HTMLInputElement>
 }
 
 interface Props {
-  getValues: (values: FormValues) => void
   refsToValidate: RefsToValidate
 }
 
 
-function Form({ getValues, refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>) {
+function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>) {
   const [form, setForm] = useState<FormValues>(INITIAL_STATE_COMPANY)
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -39,26 +39,17 @@ function Form({ getValues, refsToValidate }: Props, innerRef: React.Ref<FormComp
       { ...form, [e?.currentTarget?.name]: e?.currentTarget?.value }
 
     setForm(newState)
-    handleGetValues(newState)
-  }
-
-  const handleGetValues = (values: FormValues) => {
-    if (getValues)
-      getValues(values)
   }
 
   const handleCertificate = (base64: string) => {
     const payload: FormValues = { ...form, certification: { ...form.certification, certBase64: base64 } }
     setForm(payload)
-
-    handleGetValues(form)
   }
 
   useImperativeHandle(innerRef, () => ({
     clear: () => setForm(INITIAL_STATE_COMPANY),
     payloadForm: () => form
   }));
-
 
   return (
     <Col margin='0.5rem 0 0 0' gap='1.3rem'>
@@ -98,7 +89,7 @@ function Form({ getValues, refsToValidate }: Props, innerRef: React.Ref<FormComp
             </Col>
 
             <Col width='30%'>
-              <InputLabel name='email' textLabel='Email' value={form.email || ''} handleChange={handleChange} />
+              <InputLabel name='email' textLabel='Email' innerRef={refsToValidate.email} value={form.email || ''} handleChange={handleChange} />
             </Col>
           </Row>
 

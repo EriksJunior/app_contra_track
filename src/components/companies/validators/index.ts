@@ -6,7 +6,7 @@ interface Errors {
   keyError: string | number
 }
 
-const ValidateCompany = (company: FormValues): Errors[] => {
+const ValidateCompany = (company: FormValues): Errors | null => {
   const schema = z.object({
     name: z.string({
       required_error: "(Razão Social) deve ser informado!",
@@ -20,6 +20,18 @@ const ValidateCompany = (company: FormValues): Errors[] => {
       required_error: "(CNPJ) deve ser informado!",
       message: "(CNPJ) deve ser informado!",
     }).min(11).max(14).nonempty("(CNPJ deve ser informado!"),
+    email: z
+      .string({
+        required_error: "(Email) é obrigatório!",
+      })
+      .email({
+        message: "(Email) deve ser informado e valido!",
+      })
+      .nonempty("(Email) deve ser informado e valido!")
+      .nullable()
+      .refine((value) => value !== null, {
+        message: "(Email) deve ser informado!",
+      }),
     uf: z.string({
       required_error: "(UF) deve ser informado!",
       message: "(UF) deve ser informado!"
@@ -29,9 +41,6 @@ const ValidateCompany = (company: FormValues): Errors[] => {
     endereco: z.string().optional().nullable(),
     bairro: z.string().max(14).optional().nullable(),
     numero: z.string().max(14).optional().nullable(),
-    email: z.string().email({
-      message: "(Email) deve ser informado e valido!",
-    }),
     certification: z.object({
       name: z.string().optional().nullable(),
       certBase64: z.string({
@@ -48,15 +57,15 @@ const ValidateCompany = (company: FormValues): Errors[] => {
   const { error } = schema.safeParse(company)
 
   if (error?.issues && error?.issues.length) {
-    return error?.issues.map(e => {
-      return {
-        message: e?.message || '',
-        keyError: e?.path[0] || ''
-      }
-    }).reverse()
+    const errors = {
+      message: error?.issues[0].message || '',
+      keyError: error?.issues[0].path[0] || ''
+    }
+
+    return errors
   }
 
-  return []
+  return null
 }
 
 export { ValidateCompany }
