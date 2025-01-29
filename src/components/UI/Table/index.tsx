@@ -42,7 +42,7 @@ export function Table({
   return (
     <T.Container>
       <div>
-        <div style={{ padding: "0 0.5rem" }}>{children}</div>
+        <div style={{ padding: "0 0.5rem", marginBottom: '1rem' }}>{children}</div>
 
         {enableTitleTable && (
           <div style={{ padding: "0 0.5rem" }}>
@@ -52,7 +52,7 @@ export function Table({
 
         <T.Table $theme={theme} $maxHeight={maxHeight}>
           <thead>
-            <tr>
+            <tr style={{fontWeight: '100'}}>
               {items.headers.map((header) => (
                 <th key={header.key}>{header.text}</th>
               ))}

@@ -21,8 +21,6 @@ export const Table = styled.table<StyledProps>`
   thead tr {
     display: flex;
     justify-content: space-between;
-    background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : 'transparent'};
-    box-shadow: ${props => props.$theme === E_THEME.lightMode ? '0 1px 4px 0 #00000026' : 'none'};
     border-radius: 8px;
     padding: 0 10px;
     color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#a1a1a1'};
@@ -34,16 +32,16 @@ export const Table = styled.table<StyledProps>`
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#494949'};
-    padding: 10px;
+    padding: 0;
     margin-top: 0.3rem;
     box-shadow: ${props => props.$theme === E_THEME.lightMode ? '0 1px 4px 0 #00000026' : ''};
   }
 
   th {
     width: 100%;
-    font-weight: 500;
     font-size: 14px;
-    padding: 8px;
+    padding: 0 8px;
+    text-align: start;
   }
 
   td {
