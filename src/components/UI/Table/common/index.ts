@@ -24,6 +24,17 @@ const defaultTable = {
     { id: 1, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
     { id: 2, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
     { id: 3, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 4, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 5, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 6, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 7, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 8, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 9, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 10, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 11, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 12, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 13, default1: "teste 1", default2: "teste 2", default3: "teste 3" },
+    { id: 14, default1: "teste 14", default2: "teste 14", default3: "teste 14" },
   ],
 }
 

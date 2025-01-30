@@ -58,7 +58,8 @@ export function Tab({ tabs }: Props) {
         ))}
       </Row>
 
-      <Row>
+
+      <Row height="100%">
         {activeTab && activeTab.component && (
           <activeTab.component text={`TAB ${cloneTabs.indexOf(activeTab) + 1}`} />
         )}

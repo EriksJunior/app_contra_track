@@ -41,7 +41,7 @@ export function Table({
 
   return (
     <T.Container>
-      <div>
+      <div style={{height: '100%'}}>
         <div style={{ padding: "0", marginBottom: '1rem' }}>{children}</div>
 
         {enableTitleTable && (
@@ -52,7 +52,7 @@ export function Table({
 
         <T.Table $theme={theme} $maxHeight={maxHeight}>
           <thead>
-            <tr style={{ fontWeight: '100' }}>
+            <tr>
               {items.headers.map((header) => (
                 <th key={header.key}>{header.text}</th>
               ))}
@@ -90,7 +90,7 @@ export function Table({
                 <td colSpan={12}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <p style={{ color: 'gray', fontSize: 12, fontWeight: '500' }}>Total</p>
-                    <p style={{ color: 'black', fontSize: 12, fontWeight: '600' }}>{items.body.length || 0}</p>
+                    <p style={{ color: 'black', fontSize: 12 }}>{items.body.length || 0}</p>
                   </div>
                 </td>
               </tr>

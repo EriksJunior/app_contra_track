@@ -18,30 +18,6 @@ export const Table = styled.table<StyledProps>`
   border-spacing: 0 8px;
   table-layout: fixed;
 
-  thead tr {
-    display: flex;
-    justify-content: space-between;
-    color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#a1a1a1'};
-  }
-
-  tbody tr {
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#494949'};
-    padding: 0;
-    border: solid 1px rgba(130, 130, 130, 0.16);
-  }
-
-  tbody tr:last-child {
-    border-radius: 0 0 8px 8px;
-  }
-
-  tbody tr:first-child {
-    border-top: none!important;
-  }
-  
-
   th {
     width: 100%;
     font-size: 12px;
@@ -51,10 +27,10 @@ export const Table = styled.table<StyledProps>`
 
   td {
     width: 100%;
-    color: black;
     font-size: 13px;
     padding: 8px;
-    color: ${props => props.$theme === E_THEME.lightMode ? 'black' : 'white'};
+    color: ${props => props.$theme === E_THEME.lightMode ? '#3d3d3d' : 'white'};
+    font-weight: 600;
     /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
@@ -66,7 +42,34 @@ export const Table = styled.table<StyledProps>`
     border-radius: 8px 8px 0 0;
     padding: 0.8rem 0;
     border: solid 1px rgba(130, 130, 130, 0.16);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.23);
   }
+
+  thead tr {
+    display: flex;
+    justify-content: space-between;
+    color: ${props => props.$theme === E_THEME.lightMode ? '#3d3d3d' : '#a1a1a1'};
+  }
+
+  
+  tbody tr {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#494949'};
+    padding: 0;
+    border: solid 1px rgba(130, 130, 130, 0.16);
+  }
+
+  tbody tr:first-child {
+    border-top: none!important;
+  }
+
+  tbody tr:last-child {
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.23);
+  }
+
 
   tbody {
     display: block;
@@ -77,13 +80,11 @@ export const Table = styled.table<StyledProps>`
     }
 
     &::-webkit-scrollbar-track {
-      background: white!important;
-      border-radius: 8px;
+      background: transparent!important;
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: #47d2a9!important;
-      border-radius: 8px;
     }
 
     @media screen and (min-height: 600px) and (max-height: 959px){

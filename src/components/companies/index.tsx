@@ -93,9 +93,9 @@ export function Companies() {
   }
 
   return (
-    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Table>
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ width: '70%' }}>
             <SearchBar getValues={(values) => console.log(values)} defaultFilter='nome' />
           </div>
