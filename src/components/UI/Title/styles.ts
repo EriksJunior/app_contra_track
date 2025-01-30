@@ -12,7 +12,7 @@ export const CustomTitle = styled.p<StyledProps>`
   white-space: nowrap !important;
   text-overflow: ellipsis;
   color: ${props => props.$color || '#a1a1a1'};
-  font-weight: 500;
+  font-weight: 600;
 
   @media screen and (min-width: 1500px){
     & {

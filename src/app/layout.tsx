@@ -15,7 +15,7 @@ import { usePathname } from "next/navigation";
 import { Account } from "@/components/account";
 
 
-const poppins = Poppins({ subsets: ["latin"], weight: "600" });
+const poppins = Poppins({ subsets: ["latin"], weight: ["500", "600"]});
 
 interface Props {
   children?: ReactNode;
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: Props) {
 
   return (
     <html lang="pt-BR">
-      <body className={poppins.className}>
+      <body className={`${poppins.className}`}>
         <StyledComponentsRegistry>
           <GeneralProvider>
             <GlobalStyle />

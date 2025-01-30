@@ -21,25 +21,30 @@ export const Table = styled.table<StyledProps>`
   thead tr {
     display: flex;
     justify-content: space-between;
-    border-radius: 8px;
-    padding: 0 10px;
     color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#a1a1a1'};
   }
 
   tbody tr {
     background-color: white;
-    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#494949'};
     padding: 0;
-    margin-top: 0.3rem;
-    box-shadow: ${props => props.$theme === E_THEME.lightMode ? '0 1px 4px 0 #00000026' : ''};
+    border: solid 1px rgba(130, 130, 130, 0.16);
   }
+
+  tbody tr:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+
+  tbody tr:first-child {
+    border-top: none!important;
+  }
+  
 
   th {
     width: 100%;
-    font-size: 14px;
+    font-size: 12px;
     padding: 0 8px;
     text-align: start;
   }
@@ -57,16 +62,18 @@ export const Table = styled.table<StyledProps>`
 
   thead {
     display: block;
-    padding: 0 0.5rem;
+    background-color: rgb(96 96 96 / 9%);
+    border-radius: 8px 8px 0 0;
+    padding: 0.8rem 0;
+    border: solid 1px rgba(130, 130, 130, 0.16);
   }
 
   tbody {
     display: block;
-    padding: 0.5rem 0.5rem;
     
     &::-webkit-scrollbar {
-    width: 5px!important;
-    height: 8px!important;
+      width: 5px!important;
+      height: 8px!important;
     }
 
     &::-webkit-scrollbar-track {

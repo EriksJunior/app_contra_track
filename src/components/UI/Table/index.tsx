@@ -38,11 +38,11 @@ export function Table({
   valueToJoinHtmlFor = "default",
 }: Props) {
   const { theme } = useContext(GeneralContext);
-  
+
   return (
     <T.Container>
       <div>
-        <div style={{ padding: "0 0.5rem", marginBottom: '1rem' }}>{children}</div>
+        <div style={{ padding: "0", marginBottom: '1rem' }}>{children}</div>
 
         {enableTitleTable && (
           <div style={{ padding: "0 0.5rem" }}>
@@ -52,12 +52,12 @@ export function Table({
 
         <T.Table $theme={theme} $maxHeight={maxHeight}>
           <thead>
-            <tr style={{fontWeight: '100'}}>
+            <tr style={{ fontWeight: '100' }}>
               {items.headers.map((header) => (
                 <th key={header.key}>{header.text}</th>
               ))}
 
-              <th style={{ width: "20%" }}>Ações</th>
+              <th style={{ width: "20%", textAlign: 'center' }}>Ações</th>
             </tr>
           </thead>
 
@@ -66,12 +66,12 @@ export function Table({
               {items.body.map((item: any, index) => (
                 <tr key={item?.id || index}>
                   {items.headers.map((_, idx) => (
-                    <td key={idx} style={{whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
+                    <td key={idx} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {DateTime.fromISO((item[items.headers[idx]?.key]))?.isValid
                         ? item[items.headers[idx]?.key]
-                            ?.split("-")
-                            ?.reverse()
-                            ?.join("/")
+                          ?.split("-")
+                          ?.reverse()
+                          ?.join("/")
                         : item[items.headers[idx]?.key]}
                     </td>
                   ))}
@@ -85,6 +85,15 @@ export function Table({
                   </td>
                 </tr>
               ))}
+
+              <tr>
+                <td colSpan={12}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <p style={{ color: 'gray', fontSize: 12, fontWeight: '500' }}>Total</p>
+                    <p style={{ color: 'black', fontSize: 12, fontWeight: '600' }}>{items.body.length || 0}</p>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           ) : (
             <tbody

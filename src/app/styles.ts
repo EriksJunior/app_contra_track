@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
+    font-weight: 600!important;
     ${LightTheme}
     ${DarkTheme}
   }

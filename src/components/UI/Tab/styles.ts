@@ -27,7 +27,7 @@ export const TabText = styled.label<StyledProps>`
   white-space: nowrap !important;
   text-overflow: ellipsis;
   color: ${props => props.$color || '#a1a1a1'};
-  font-weight: 500;
+  font-weight: 600;
   line-height: 0.5;
 
   @media screen and (min-width: 1980px){
