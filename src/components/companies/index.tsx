@@ -2,12 +2,14 @@ import { useState, useRef } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-import { SearchBar } from '@/components/UI/SearchBar'
+import { FormCompany } from './Forms'
 import { Button } from '@/components/UI/Button'
 import { OffCanvas } from '@/components/UI/OffCanvas'
-import { FormCompany } from './Forms'
+import { Title } from '@/components/UI/Title'
+import { Label } from '@/components/UI/Label'
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
+import { LuInfo  } from "react-icons/lu";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
 import { SaveCompany } from '@/services/CompanyService'
@@ -15,6 +17,7 @@ import { SaveCompany } from '@/services/CompanyService'
 import { INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { FormCompanyHandle } from './interfaces'
+
 
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
 
@@ -92,13 +95,65 @@ export function Companies() {
   }
 
   return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
-      <div style={{ width: '70%' }}>
-        <SearchBar getValues={(values) => console.log(values)} defaultFilter='nome' />
+    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div style={{
+        display: 'flex',
+        width: '100%',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        borderBottom: 'solid 1px #6b6b6b76',
+        paddingBottom: '0.5rem'
+      }}>
+        <Title fontSize='13px' color='#6b6b6be4' text='Listagem de empresas' />
+
+        <div>
+          <Button icon={<BsFillPersonPlusFill size={17} color='white' />} click={toggleOffCanvas} height='30px' width='40px' />
+        </div>
       </div>
 
-      <div>
-        <Button icon={<BsFillPersonPlusFill size={20} color='white' />} click={toggleOffCanvas} />
+      <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
+          flex: '1 1 300px',
+          maxWidth: '300px',
+          boxShadow: '0 0px 2px 1px #00000017',
+          border: 'solid 1px #00000017',
+          borderRadius: '10px',
+          padding: '1rem',
+          borderLeft: 'solid 5px #1be25d',
+          cursor: 'pointer'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.3 }}>
+            <Label text='Company teste' color="#454545" fontSize='13px' fontWeight='600' />
+
+            <Label text='Company teste ltda' color="#6b6b6be4" fontSize='11px' fontWeight='500' />
+          </div>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', width: '100px' }}>
+              <p style={{ color: '#6b6b6be4', fontSize: '11px' }}>Nota Hoje</p>
+
+              <div style={{display: 'flex', gap: '0.3rem', alignItems: 'center'}}>
+                <p style={{ color: '#454545', fontSize: '11px', fontWeight: 600 }}>150</p>
+                <LuInfo  size={13} color='#6b6b6be4'/>
+              </div>
+            </div>
+
+            <div style={{ borderRight: 'solid 1px #6b6b6b62', height: '100%' }}>
+
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', width: '100px' }}>
+              <p style={{ color: '#6b6b6be4', fontSize: '11px' }}>Sinc</p>
+
+              <div>
+                <p style={{ color: '#454545', fontSize: '11px', fontWeight: 600 }}>31/02/2025 14:06</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <OffCanvas
