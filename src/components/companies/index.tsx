@@ -15,7 +15,6 @@ import { SaveCompany } from '@/services/CompanyService'
 import { INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { FormCompanyHandle } from './interfaces'
-import { Table } from '../UI/Table'
 
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
 
@@ -93,18 +92,14 @@ export function Companies() {
   }
 
   return (
-    <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <Table>
-        <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ width: '70%' }}>
-            <SearchBar getValues={(values) => console.log(values)} defaultFilter='nome' />
-          </div>
+    <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ width: '70%' }}>
+        <SearchBar getValues={(values) => console.log(values)} defaultFilter='nome' />
+      </div>
 
-          <div>
-            <Button icon={<BsFillPersonPlusFill size={20} color='white' />} click={toggleOffCanvas} />
-          </div>
-        </div>
-      </Table>
+      <div>
+        <Button icon={<BsFillPersonPlusFill size={20} color='white' />} click={toggleOffCanvas} />
+      </div>
 
       <OffCanvas
         expanded={isOffCanvasOpen}
