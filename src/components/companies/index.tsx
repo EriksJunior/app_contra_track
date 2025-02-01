@@ -14,7 +14,7 @@ import * as C from "./styles"
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 import { LuInfo } from "react-icons/lu";
 import { HiOutlineMailOpen } from "react-icons/hi";
-import { FaMoneyCheck } from "react-icons/fa6";
+import { FaRegIdCard } from "react-icons/fa6";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
 import { SaveCompany, FindCompanyById } from '@/services/CompanyService'
@@ -173,7 +173,7 @@ export function Companies() {
               </C.FooterItem>
 
               <C.FooterItem>
-                <FaMoneyCheck />
+                <FaRegIdCard />
 
                 <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
                   <Label text={MaskCpf(comp.cpfCnpj || '')} color="#3767f1" fontSize='11px' fontWeight='500' />
