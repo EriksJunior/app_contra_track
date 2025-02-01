@@ -9,7 +9,8 @@ import { Title } from '@/components/UI/Title'
 import { Label } from '@/components/UI/Label'
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
-import { LuInfo  } from "react-icons/lu";
+import { LuInfo } from "react-icons/lu";
+import { HiOutlineMailOpen, HiPhone } from "react-icons/hi";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
 import { SaveCompany } from '@/services/CompanyService'
@@ -104,7 +105,7 @@ export function Companies() {
         borderBottom: 'solid 1px #6b6b6b76',
         paddingBottom: '0.5rem'
       }}>
-        <Title fontSize='13px' color='#6b6b6be4' text='Listagem de empresas' />
+        <Title fontSize='13px' color='#6b6b6be4' text='Empresas Registradas' />
 
         <div>
           <Button icon={<BsFillPersonPlusFill size={17} color='white' />} click={toggleOffCanvas} height='30px' width='40px' />
@@ -135,9 +136,9 @@ export function Companies() {
             <div style={{ display: 'flex', flexDirection: 'column', width: '100px' }}>
               <p style={{ color: '#6b6b6be4', fontSize: '11px' }}>Nota Hoje</p>
 
-              <div style={{display: 'flex', gap: '0.3rem', alignItems: 'center'}}>
+              <div style={{ display: 'flex', gap: '0.3rem', alignItems: 'center' }}>
                 <p style={{ color: '#454545', fontSize: '11px', fontWeight: 600 }}>150</p>
-                <LuInfo  size={13} color='#6b6b6be4'/>
+                <LuInfo size={13} color='#6b6b6be4' />
               </div>
             </div>
 
@@ -151,6 +152,28 @@ export function Companies() {
               <div>
                 <p style={{ color: '#454545', fontSize: '11px', fontWeight: 600 }}>31/02/2025 14:06</p>
               </div>
+            </div>
+          </div>
+
+          <div style={{display: 'flex', flexDirection: 'column', gap: '0.3rem'}}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <HiOutlineMailOpen />
+
+              <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
+                <Label text='eriksjunuiifid@fdgg.com' color="#3767f1" fontSize='11px' fontWeight='500' hover='border-bottom: solid 1px red;'/>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+              <HiPhone />
+            
+              <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
+                <Label text='31 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
+              </div>
+            </div>
+
+            <div>
+
             </div>
           </div>
         </div>

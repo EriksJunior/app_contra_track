@@ -4,6 +4,7 @@ interface StyledProps {
   $fontSize?: string
   $color?: string
   $fontWeight?: string
+  $hover?: string
 }
 
 export const CustomLabel = styled.label<StyledProps>`
