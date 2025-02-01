@@ -10,15 +10,21 @@ export const ContainerCard = styled.div`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  flex: 1 1 300px;
-  max-width: 300px;
+  gap: 1rem;
+  flex: 1 1 350px;
+  max-width: 350px;
   box-shadow: 0 0px 2px 1px #00000017;
   border: solid 1px #00000017;
   border-radius: 10px;
   padding: 1rem;
   border-left: solid 5px #1be25d;
   cursor: pointer;
+  transition: ease-in all 0.1s;
+
+  &:hover {
+    background-color: rgba(173, 173, 173, 0.14);
+    transition: ease-in all 0.1s;
+  }
 `
 
 export const HeaderCard = styled.div`

@@ -73,6 +73,12 @@ export function Companies() {
     }
   }
 
+  const findById = () => {
+    if (formRef.current) {
+      return formRef.current?.setOutsideValues(INITIAL_STATE_COMPANY);
+    }
+  }
+
   const isValid = () => {
     console.log(getFormValues())
     const error = ValidateCompany(getFormValues())
@@ -115,7 +121,7 @@ export function Companies() {
       </div>
 
       <C.ContainerCard>
-        <C.Card>
+        <C.Card onClick={findById}>
           <C.HeaderCard>
             <Label text='Company teste' color="#454545" fontSize='13px' fontWeight='600' />
 
@@ -156,7 +162,7 @@ export function Companies() {
               <HiPhone />
             
               <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                <Label text='31 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
+                <Label text='(31) 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
               </div>
             </C.FooterItem>
           </C.FooterCard>

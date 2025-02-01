@@ -2,5 +2,6 @@ import { FormValues } from "../initialStates";
 
 export interface FormCompanyHandle {
   clear: () => void;
-  payloadForm: () => FormValues
+  payloadForm: () => FormValues;
+  setOutsideValues: (param: FormValues) => void;
 };
