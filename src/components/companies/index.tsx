@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react'
 import axios from 'axios'
+import { useState, useRef } from 'react'
 import { toast } from 'react-toastify'
 
 import { FormCompany } from './Forms'
@@ -7,6 +7,8 @@ import { Button } from '@/components/UI/Button'
 import { OffCanvas } from '@/components/UI/OffCanvas'
 import { Title } from '@/components/UI/Title'
 import { Label } from '@/components/UI/Label'
+
+import * as C from "./styles"
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 import { LuInfo } from "react-icons/lu";
@@ -112,72 +114,54 @@ export function Companies() {
         </div>
       </div>
 
-      <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.5rem',
-          flex: '1 1 300px',
-          maxWidth: '300px',
-          boxShadow: '0 0px 2px 1px #00000017',
-          border: 'solid 1px #00000017',
-          borderRadius: '10px',
-          padding: '1rem',
-          borderLeft: 'solid 5px #1be25d',
-          cursor: 'pointer'
-        }}>
-          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.3 }}>
+      <C.ContainerCard>
+        <C.Card>
+          <C.HeaderCard>
             <Label text='Company teste' color="#454545" fontSize='13px' fontWeight='600' />
 
             <Label text='Company teste ltda' color="#6b6b6be4" fontSize='11px' fontWeight='500' />
-          </div>
+          </C.HeaderCard>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', width: '100px' }}>
-              <p style={{ color: '#6b6b6be4', fontSize: '11px' }}>Nota Hoje</p>
+          <C.BodyCard>
+            <C.BodyItem>
+              <C.TitleBodyItem>Nota Hoje</C.TitleBodyItem>
 
-              <div style={{ display: 'flex', gap: '0.3rem', alignItems: 'center' }}>
-                <p style={{ color: '#454545', fontSize: '11px', fontWeight: 600 }}>150</p>
+              <C.ContentBodyItem>
+                <p>150</p>
                 <LuInfo size={13} color='#6b6b6be4' />
-              </div>
-            </div>
+              </C.ContentBodyItem>
+            </C.BodyItem>
 
-            <div style={{ borderRight: 'solid 1px #6b6b6b62', height: '100%' }}>
+            <C.Divider />
 
-            </div>
+            <C.BodyItem>
+              <C.TitleBodyItem>Sinc</C.TitleBodyItem>
 
-            <div style={{ display: 'flex', flexDirection: 'column', width: '100px' }}>
-              <p style={{ color: '#6b6b6be4', fontSize: '11px' }}>Sinc</p>
+              <C.ContentBodyItem>
+                <p>31/02/2025 14:06</p>
+              </C.ContentBodyItem>
+            </C.BodyItem>
+          </C.BodyCard>
 
-              <div>
-                <p style={{ color: '#454545', fontSize: '11px', fontWeight: 600 }}>31/02/2025 14:06</p>
-              </div>
-            </div>
-          </div>
-
-          <div style={{display: 'flex', flexDirection: 'column', gap: '0.3rem'}}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+          <C.FooterCard>
+            <C.FooterItem>
               <HiOutlineMailOpen />
 
               <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
                 <Label text='eriksjunuiifid@fdgg.com' color="#3767f1" fontSize='11px' fontWeight='500' hover='border-bottom: solid 1px red;'/>
               </div>
-            </div>
+            </C.FooterItem>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+            <C.FooterItem>
               <HiPhone />
             
               <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
                 <Label text='31 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
               </div>
-            </div>
-
-            <div>
-
-            </div>
-          </div>
-        </div>
-      </div>
+            </C.FooterItem>
+          </C.FooterCard>
+        </C.Card>
+      </C.ContainerCard>
 
       <OffCanvas
         expanded={isOffCanvasOpen}
