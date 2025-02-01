@@ -13,7 +13,8 @@ import * as C from "./styles"
 
 import { BsFillPersonPlusFill } from 'react-icons/bs'
 import { LuInfo } from "react-icons/lu";
-import { HiOutlineMailOpen, HiPhone } from "react-icons/hi";
+import { HiOutlineMailOpen } from "react-icons/hi";
+import { FaMoneyCheck } from "react-icons/fa6";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
 import { SaveCompany, FindCompanyById } from '@/services/CompanyService'
@@ -21,6 +22,7 @@ import { SaveCompany, FindCompanyById } from '@/services/CompanyService'
 import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { FormCompanyHandle } from './interfaces'
+import { MaskCpf } from '@/utils/maskCpf'
 
 
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
@@ -171,10 +173,10 @@ export function Companies() {
               </C.FooterItem>
 
               <C.FooterItem>
-                <HiPhone />
+                <FaMoneyCheck />
 
                 <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                  <Label text='(31) 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
+                  <Label text={MaskCpf(comp.cpfCnpj || '')} color="#3767f1" fontSize='11px' fontWeight='500' />
                 </div>
               </C.FooterItem>
             </C.FooterCard>
