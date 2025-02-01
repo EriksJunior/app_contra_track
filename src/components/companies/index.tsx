@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useState, useRef } from 'react'
+import { DateTime } from 'luxon'
+import { useState, useRef, useEffect } from 'react'
 import { toast } from 'react-toastify'
 
 import { FormCompany } from './Forms'
@@ -15,9 +16,9 @@ import { LuInfo } from "react-icons/lu";
 import { HiOutlineMailOpen, HiPhone } from "react-icons/hi";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
-import { SaveCompany } from '@/services/CompanyService'
+import { SaveCompany, FindCompanyById } from '@/services/CompanyService'
 
-import { INITIAL_STATE_COMPANY } from './initialStates'
+import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { FormCompanyHandle } from './interfaces'
 
@@ -27,6 +28,7 @@ type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
 export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = useOffCanvas()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [companies, setCompanies] = useState<FormValues[]>()
 
   const formRef = useRef<FormCompanyHandle>(null);
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
@@ -73,18 +75,19 @@ export function Companies() {
     }
   }
 
-  const findById = () => {
+  const findById = async (id: string) => {
+    const company = await FindCompanyById(id)
+    toggleOffCanvas()
+
     if (formRef.current) {
-      return formRef.current?.setOutsideValues(INITIAL_STATE_COMPANY);
+      return formRef.current?.setOutsideValues(company);
     }
   }
 
   const isValid = () => {
-    console.log(getFormValues())
     const error = ValidateCompany(getFormValues())
 
     if (error && Object.keys(error).length) {
-      console.log(error)
       const ref = refValidate[error.keyError as keyof typeof refValidate];
       if (ref?.current) {
         ref.current.setAttribute("required", "true");
@@ -102,6 +105,14 @@ export function Companies() {
       formRef.current?.clear();
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('tokens')) {
+      const payload = JSON.parse(localStorage.getItem('tokens') || '')
+      console.log(payload?.company)
+      setCompanies(payload?.company || [])
+    }
+  }, [])
 
   return (
     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -121,52 +132,54 @@ export function Companies() {
       </div>
 
       <C.ContainerCard>
-        <C.Card onClick={findById}>
-          <C.HeaderCard>
-            <Label text='Company teste' color="#454545" fontSize='13px' fontWeight='600' />
+        {companies?.map((comp, idx) => (
+          <C.Card onClick={() => findById(comp.id || '')} key={comp.id || idx}>
+            <C.HeaderCard>
+              <Label text={comp.name || ''} color="#454545" fontSize='13px' fontWeight='600' />
 
-            <Label text='Company teste ltda' color="#6b6b6be4" fontSize='11px' fontWeight='500' />
-          </C.HeaderCard>
+              <Label text={comp.tradeName || ''} color="#6b6b6be4" fontSize='11px' fontWeight='500' />
+            </C.HeaderCard>
 
-          <C.BodyCard>
-            <C.BodyItem>
-              <C.TitleBodyItem>Nota Hoje</C.TitleBodyItem>
+            <C.BodyCard>
+              <C.BodyItem>
+                <C.TitleBodyItem>Nota Hoje</C.TitleBodyItem>
 
-              <C.ContentBodyItem>
-                <p>150</p>
-                <LuInfo size={13} color='#6b6b6be4' />
-              </C.ContentBodyItem>
-            </C.BodyItem>
+                <C.ContentBodyItem>
+                  <p>150</p>
+                  <LuInfo size={13} color='#6b6b6be4' />
+                </C.ContentBodyItem>
+              </C.BodyItem>
 
-            <C.Divider />
+              <C.Divider />
 
-            <C.BodyItem>
-              <C.TitleBodyItem>Sinc</C.TitleBodyItem>
+              <C.BodyItem>
+                <C.TitleBodyItem>Sinc</C.TitleBodyItem>
 
-              <C.ContentBodyItem>
-                <p>31/02/2025 14:06</p>
-              </C.ContentBodyItem>
-            </C.BodyItem>
-          </C.BodyCard>
+                <C.ContentBodyItem>
+                  <p>{comp.lastSynced && DateTime.fromISO(comp.lastSynced).toFormat('dd/MM/yyyy HH:mm')}</p>
+                </C.ContentBodyItem>
+              </C.BodyItem>
+            </C.BodyCard>
 
-          <C.FooterCard>
-            <C.FooterItem>
-              <HiOutlineMailOpen />
+            <C.FooterCard>
+              <C.FooterItem>
+                <HiOutlineMailOpen />
 
-              <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                <Label text='eriksjunuiifid@fdgg.com' color="#3767f1" fontSize='11px' fontWeight='500' hover='border-bottom: solid 1px red;'/>
-              </div>
-            </C.FooterItem>
+                <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
+                  <Label text={comp.email || ''} color="#3767f1" fontSize='11px' fontWeight='500' hover='border-bottom: solid 1px red;' />
+                </div>
+              </C.FooterItem>
 
-            <C.FooterItem>
-              <HiPhone />
-            
-              <div style={{padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                <Label text='(31) 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
-              </div>
-            </C.FooterItem>
-          </C.FooterCard>
-        </C.Card>
+              <C.FooterItem>
+                <HiPhone />
+
+                <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
+                  <Label text='(31) 9 9988-4545' color="#3767f1" fontSize='11px' fontWeight='500' />
+                </div>
+              </C.FooterItem>
+            </C.FooterCard>
+          </C.Card>
+        ))}
       </C.ContainerCard>
 
       <OffCanvas

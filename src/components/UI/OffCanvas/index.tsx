@@ -56,7 +56,7 @@ export function OffCanvas({
   useEffect(() => {
     setIsExpanded(expanded);
 
-    if (expanded && clearValues) clearValues();
+    if (!expanded && clearValues) clearValues();
   }, [expanded]);
 
   return (

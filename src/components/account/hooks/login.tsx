@@ -50,7 +50,7 @@ export function UseLogin() {
       const result: IUser = await Login(payload)
       const data = {
         user: result?.token || '',
-        company: result?.companies?.map(comp => comp.token) || []
+        company: result?.companies || []
       }
 
       localStorage.setItem('tokens', JSON.stringify(data))

@@ -1,4 +1,5 @@
 export interface FormValues {
+  id?: string | null
   name: string | null
   tradeName: string | null
   cpfCnpj: string | null
@@ -10,6 +11,7 @@ export interface FormValues {
   bairro?: string | null
   numero?: string | null
   uf: string | null
+  lastSynced?: string | null
   
   certification?: {
     name?: string | null
@@ -20,6 +22,7 @@ export interface FormValues {
 
 export const INITIAL_STATE_COMPANY: FormValues = {
   name: null,
+  id: null,
   tradeName: null,
   cpfCnpj: null,
   ie: null,
@@ -29,6 +32,7 @@ export const INITIAL_STATE_COMPANY: FormValues = {
   endereco: null,
   bairro: null,
   numero: null,
+  lastSynced: null,
   uf: null,
   certification: {
     name: null,

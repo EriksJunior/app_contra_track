@@ -47,13 +47,13 @@ function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>)
   }
 
   const setOutsideValues = (values: FormValues) => {
-    setForm(values)
+    setForm(values);
   }
 
   useImperativeHandle(innerRef, () => ({
     clear: () => setForm(INITIAL_STATE_COMPANY),
     payloadForm: () => form,
-    setOutsideValues: (values: FormValues) => setOutsideValues(values)
+    setOutsideValues
   }));
 
   return (
