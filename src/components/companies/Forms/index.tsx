@@ -120,10 +120,10 @@ function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>)
       >
 
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
-          <InputFilePfx getValues={(base64) => handleCertificate(base64)} isSelected={form?.certification?.certBase64 ? true : false} />
+          <InputFilePfx getValues={(base64) => handleCertificate(base64)} isSelected={!!form?.certification?.certBase64 || !!form.certification?.name} isEdit={!!form.certification?.certBase64 || !!form.certification?.name}/>
 
           <div style={{ width: '200px' }}>
-            <InputLabel name='passwordCert' placeholder='Senha do certificado' value={form.certification?.passwordCert || ''} handleChange={handleChange} />
+            <InputLabel isPassword name='passwordCert' placeholder='Senha do certificado' value={form.certification?.passwordCert || ''} handleChange={handleChange} />
           </div>
         </div>
       </SectionInputs>

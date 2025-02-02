@@ -7,6 +7,12 @@ export async function SaveCompany(company: FormCompany) {
   return data
 }
 
+export async function UpdateCompany(company: FormCompany) {
+  const { data } = await api.put(`/companies/${company.id}`, company)
+
+  return data
+}
+
 export async function FindCompanyById(id: string): Promise<FormCompany> {
   const { data } = await api.get(`/companies/${id}`)
 

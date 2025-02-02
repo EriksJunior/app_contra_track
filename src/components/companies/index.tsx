@@ -17,7 +17,7 @@ import { HiOutlineMailOpen } from "react-icons/hi";
 import { FaRegIdCard } from "react-icons/fa6";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
-import { SaveCompany, FindCompanyById } from '@/services/CompanyService'
+import { SaveCompany, UpdateCompany, FindCompanyById } from '@/services/CompanyService'
 
 import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
@@ -49,12 +49,47 @@ export function Companies() {
     return INITIAL_STATE_COMPANY
   }
 
+  const handleSaveOrUpdate = () => {
+    if (getFormValues()?.id)
+      return update()
+
+    save()
+  }
+
   const save = async () => {
     try {
       setIsLoading(true)
       if (!isValid()) return
 
       await SaveCompany(getFormValues())
+      toast.success("Nova empresa registrada ✅");
+      handleClearForm()
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          `${error?.response?.data?.message ||
+          "Opa, ocorreu um problema ao registrar essa empresa 🤯"
+          }`,
+          {
+            position: "top-right",
+          }
+        );
+
+        throw error
+      } else {
+        toast.error("Erro inesperado. Tente novamente.");
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const update = async () => {
+    try {
+      setIsLoading(true)
+      if (!isValid()) return
+
+      await UpdateCompany(getFormValues())
       toast.success("Nova empresa registrada ✅");
       handleClearForm()
     } catch (error: unknown) {
@@ -88,12 +123,19 @@ export function Companies() {
 
   const isValid = () => {
     const error = ValidateCompany(getFormValues())
-
     if (error && Object.keys(error).length) {
       const ref = refValidate[error.keyError as keyof typeof refValidate];
       if (ref?.current) {
         ref.current.setAttribute("required", "true");
         ref.current.focus();
+      } else {
+        toast.error(
+          `${error.message}`,
+          {
+            position: "top-right",
+          }
+        );
+
       }
 
       return false
@@ -111,7 +153,6 @@ export function Companies() {
   useEffect(() => {
     if (localStorage.getItem('tokens')) {
       const payload = JSON.parse(localStorage.getItem('tokens') || '')
-      console.log(payload?.company)
       setCompanies(payload?.company || [])
     }
   }, [])
@@ -192,11 +233,11 @@ export function Companies() {
         footer={
           <div style={{ display: 'flex', gap: '1rem' }}>
             <div>
-              <Button text='Novo' height='30px' backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' />
+              <Button text='Novo' height='30px' click={handleClearForm} backgroundColor='rgb(117, 129, 180)' hoverColor='rgb(100,114,175)' />
             </div>
 
             <div>
-              <Button text='Salvar' height='30px' click={save} isLoading={isLoading} />
+              <Button text='Salvar' height='30px' click={handleSaveOrUpdate} isLoading={isLoading} />
             </div>
           </div>
         }
