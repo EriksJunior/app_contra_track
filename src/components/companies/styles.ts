@@ -15,6 +15,7 @@ export const ContainerCard = styled.div`
 `
 
 export const Card = styled.div<StyledProps>`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;

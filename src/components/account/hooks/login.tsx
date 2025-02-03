@@ -49,8 +49,8 @@ export function UseLogin() {
 
       const result: IUser = await Login(payload)
       const data = {
-        user: result?.token || '',
-        company: result?.companies || []
+        company: result?.token || '',
+        companies: result?.companies?.filter((_, idx) => idx !== 0) || [],
       }
 
       localStorage.setItem('tokens', JSON.stringify(data))

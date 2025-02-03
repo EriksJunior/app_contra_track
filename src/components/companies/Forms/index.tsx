@@ -1,4 +1,6 @@
 import { forwardRef, useImperativeHandle, useState } from 'react'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 
 import { Button } from '@/components/UI/Button'
 import { Col } from '@/components/UI/Col'
@@ -11,6 +13,8 @@ import { SectionInputs } from '@/components/UI/SectionInputs'
 
 import { BsPersonVcard } from 'react-icons/bs'
 import { TbCertificate } from 'react-icons/tb'
+
+import { DeleteCertification } from '@/services/CompanyService'
 
 import { FormValues, INITIAL_STATE_COMPANY } from '../initialStates'
 
@@ -25,12 +29,13 @@ interface RefsToValidate {
 }
 
 interface Props {
-  refsToValidate: RefsToValidate
+  refsToValidate: RefsToValidate,
 }
 
 
 function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>) {
   const [form, setForm] = useState<FormValues>(INITIAL_STATE_COMPANY)
+  const [isLoadingDelCert, setIsLoadingDelCert] = useState<boolean>(false)
 
   useImperativeHandle(innerRef, () => ({
     clear: () => setForm(INITIAL_STATE_COMPANY),
@@ -57,8 +62,38 @@ function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>)
     setForm(values);
   }
 
-  const removeCert = () => {
+  const removeCert = async () => {
+    if (form.id)
+      await deleteCertificate(form.id)
+
     setForm(state => ({ ...state, certification: { certBase64: null, name: null, passwordCert: null } }));
+  }
+
+  const deleteCertificate = async (companyId: string) => {
+    try {
+      setIsLoadingDelCert(true)
+
+      await DeleteCertification(companyId)
+
+      toast.success("Certificado removido ✅");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(
+          `${error?.response?.data?.message ||
+          "Opa, ocorreu um problema ao registrar essa empresa 🤯"
+          }`,
+          {
+            position: "top-right",
+          }
+        );
+
+        throw error
+      } else {
+        toast.error("Erro inesperado. Tente novamente.");
+      }
+    } finally {
+      setIsLoadingDelCert(false)
+    }
   }
 
   return (
@@ -133,7 +168,7 @@ function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>)
             </div>
             :
             <div style={{ width: '200px' }}>
-              <Button text='Remover' height='30px' backgroundColor='#c52929' hoverColor='brown' click={removeCert} />
+              <Button text='Remover' height='30px' backgroundColor='#c52929' hoverColor='brown' click={removeCert} isLoading={isLoadingDelCert} />
             </div>
           }
         </div>

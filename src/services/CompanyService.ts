@@ -25,3 +25,22 @@ export async function FindCompanyById(id: string): Promise<FormCompany> {
     }
   }
 }
+
+export async function FindCompanies(): Promise<FormCompany[]> {
+  const { data } = await api.get(`/companies`)
+
+  return data?.map((item: FormCompany) => {
+    return {
+      ...item,
+      certification: {
+        name: item?.cert || null,
+        certBase64: null,
+        passwordCert: null,
+      }
+    }
+  })
+}
+
+export async function DeleteCertification(companyId: string): Promise<void> {
+  await api.delete(`/companies/${companyId}`)
+}

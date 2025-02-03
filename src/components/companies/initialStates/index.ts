@@ -12,12 +12,14 @@ export interface FormValues {
   numero?: string | null
   uf: string | null
   lastSynced?: string | null
-  
   certification?: {
     name?: string | null
     certBase64?: string | null
     passwordCert?: string | null
   }
+
+  // AUX
+  cert?: string
 };
 
 export const INITIAL_STATE_COMPANY: FormValues = {
@@ -32,8 +34,8 @@ export const INITIAL_STATE_COMPANY: FormValues = {
   endereco: null,
   bairro: null,
   numero: null,
-  lastSynced: null,
   uf: null,
+  lastSynced: null,
   certification: {
     name: null,
     certBase64: null,

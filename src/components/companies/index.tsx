@@ -6,7 +6,6 @@ import { toast } from 'react-toastify'
 import { FormCompany } from './Forms'
 import { Button } from '@/components/UI/Button'
 import { OffCanvas } from '@/components/UI/OffCanvas'
-import { Title } from '@/components/UI/Title'
 import { Label } from '@/components/UI/Label'
 
 import * as C from "./styles"
@@ -15,9 +14,11 @@ import { BsFillPersonPlusFill } from 'react-icons/bs'
 import { LuInfo } from "react-icons/lu";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { FaRegIdCard } from "react-icons/fa6";
+import { TbCertificate } from "react-icons/tb";
+import { IoMdInformationCircleOutline } from "react-icons/io";
 
 import { useOffCanvas } from '../../hook/useOffCanvas'
-import { SaveCompany, UpdateCompany, FindCompanyById } from '@/services/CompanyService'
+import { SaveCompany, UpdateCompany, FindCompanyById, FindCompanies } from '@/services/CompanyService'
 
 import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
@@ -90,13 +91,13 @@ export function Companies() {
       if (!isValid()) return
 
       await UpdateCompany(getFormValues())
-      toast.success("Nova empresa registrada ✅");
+      toast.success("Empresa Atualizada ✅");
       handleClearForm()
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         toast.error(
           `${error?.response?.data?.message ||
-          "Opa, ocorreu um problema ao registrar essa empresa 🤯"
+          "Opa, ocorreu um problema ao atualizar essa empresa 🤯"
           }`,
           {
             position: "top-right",
@@ -119,6 +120,13 @@ export function Companies() {
     if (formRef.current) {
       return formRef.current?.setOutsideValues(company);
     }
+  }
+
+  const list = async () => {
+    const listCompany = await FindCompanies()
+
+    if (listCompany)
+      setCompanies(listCompany)
   }
 
   const isValid = () => {
@@ -151,10 +159,7 @@ export function Companies() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('tokens')) {
-      const payload = JSON.parse(localStorage.getItem('tokens') || '')
-      setCompanies(payload?.company || [])
-    }
+    list()
   }, [])
 
   return (
@@ -167,7 +172,7 @@ export function Companies() {
         borderBottom: 'solid 1px #6b6b6b76',
         paddingBottom: '0.5rem'
       }}>
-        <Title fontSize='13px' color='#6b6b6be4' text='Empresas Registradas' />
+        <Label fontSize='13px' color='#6b6b6be4' text='Empresas Registradas' fontWeight='600' />
 
         <div>
           <Button icon={<BsFillPersonPlusFill size={17} color='white' />} click={toggleOffCanvas} height='30px' width='40px' />
@@ -176,12 +181,16 @@ export function Companies() {
 
       <C.ContainerCard>
         {companies?.map((comp, idx) => (
-          <C.Card onClick={() => findById(comp.id || '')} key={comp.id || idx} $borderLeftColor={!comp.certification?.name ? 'brown' : '' }>
-            <C.HeaderCard>
-              <Label text={comp.name || ''} color="#454545" fontSize='13px' fontWeight='600' />
+          <C.Card onClick={() => findById(comp.id || '')} key={comp.id || idx} $borderLeftColor={!comp.certification?.name ? 'brown' : ''}>
+            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+              <C.HeaderCard>
+                <Label text={comp.name || ''} color="#454545" fontSize='13px' fontWeight='600' />
 
-              <Label text={comp.tradeName || ''} color="#6b6b6be4" fontSize='11px' fontWeight='500' />
-            </C.HeaderCard>
+                <Label text={comp.tradeName || ''} color="#6b6b6be4" fontSize='11px' fontWeight='500' />
+              </C.HeaderCard>
+
+              {comp.cert ? <TbCertificate size={25} color='#1be25d' /> : <IoMdInformationCircleOutline color='brown' size={25}/>}
+            </div>
 
             <C.BodyCard>
               <C.BodyItem>
