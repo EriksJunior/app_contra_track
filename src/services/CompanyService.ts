@@ -16,5 +16,12 @@ export async function UpdateCompany(company: FormCompany) {
 export async function FindCompanyById(id: string): Promise<FormCompany> {
   const { data } = await api.get(`/companies/${id}`)
 
-  return data
+  return {
+    ...data,
+    certification: {
+      name: data?.cert || null,
+      certBase64: null,
+      passwordCert: null,
+    }
+  }
 }

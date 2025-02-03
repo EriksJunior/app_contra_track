@@ -42,3 +42,12 @@ export const TabText = styled.label<StyledProps>`
     }
   }
 `
+
+export const ActiveTab = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+`

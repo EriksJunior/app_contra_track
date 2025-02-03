@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react"
 import { Row } from "@/components/UI/Row"
-import { ContentTabText, TabText } from "./styles"
+import { ActiveTab, ContentTabText, TabText } from "./styles"
 
 interface Tabs {
   text: string
@@ -59,11 +59,11 @@ export function Tab({ tabs }: Props) {
       </Row>
 
 
-      <Row>
+      <ActiveTab>
         {activeTab && activeTab.component && (
           <activeTab.component text={`TAB ${cloneTabs.indexOf(activeTab) + 1}`} />
         )}
-      </Row>
+      </ActiveTab>
     </>
   )
 }

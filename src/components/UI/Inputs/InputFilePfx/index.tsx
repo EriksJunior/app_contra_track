@@ -7,7 +7,7 @@ import * as I from "./styles";
 interface Props {
   nameFileMaxWidth?: string
   getValues: (pfx: string) => void
-  isSelected: boolean,
+  isSelected: boolean
   isEdit: boolean
 }
 

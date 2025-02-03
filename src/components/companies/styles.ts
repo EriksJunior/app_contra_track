@@ -1,13 +1,20 @@
 import styled from "styled-components";
 
+interface StyledProps {
+  $borderLeftColor?: string
+}
+
 export const ContainerCard = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem ;
+  overflow: auto;
+  padding: 1.5rem 0;
 `
 
-export const Card = styled.div`
+export const Card = styled.div<StyledProps>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -17,7 +24,7 @@ export const Card = styled.div`
   border: solid 1px #00000017;
   border-radius: 10px;
   padding: 1rem;
-  border-left: solid 5px #1be25d;
+  border-left: solid 5px ${props => props.$borderLeftColor || '#1be25d'};
   cursor: pointer;
   transition: ease-in all 0.1s;
 

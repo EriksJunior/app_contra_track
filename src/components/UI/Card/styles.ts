@@ -29,6 +29,7 @@ export const Container = styled.div<StyledProps>`
   cursor: ${props => props.$pointer && "pointer"};
   transition: ease-in all 0.1s;
   background-color: ${props => props.$theme === E_THEME.lightMode ? lightTheme.light : darkTheme.secondary};
+  overflow: auto;
 
   &:hover {
     ${(props) => props.$notHoverShadow && props.$theme === E_THEME.lightMode ?

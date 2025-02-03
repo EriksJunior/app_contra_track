@@ -158,7 +158,7 @@ export function Companies() {
   }, [])
 
   return (
-    <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div style={{ width: '100%', height: 'auto', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
       <div style={{
         display: 'flex',
         width: '100%',
@@ -176,7 +176,7 @@ export function Companies() {
 
       <C.ContainerCard>
         {companies?.map((comp, idx) => (
-          <C.Card onClick={() => findById(comp.id || '')} key={comp.id || idx}>
+          <C.Card onClick={() => findById(comp.id || '')} key={comp.id || idx} $borderLeftColor={!comp.certification?.name ? 'brown' : '' }>
             <C.HeaderCard>
               <Label text={comp.name || ''} color="#454545" fontSize='13px' fontWeight='600' />
 

@@ -1,5 +1,6 @@
 import { forwardRef, useImperativeHandle, useState } from 'react'
 
+import { Button } from '@/components/UI/Button'
 import { Col } from '@/components/UI/Col'
 import { InputFilePfx } from '@/components/UI/Inputs/InputFilePfx'
 import { InputLabel } from '@/components/UI/Inputs/InputText'
@@ -31,6 +32,12 @@ interface Props {
 function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>) {
   const [form, setForm] = useState<FormValues>(INITIAL_STATE_COMPANY)
 
+  useImperativeHandle(innerRef, () => ({
+    clear: () => setForm(INITIAL_STATE_COMPANY),
+    payloadForm: () => form,
+    setOutsideValues
+  }));
+
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const newState = e?.currentTarget?.name === 'passwordCert'
       ?
@@ -50,11 +57,9 @@ function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>)
     setForm(values);
   }
 
-  useImperativeHandle(innerRef, () => ({
-    clear: () => setForm(INITIAL_STATE_COMPANY),
-    payloadForm: () => form,
-    setOutsideValues
-  }));
+  const removeCert = () => {
+    setForm(state => ({ ...state, certification: { certBase64: null, name: null, passwordCert: null } }));
+  }
 
   return (
     <Col margin='0.5rem 0 0 0' gap='1.3rem'>
@@ -119,12 +124,18 @@ function Form({ refsToValidate }: Props, innerRef: React.Ref<FormCompanyHandle>)
         textLabel='Certificado'
       >
 
-        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1rem' }}>
-          <InputFilePfx getValues={(base64) => handleCertificate(base64)} isSelected={!!form?.certification?.certBase64 || !!form.certification?.name} isEdit={!!form.certification?.certBase64 || !!form.certification?.name}/>
+        <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+          <InputFilePfx getValues={(base64) => handleCertificate(base64)} isSelected={!!form?.certification?.certBase64 || !!form.certification?.name} isEdit={!!form.certification?.certBase64 || !!form.certification?.name} />
 
-          <div style={{ width: '200px' }}>
-            <InputLabel isPassword name='passwordCert' placeholder='Senha do certificado' value={form.certification?.passwordCert || ''} handleChange={handleChange} />
-          </div>
+          {!form.certification?.name ?
+            <div style={{ width: '200px' }}>
+              <InputLabel isPassword name='passwordCert' placeholder='Senha do certificado' value={form.certification?.passwordCert || ''} handleChange={handleChange} />
+            </div>
+            :
+            <div style={{ width: '200px' }}>
+              <Button text='Remover' height='30px' backgroundColor='#c52929' hoverColor='brown' click={removeCert} />
+            </div>
+          }
         </div>
       </SectionInputs>
     </Col>
