@@ -15,19 +15,27 @@ import { BsGear } from "react-icons/bs";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { PiMoonFill, PiSunFill, PiArrowsDownUpLight } from "react-icons/pi";
 
-
 import { RiNewspaperFill } from "react-icons/ri";
 import * as S from "./styles";
 import { Card } from "../UI/Card";
+
+import { MaskCpf } from "@/utils/maskCpf";
 
 interface Props {
   children?: ReactNode
 }
 
+interface ListCompany {
+  name: string
+  email: string
+  token: string
+  cpfCnpj: string
+}
+
 export function Sidebar({ children }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [lockSidebar, setLockSidebar] = useState(false);
-  const [company, setCompany] = useState({ selectedCompany: { name: '', email: '' }, companies: [{ name: '', email: '' }] });
+  const [company, setCompany] = useState({ selectedCompany: { name: '', email: '' }, companies: [{ name: '', email: '', token: '', cpfCnpj: '' }] });
   const [showListCompanies, setShowListCompanies] = useState(false);
   const [media, setMedia] = useState(0);
 
@@ -93,7 +101,7 @@ export function Sidebar({ children }: Props) {
     if (theme === E_THEME.lightMode) return setTheme(E_THEME.darkMode);
     setTheme(E_THEME.lightMode);
   };
-  
+
 
   const showSelectedCompany = () => {
     if (localStorage.getItem('tokens')) {
@@ -104,7 +112,7 @@ export function Sidebar({ children }: Props) {
           name: tokens?.companySelected?.name,
           email: tokens?.companySelected?.email
         },
-        companies: tokens?.companies?.map((comp: { name: string, email: string }) => { return { name: comp.name, email: comp.email } })
+        companies: tokens?.companies?.map((comp: ListCompany) => { return { name: comp.name, email: comp.email, token: comp.token, cpfCnpj: comp.cpfCnpj } })
       }
 
       setCompany(payload)
@@ -113,6 +121,23 @@ export function Sidebar({ children }: Props) {
 
   const handleCloseListCompanies = () => {
     setShowListCompanies(false)
+  }
+
+  const setCompanySelect = (company: ListCompany) => {
+    if (localStorage.getItem('tokens')) {
+      const tokens = JSON.parse(localStorage.getItem('tokens') || '')
+
+      const payload = {
+        ...tokens,
+        companySelected: {
+          name: company.name,
+          email: company.email,
+          token: company.token,
+        },
+      }
+
+      localStorage.setItem('tokens', JSON.stringify(payload))
+    }
   }
 
   useEffect(() => {
@@ -372,12 +397,16 @@ export function Sidebar({ children }: Props) {
                   <S.ContainerSelectCompany onClick={handleCloseListCompanies} $show={showListCompanies} className="containerSelectCompany" ref={dropdownRef}>
                     <S.ListCompanies>
                       {company.companies.map((comp, idx) => (
-                        <S.CompanyItem key={idx} $isSelected={idx === 0 ? true : false}>
-                          <p style={{ lineHeight: 1 }}>
-                            {comp.name}
-                          </p>
+                        <S.CompanyItem key={idx} $isSelected={idx === 0 ? true : false} onClick={() => setCompanySelect(comp)}>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                            <p style={{ lineHeight: 1 }}>
+                              {comp.name}
+                            </p>
 
-                          <div className={idx === 0 ? 'selectedCompany' : ''} />
+                            <p className="cpfCnpj">
+                              {MaskCpf(comp.cpfCnpj)}
+                            </p>
+                          </div>
                         </S.CompanyItem>
                       ))}
                     </S.ListCompanies>

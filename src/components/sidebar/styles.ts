@@ -295,6 +295,7 @@ export const ContainerSelectCompany = styled.div<StyledProps>`
   border-radius: 10px;
   box-shadow: 0 0px 2px 1px #00000017;
   padding: 0.3rem;
+  z-index: 500;
 
   &::before {
     content: "";
@@ -359,17 +360,24 @@ export const CompanyItem = styled.li<StyledProps>`
   transition: ease-in all 0.1s;
   box-shadow: ${props => props.$isSelected && '0 0px 2px 1px #00000017'};
   border: ${props => props.$isSelected && 'solid 1px #00000017'};
+  border-left: ${props => props.$isSelected && 'solid 10px #40c29c'};
   
   .selectedCompany {
     width: 10px;
     height: 10px;
-    background-color: greenyellow;
+    background-color: #40c29c;
     border-radius: 50%;
   }
 
   &:hover {
     background-color: ${props => !props.$isSelected && 'rgba(100, 114, 175, 0.23)'};
     transition: ease-in all 0.1s;
+  }
+
+  .cpfCnpj {
+    line-height: 1;
+    font-size: 10px;
+    color: ${props => props.$isSelected ? 'greenyellow' : '#808080a3'};
   }
 `
 
