@@ -35,7 +35,7 @@ interface ListCompany {
 export function Sidebar({ children }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [lockSidebar, setLockSidebar] = useState(false);
-  const [company, setCompany] = useState({ selectedCompany: { name: '', email: '' }, companies: [{ name: '', email: '', token: '', cpfCnpj: '' }] });
+  const [company, setCompany] = useState({ companySelected: { name: '', email: '' }, companies: [{ name: '', email: '', token: '', cpfCnpj: '' }] });
   const [showListCompanies, setShowListCompanies] = useState(false);
   const [media, setMedia] = useState(0);
 
@@ -108,7 +108,7 @@ export function Sidebar({ children }: Props) {
       const tokens = JSON.parse(localStorage.getItem('tokens') || '')
 
       const payload = {
-        selectedCompany: {
+        companySelected: {
           name: tokens?.companySelected?.name,
           email: tokens?.companySelected?.email
         },
@@ -137,6 +137,9 @@ export function Sidebar({ children }: Props) {
       }
 
       localStorage.setItem('tokens', JSON.stringify(payload))
+
+      Reflect.deleteProperty(payload.companySelected, 'token')
+      setCompany(payload)
     }
   }
 
@@ -381,7 +384,7 @@ export function Sidebar({ children }: Props) {
                         justifyContent: "space-between",
                       }}
                     >
-                      <S.UserName>{company.selectedCompany.name}</S.UserName>
+                      <S.UserName>{company.companySelected.name}</S.UserName>
 
                       <PiArrowsDownUpLight
                         className="menuProfile"
@@ -391,13 +394,13 @@ export function Sidebar({ children }: Props) {
                       />
                     </div>
 
-                    <S.EmailText>{company.selectedCompany.email}</S.EmailText>
+                    <S.EmailText>{company.companySelected.email}</S.EmailText>
                   </div>
 
                   <S.ContainerSelectCompany onClick={handleCloseListCompanies} $show={showListCompanies} className="containerSelectCompany" ref={dropdownRef}>
                     <S.ListCompanies>
                       {company.companies.map((comp, idx) => (
-                        <S.CompanyItem key={idx} $isSelected={idx === 0 ? true : false} onClick={() => setCompanySelect(comp)}>
+                        <S.CompanyItem key={idx} $isSelected={comp.name === company.companySelected.name ? true : false} onClick={() => setCompanySelect(comp)}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
                             <p style={{ lineHeight: 1 }}>
                               {comp.name}
