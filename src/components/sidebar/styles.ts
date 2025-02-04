@@ -14,6 +14,8 @@ interface StyledProps {
   $theme?: string;
   $isExpanded?: boolean;
   $ulPadding?: string
+  $isSelected?: boolean
+  $show?: boolean
 }
 
 export const Children = styled.div`
@@ -233,6 +235,7 @@ export const NavFooter = styled.div`
 
 export const ContainerProfile = styled.div`
   width: 100%;
+  position: relative;
   display: flex;
   padding: 0.3rem;
   gap: 0.8rem;
@@ -240,10 +243,8 @@ export const ContainerProfile = styled.div`
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 2px 0 #00000063;
-  overflow-y: hidden;
-  overflow-x: hidden;
   user-select: none;
-
+  cursor: pointer;
   
   @media screen and (max-height: 710px){
     box-shadow: 0 0 1px 0 #000000a8;
@@ -263,6 +264,8 @@ export const EmailText = styled.p`
   color: gray;
   font-weight: 600;
   line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const UserName = styled.p`
@@ -270,6 +273,8 @@ export const UserName = styled.p`
   color: black;
   font-weight: 600;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 export const Logo = styled(Image)`
@@ -279,6 +284,95 @@ export const Logo = styled(Image)`
   cursor: pointer;
   transition: ease all 0.3s;
 `
+
+export const ContainerSelectCompany = styled.div<StyledProps>`
+  width: 204px;
+  height: auto;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  bottom: 63px;
+  border-radius: 10px;
+  box-shadow: 0 0px 2px 1px #00000017;
+  padding: 0.3rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 13%;
+    bottom: -12px; 
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 11px solid transparent; 
+    border-right: 11px solid transparent;
+    border-top: 11px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 13%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+  }
+
+  ${(props) => props.$show ? 
+    `
+      display: block;
+    `
+    : 
+    `
+      display: none;
+    `
+  }
+`
+
+export const ListCompanies = styled.ul`
+  padding: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  max-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+`
+
+export const CompanyItem = styled.li<StyledProps>`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: 13px;
+  background-color: ${props => props.$isSelected && 'rgb(100,114,175)'} ;
+  color: ${props => props.$isSelected ? 'white' : 'gray'} ;
+  border-radius: 5px;
+  padding: 0.5rem 0.3rem;
+  transition: ease-in all 0.1s;
+  box-shadow: ${props => props.$isSelected && '0 0px 2px 1px #00000017'};
+  border: ${props => props.$isSelected && 'solid 1px #00000017'};
+  
+  .selectedCompany {
+    width: 10px;
+    height: 10px;
+    background-color: greenyellow;
+    border-radius: 50%;
+  }
+
+  &:hover {
+    background-color: ${props => !props.$isSelected && 'rgba(100, 114, 175, 0.23)'};
+    transition: ease-in all 0.1s;
+  }
+`
+
 export const ContentNavAndFooter = styled.div`
   height: calc(100% - 2.5rem);
   display: flex;
@@ -327,6 +421,9 @@ export const Sidebar = styled.div<StyledProps>`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .menuProfile {

@@ -10,6 +10,7 @@ export interface IUser {
     {
       cpfCnpj?: number | null,
       name?: string,
+      email?: string,
       lastSynced?: string,
       active?: boolean,
       token?: string,

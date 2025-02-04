@@ -49,7 +49,11 @@ export function UseLogin() {
 
       const result: IUser = await Login(payload)
       const data = {
-        company: result?.token || '',
+        companySelected: {
+          name: result?.companies && result?.companies[0].name,
+          email: result?.companies && result?.companies[0].email,
+          token: result?.companies && result?.companies[0].token,
+        },
         companies: result?.companies?.filter((_, idx) => idx !== 0) || [],
       }
 

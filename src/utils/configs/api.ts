@@ -9,7 +9,7 @@ api.interceptors.request.use((value: InternalAxiosRequestConfig) => {
   if (localStorage.getItem('tokens')) {
     const tokens = JSON.parse(localStorage.getItem('tokens') || '')
 
-    value.headers.set('authorization', `Bearer ${tokens?.company}`)
+    value.headers.set('authorization', `Bearer ${tokens?.companySelected?.token}`)
   }
 
   return value

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useContext, ReactNode } from "react";
+import { useEffect, useState, useContext, useRef, ReactNode } from "react";
 import { usePathname, useRouter } from 'next/navigation'
 import { ToastContainer } from "react-toastify";
 
@@ -13,7 +13,8 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { BsGear } from "react-icons/bs";
 import { MdOutlineNotificationsActive } from "react-icons/md";
-import { PiMoonFill, PiSunFill } from "react-icons/pi";
+import { PiMoonFill, PiSunFill, PiArrowsDownUpLight } from "react-icons/pi";
+
 
 import { RiNewspaperFill } from "react-icons/ri";
 import * as S from "./styles";
@@ -26,7 +27,11 @@ interface Props {
 export function Sidebar({ children }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [lockSidebar, setLockSidebar] = useState(false);
+  const [company, setCompany] = useState({ selectedCompany: { name: '', email: '' }, companies: [{ name: '', email: '' }] });
+  const [showListCompanies, setShowListCompanies] = useState(false);
   const [media, setMedia] = useState(0);
+
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const { theme, setTheme } = useContext(GeneralContext);
 
@@ -88,6 +93,27 @@ export function Sidebar({ children }: Props) {
     if (theme === E_THEME.lightMode) return setTheme(E_THEME.darkMode);
     setTheme(E_THEME.lightMode);
   };
+  
+
+  const showSelectedCompany = () => {
+    if (localStorage.getItem('tokens')) {
+      const tokens = JSON.parse(localStorage.getItem('tokens') || '')
+
+      const payload = {
+        selectedCompany: {
+          name: tokens?.companySelected?.name,
+          email: tokens?.companySelected?.email
+        },
+        companies: tokens?.companies?.map((comp: { name: string, email: string }) => { return { name: comp.name, email: comp.email } })
+      }
+
+      setCompany(payload)
+    }
+  }
+
+  const handleCloseListCompanies = () => {
+    setShowListCompanies(false)
+  }
 
   useEffect(() => {
     setMedia(window.innerWidth);
@@ -102,7 +128,25 @@ export function Sidebar({ children }: Props) {
         ...navChecked,
         home: true,
       });
+
+    showSelectedCompany()
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        handleCloseListCompanies();
+      }
+    }
+
+    if (showListCompanies) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showListCompanies])
 
   return (
     <div style={{ height: "100%" }}>
@@ -292,7 +336,7 @@ export function Sidebar({ children }: Props) {
                   </S.Li>
                 </S.Ul>
 
-                <S.ContainerProfile>
+                <S.ContainerProfile onClick={() => setShowListCompanies(state => !state)}>
                   <S.ImgProfile
                     src="/logo2.png"
                     alt="Logo"
@@ -306,22 +350,38 @@ export function Sidebar({ children }: Props) {
                     className="contentProfileTitles"
                     style={{ width: "100%" }}
                   >
-                    <S.UserName>Usuario Teste</S.UserName>
                     <div
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                       }}
                     >
-                      <S.EmailText>user_test@gmail.com</S.EmailText>
-                      {/* <SlOptionsVertical
+                      <S.UserName>{company.selectedCompany.name}</S.UserName>
+
+                      <PiArrowsDownUpLight
                         className="menuProfile"
                         size={17}
                         color="#0000006e"
                         cursor={"pointer"}
-                      /> */}
+                      />
                     </div>
+
+                    <S.EmailText>{company.selectedCompany.email}</S.EmailText>
                   </div>
+
+                  <S.ContainerSelectCompany onClick={handleCloseListCompanies} $show={showListCompanies} className="containerSelectCompany" ref={dropdownRef}>
+                    <S.ListCompanies>
+                      {company.companies.map((comp, idx) => (
+                        <S.CompanyItem key={idx} $isSelected={idx === 0 ? true : false}>
+                          <p style={{ lineHeight: 1 }}>
+                            {comp.name}
+                          </p>
+
+                          <div className={idx === 0 ? 'selectedCompany' : ''} />
+                        </S.CompanyItem>
+                      ))}
+                    </S.ListCompanies>
+                  </S.ContainerSelectCompany>
                 </S.ContainerProfile>
               </S.NavFooter>
             </S.ContentNavAndFooter>
