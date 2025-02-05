@@ -7,9 +7,6 @@ export const Right = styled.div`
   justify-content: center;
   gap: 1.3rem;
 
-  @media screen and (min-width: 1366px) {
-    width: 65%;
-  }
 
   @media screen and (max-width: 1020px) {
     height: 100%;
@@ -24,7 +21,8 @@ export const Right = styled.div`
 export const CreateAccountText = styled.p`
   margin: 0;
   font-size: 2rem;
-  color: white;
+  color: black;
+  
 
   @media screen and (max-width: 1366px) {
     font-size: 1.5rem;
@@ -33,6 +31,16 @@ export const CreateAccountText = styled.p`
 
 export const TextAddCompany = styled.p`
   font-size: 0.7rem;
-  color: white;
-  font-weight: 500;
+  color: black;
+`
+
+export const ItemsCreateAccount = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  @media screen and (max-width: 600px){
+    overflow: auto;
+    padding: 0.5rem  0.5rem 1rem 0;
+  }
 `

@@ -227,7 +227,10 @@ export function Sidebar({ children }: Props) {
                   </S.ContentNavItems>
                 </S.Li>
 
-                <S.Li onClick={() => router.push("/")}>
+                <S.Li onClick={() => {
+                  if (pathname !== '/documents')
+                    router.push("/documents")
+                }}>
                   <S.InputRadio
                     type="radio"
                     name="default"
@@ -247,7 +250,10 @@ export function Sidebar({ children }: Props) {
                   </S.ContentNavItems>
                 </S.Li>
 
-                <S.Li onClick={() => router.push("/")}>
+                <S.Li onClick={() => {
+                  if (pathname !== '/reports')
+                    router.push("/reports")
+                }}>
                   <S.InputRadio
                     type="radio"
                     name="default"
@@ -267,7 +273,10 @@ export function Sidebar({ children }: Props) {
                   </S.ContentNavItems>
                 </S.Li>
 
-                <S.Li onClick={() => router.push("/")}>
+                <S.Li onClick={() => {
+                  if (pathname !== '/profile')
+                    router.push("/profile")
+                }}>
                   <S.InputRadio
                     type="radio"
                     name="default"
@@ -289,7 +298,10 @@ export function Sidebar({ children }: Props) {
 
                 <hr style={{ color: "whitesmoke" }} />
 
-                <S.Li onClick={() => router.push("/")}>
+                <S.Li onClick={() => {
+                  if (pathname !== '/notifications')
+                    router.push("/notifications")
+                }}>
                   <S.InputRadio
                     type="radio"
                     name="default"

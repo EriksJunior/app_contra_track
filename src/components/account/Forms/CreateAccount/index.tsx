@@ -20,27 +20,30 @@ export function CreateAccount({ toggle }: Props) {
   return (
     <L.Right>
       <div>
-        <L.CreateAccountText>Crie sua conta</L.CreateAccountText>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <L.CreateAccountText>Crie sua conta</L.CreateAccountText>
 
-        <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'gray' }}>
+          <p style={{ fontSize: '0.7rem', marginTop: '0', color: 'black' }} onClick={toggle}>
+            Já tem uma conta ? <span style={{ color: '#2246b1', borderBottom: 'solid 1px #2246b1', cursor: 'pointer' }}>Entrar</span>
+          </p>
+        </div>
+
+        <p style={{ fontSize: '0.7rem', marginTop: '0', color: 'gray' }}>
           Crie uma nova conta e vincule empresas para gerenciá-las!
-        </p>
-        <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'white', fontWeight: 500 }} onClick={toggle}>
-          Já tem uma conta ? <span style={{ color: '#32f9f2', borderBottom: 'solid 1px #32f9f2', cursor: 'pointer' }}>Entrar</span>
         </p>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.3rem' }}>
+      <L.ItemsCreateAccount>
         <SectionInputs>
           <Col gap="1.3rem">
             <Row>
               <InputLabel
                 name='name'
                 placeholder="Nome"
-                backColorInput="#323141"
-                borderInput="none"
+                backColorInput="#e8f0fe"
+                borderInput="solid 1px #cecece"
+                colorInput="black"
                 paddingInput="0 1rem"
-                colorInput="white"
                 isLarge
                 innerRef={refValidate.user.name}
                 value={account.user.name || ''}
@@ -52,10 +55,10 @@ export function CreateAccount({ toggle }: Props) {
               <InputLabel
                 name='login'
                 placeholder="Email"
-                backColorInput="#323141"
-                borderInput="none"
+                backColorInput="#e8f0fe"
+                borderInput="solid 1px #cecece"
+                colorInput="black"
                 paddingInput="0 1rem"
-                colorInput="white"
                 isLarge
                 innerRef={refValidate.user.login}
                 value={account.user.login || ''}
@@ -67,10 +70,10 @@ export function CreateAccount({ toggle }: Props) {
               <InputLabel
                 name='password'
                 placeholder="Password"
-                backColorInput="#323141"
-                borderInput="none"
+                backColorInput="#e8f0fe"
+                borderInput="solid 1px #cecece"
+                colorInput="black"
                 paddingInput="0 45px 0 1rem"
-                colorInput="white"
                 isLarge
                 isPassword
                 innerRef={refValidate.user.password}
@@ -92,10 +95,10 @@ export function CreateAccount({ toggle }: Props) {
                 <InputLabel
                   name='name'
                   placeholder="Razao Social"
-                  backColorInput="#323141"
-                  borderInput="none"
+                  backColorInput="#e8f0fe"
+                  borderInput="solid 1px #cecece"
+                  colorInput="black"
                   paddingInput="0 1rem"
-                  colorInput="white"
                   isLarge
                   innerRef={refValidate.company.name}
                   value={account.company.name || ''}
@@ -107,10 +110,10 @@ export function CreateAccount({ toggle }: Props) {
                 <InputLabel
                   name='tradeName'
                   placeholder="Nome Fantasia"
-                  backColorInput="#323141"
-                  borderInput="none"
+                  backColorInput="#e8f0fe"
+                  borderInput="solid 1px #cecece"
+                  colorInput="black"
                   paddingInput="0 1rem"
-                  colorInput="white"
                   isLarge
                   innerRef={refValidate.company.tradeName}
                   value={account.company.tradeName || ''}
@@ -124,10 +127,10 @@ export function CreateAccount({ toggle }: Props) {
                 <InputLabel
                   name='email'
                   placeholder="Email"
-                  backColorInput="#323141"
-                  borderInput="none"
+                  backColorInput="#e8f0fe"
+                  borderInput="solid 1px #cecece"
+                  colorInput="black"
                   paddingInput="0 1rem"
-                  colorInput="white"
                   isLarge
                   innerRef={refValidate.company.email}
                   value={account.company.email || ''}
@@ -139,10 +142,10 @@ export function CreateAccount({ toggle }: Props) {
                 <InputCpfCnpj
                   name='cpfCnpj'
                   placeholder="CPF/CNPJ"
-                  backColorInput="#323141"
-                  borderInput="none"
+                  backColorInput="#e8f0fe"
+                  borderInput="solid 1px #cecece"
+                  colorInput="black"
                   paddingInput="0 1rem"
-                  colorInput="white"
                   isLarge
                   innerRef={refValidate.company.cpfCnpj}
                   value={account.company.cpfCnpj || ''}
@@ -156,10 +159,10 @@ export function CreateAccount({ toggle }: Props) {
                 <InputLabel
                   name='uf'
                   placeholder="UF"
-                  backColorInput="#323141"
-                  borderInput="none"
+                  backColorInput="#e8f0fe"
+                  borderInput="solid 1px #cecece"
+                  colorInput="black"
                   paddingInput="0 1rem"
-                  colorInput="white"
                   isLarge
                   innerRef={refValidate.company.uf}
                   value={account.company.uf?.toUpperCase() || ''}
@@ -172,10 +175,10 @@ export function CreateAccount({ toggle }: Props) {
                 <InputLabel
                   name='cidade'
                   placeholder="Cidade"
-                  backColorInput="#323141"
-                  borderInput="none"
+                  backColorInput="#e8f0fe"
+                  borderInput="solid 1px #cecece"
+                  colorInput="black"
                   paddingInput="0 1rem"
-                  colorInput="white"
                   isLarge
                   innerRef={refValidate.company.cidade}
                   value={account.company.cidade || ''}
@@ -202,7 +205,7 @@ export function CreateAccount({ toggle }: Props) {
             click={createAccount}
           />
         </Row>
-      </div>
+      </L.ItemsCreateAccount>
     </L.Right>
   )
 }

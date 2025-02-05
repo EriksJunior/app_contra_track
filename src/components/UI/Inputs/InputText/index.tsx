@@ -18,6 +18,7 @@ interface Props {
   backColorInput?: string
   paddingInput?: string
   borderInput?: string
+  borderColorOnFocus?: string
   colorInput?: string
   isPassword?: boolean
 }
@@ -38,6 +39,7 @@ export function InputLabel({
   backColorInput,
   paddingInput,
   borderInput,
+  borderColorOnFocus,
   colorInput,
   isPassword = false
 }: Props) {
@@ -69,6 +71,7 @@ export function InputLabel({
           $backColor={backColorInput}
           $padding={paddingInput}
           $border={borderInput}
+          $borderColorOnFocus={borderColorOnFocus}
           $color={colorInput}
           $isPassword={isPassword}
           value={value || ""}
@@ -87,6 +90,7 @@ export function InputLabel({
           $backColor={backColorInput}
           $padding={paddingInput}
           $border={borderInput}
+          $borderColorOnFocus={borderColorOnFocus}
           $color={colorInput}
           value={value || ""}
           onInput={handleInput}

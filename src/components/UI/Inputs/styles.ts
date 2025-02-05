@@ -9,6 +9,7 @@ interface StyledProps {
   $backColor?: string
   $padding?: string
   $border?: string
+  $borderColorOnFocus?: string
   $color?: string
 }
 
@@ -86,7 +87,10 @@ export const InputText = styled.input<StyledProps>`
 
   &:focus {
     transition: ease-in 0.1s all;
-    box-shadow: 0 0 2px 1px rgb(255, 255, 255);
+
+    ${props => props.$borderColorOnFocus && `
+      box-shadow: 0 0 2px 1px ${props.$borderColorOnFocus};
+    `}
   }
 
   &:required {
@@ -120,7 +124,7 @@ export const InputText = styled.input<StyledProps>`
         height: 45px;
         @media screen and (max-width: 1366px){
          & {
-           height: 30px;
+           height: 40px;
          }
 
         &::placeholder {

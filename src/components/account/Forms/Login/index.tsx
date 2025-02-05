@@ -40,6 +40,7 @@ export function Login({ toggle }: Props) {
                 placeholder="Email"
                 backColorInput="#e8f0fe"
                 borderInput="solid 1px #cecece"
+                 borderColorOnFocus="rgb(157, 172, 242)"
                 paddingInput="0 1rem"
                 colorInput="black"
                 isLarge
@@ -54,6 +55,7 @@ export function Login({ toggle }: Props) {
                 placeholder="Password"
                 backColorInput="#e8f0fe"
                 borderInput="solid 1px #cecece"
+                borderColorOnFocus="rgb(157, 172, 242)"
                 paddingInput="0 45px 0 1rem"
                 colorInput="black"
                 isLarge
@@ -83,7 +85,7 @@ export function Login({ toggle }: Props) {
         </Row>
 
 
-        <Col gap="2rem">
+        <Col gap="1.3rem">
           <Row>
             <Button
               isLoginButton
@@ -91,11 +93,10 @@ export function Login({ toggle }: Props) {
               color="black"
               border="solid 1px #cecece"
               backgroundColor="transparent"
-              hoverColor="whitesmoke"
+              hoverColor="white"
               icon={<FcGoogle size={25} />}
             />
           </Row>
-
 
           <Row>
             <Button

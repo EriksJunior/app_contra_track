@@ -23,9 +23,7 @@ export const Content = styled.div`
   align-items: center;
   padding: 1rem;
   backdrop-filter: blur( 13.5px );
-  -webkit-backdrop-filter: blur( 13.5px );
   background: rgba( 255, 255, 255, 0.35 );
-
 
   @media screen and (max-width: 1366px) {
     height: 100%;
@@ -103,17 +101,17 @@ export const ContentRight = styled.div`
   align-items: center;
   height: 100%;
   background-color: #ffffffd1;
-  border-radius: 50px;
+  border-radius: 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
   border: solid 1px #cecece!important;
   max-width: 600px;
 
   @media screen and (max-width: 1366px) {
-    width: 65%;
+    width: 570px;
     padding-top: 1rem;
   }
 
-  @media screen and (min-width: 1366px) {
+  @media screen and (min-width: 1367px) {
     width: 50%;
   }
 
