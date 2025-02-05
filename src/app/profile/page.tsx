@@ -1,5 +1,9 @@
-export default function Profile () {
+"use client"
+
+import { Title } from "@/components/UI/Title";
+
+export default function Profile() {
   return (
-    <p>Profile</p>
+    <Title fontSize='20px' color='black' text='Profile' />
   )
 }

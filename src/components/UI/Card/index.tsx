@@ -27,7 +27,7 @@ const Card = memo(function Card({
 }: Props) {
 
   return (
-    <C.Container
+    <C.ContainerCard
       $height={height}
       $flexBasic={flexBasic}
       $between={between}
@@ -38,7 +38,7 @@ const Card = memo(function Card({
       onClick={click}
     >
       {children}
-    </C.Container>
+    </C.ContainerCard>
   );
 })
 

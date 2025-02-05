@@ -52,8 +52,7 @@ export const BodyItem = styled.div`
   width: 100px;
 `
 
-export const TitleBodyItem = styled.div`
-  color: #6b6b6be4;
+export const TitleBodyItem = styled.p`
   font-size: 11px;
 `
 
@@ -61,12 +60,11 @@ export const ContentBodyItem = styled.div `
   display: flex;
   gap: 0.3rem;
   align-items: center;
+`
 
-  p {
-    color: #454545;
-    font-size: 11px;
-    font-weight: 600;
-  }
+export const BodyItemText = styled.p`
+  font-size: 11px;
+  font-weight: 600;
 `
 
 export const Divider = styled.div`

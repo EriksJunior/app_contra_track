@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { GeneralContext } from "@/context"
+
 import { Row } from "@/components/UI/Row"
+
 import { ActiveTab, ContentTabText, TabText } from "./styles"
 
 interface Tabs {
@@ -15,6 +18,7 @@ interface Props {
 
 export function Tab({ tabs }: Props) {
   const [cloneTabs, setCloneTabs] = useState<Tabs[]>([])
+  const { theme } = useContext(GeneralContext)
 
   const activeTab = cloneTabs.find((cTab) => cTab.active);
 
@@ -47,10 +51,8 @@ export function Tab({ tabs }: Props) {
       <Row>
         {cloneTabs.map((tab, idx) => (
           <div key={tab.text} onClick={() => handleClick(idx)}>
-            <ContentTabText style={{
-              ...(tab.active && { backgroundColor: "#80808024" })
-            }}>
-              <TabText $color={tab.active ? 'black' : '#6b6b6bdd'}>
+            <ContentTabText $theme={theme} $isActive={tab.active}>
+              <TabText $theme={theme} $isActive={tab.active}>
                 {tab.text}
               </TabText>
             </ContentTabText>

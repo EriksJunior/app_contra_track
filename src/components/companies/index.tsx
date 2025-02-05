@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { DateTime } from 'luxon'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { toast } from 'react-toastify'
+
+import { GeneralContext } from '@/context'
 
 import { FormCompany } from './Forms'
 import { Button } from '@/components/UI/Button'
@@ -24,6 +26,9 @@ import { FormValues, INITIAL_STATE_COMPANY } from './initialStates'
 import { ValidateCompany } from './validators'
 import { FormCompanyHandle } from './interfaces'
 import { MaskCpf } from '@/utils/maskCpf'
+import { E_THEME } from '@/utils/enums/theme'
+import { lightTheme } from '../themes/light'
+import { darkTheme } from '../themes/dark'
 
 
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
@@ -32,6 +37,8 @@ export function Companies() {
   const { closeOffCanvas, isOffCanvasOpen, toggleOffCanvas } = useOffCanvas()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [companies, setCompanies] = useState<FormValues[]>()
+
+  const { theme } = useContext(GeneralContext)
 
   const formRef = useRef<FormCompanyHandle>(null);
   const refValidate: Record<RefValidateKeys, React.RefObject<HTMLInputElement | null>> = {
@@ -172,7 +179,11 @@ export function Companies() {
         borderBottom: 'solid 1px #6b6b6b76',
         paddingBottom: '0.5rem'
       }}>
-        <Label fontSize='13px' color='#6b6b6be4' text='Empresas Registradas' fontWeight='600' />
+        <Label
+          fontSize='13px'
+          color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.titles}
+          text='Empresas Registradas'
+          fontWeight='600' />
 
         <div>
           <Button icon={<BsFillPersonPlusFill size={17} color='white' />} click={toggleOffCanvas} height='30px' width='40px' />
@@ -181,15 +192,29 @@ export function Companies() {
 
       <C.ContainerCard>
         {companies?.map((comp, idx) => (
-          <C.Card onClick={() => findById(comp.id || '')} key={comp.id || idx} $borderLeftColor={!comp.certification?.name ? 'brown' : ''}>
-            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-              <C.HeaderCard>
-                <Label text={comp.name || ''} color="#454545" fontSize='13px' fontWeight='600' />
+          <C.Card
+            onClick={() => findById(comp.id || '')}
+            key={comp.id || idx}
+            $borderLeftColor={!comp.certification?.name ? 'brown' : ''
 
-                <Label text={comp.tradeName || ''} color="#6b6b6be4" fontSize='11px' fontWeight='500' />
+            }>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <C.HeaderCard>
+                <Label
+                  text={comp.name || ''}
+                  color={theme === E_THEME.lightMode ? '#454545' : '#e1e1e1'}
+                  fontSize='13px'
+                  fontWeight='600'
+                />
+
+                <Label
+                  text={comp.tradeName || ''}
+                  color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.subtitles}
+                  fontSize='11px'
+                  fontWeight='600' />
               </C.HeaderCard>
 
-              {comp.cert ? <TbCertificate size={25} color='#1be25d' /> : <IoMdInformationCircleOutline color='brown' size={25}/>}
+              {comp.cert ? <TbCertificate size={25} color='#1be25d' /> : <IoMdInformationCircleOutline color='brown' size={25} />}
             </div>
 
             <C.BodyCard>
@@ -197,8 +222,8 @@ export function Companies() {
                 <C.TitleBodyItem>Nota Hoje</C.TitleBodyItem>
 
                 <C.ContentBodyItem>
-                  <p>150</p>
-                  <LuInfo size={13} color='#6b6b6be4' />
+                  <C.BodyItemText>150</C.BodyItemText>
+                  <LuInfo size={13} color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : "#e1e1e1"} />
                 </C.ContentBodyItem>
               </C.BodyItem>
 
@@ -208,25 +233,35 @@ export function Companies() {
                 <C.TitleBodyItem>Sinc</C.TitleBodyItem>
 
                 <C.ContentBodyItem>
-                  <p>{comp.lastSynced && DateTime.fromISO(comp.lastSynced).toFormat('dd/MM/yyyy HH:mm')}</p>
+                  <C.BodyItemText>{comp.lastSynced && DateTime.fromISO(comp.lastSynced).toFormat('dd/MM/yyyy HH:mm')}</C.BodyItemText>
                 </C.ContentBodyItem>
               </C.BodyItem>
             </C.BodyCard>
 
             <C.FooterCard>
               <C.FooterItem>
-                <HiOutlineMailOpen />
+                <HiOutlineMailOpen color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : '#e1e1e1'} />
 
                 <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                  <Label text={comp.email || ''} color="#3767f1" fontSize='11px' fontWeight='500' hover='border-bottom: solid 1px red;' />
+                  <Label
+                    text={comp.email || ''}
+                    fontSize='11px'
+                    fontWeight='600'
+                    color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : darkTheme.titles}
+                  />
                 </div>
               </C.FooterItem>
 
               <C.FooterItem>
-                <FaRegIdCard />
+                <FaRegIdCard color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : '#e1e1e1'} />
 
                 <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                  <Label text={MaskCpf(comp.cpfCnpj || '')} color="#3767f1" fontSize='11px' fontWeight='500' />
+                  <Label
+                    text={MaskCpf(comp.cpfCnpj || '')}
+                    color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : darkTheme.titles}
+                    fontSize='11px'
+                    fontWeight='600'
+                  />
                 </div>
               </C.FooterItem>
             </C.FooterCard>

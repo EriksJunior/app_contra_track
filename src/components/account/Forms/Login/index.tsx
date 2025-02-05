@@ -40,7 +40,7 @@ export function Login({ toggle }: Props) {
                 placeholder="Email"
                 backColorInput="#e8f0fe"
                 borderInput="solid 1px #cecece"
-                 borderColorOnFocus="rgb(157, 172, 242)"
+                borderColorOnFocus="rgb(157, 172, 242)"
                 paddingInput="0 1rem"
                 colorInput="black"
                 isLarge
@@ -121,11 +121,11 @@ export function Login({ toggle }: Props) {
 
           <div style={{ marginTop: '2rem' }}>
             <Row justifyContent="center" gap="2rem">
-              <FaFacebook size={30} color="gray" cursor={'pointer'}/>
+              <FaFacebook size={30} color="gray" cursor={'pointer'} />
 
-              <FaSquareInstagram size={30} color="gray" cursor={'pointer'}/>
+              <FaSquareInstagram size={30} color="gray" cursor={'pointer'} />
 
-              <TbBrandLinkedinFilled size={30} color="gray" cursor={'pointer'}/>
+              <TbBrandLinkedinFilled size={30} color="gray" cursor={'pointer'} />
             </Row>
           </div>
         </Col>

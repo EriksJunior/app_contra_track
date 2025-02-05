@@ -13,7 +13,7 @@ export function Account() {
   const { isCreateAccount, toggle } = UseAccount()
 
   return (
-    <L.Container  style={{ backgroundImage: `url(${loginImg.src})` }}>
+    <L.Container style={{ backgroundImage: `url(${loginImg.src})` }}>
       <L.Content>
         {/* <L.Left style={{ backgroundImage: `url(${loginImg.src})` }}>
           <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>

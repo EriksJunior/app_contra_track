@@ -63,7 +63,6 @@ export const Content = styled.div<StyledProps>`
 
 export const Header = styled.div`
   height: 55px;
-  border-bottom: solid 1px rgb(197, 197, 197);
   display: flex;
   align-items: center;
   padding: 0 1rem;
@@ -94,7 +93,6 @@ export const Body = styled.div`
 export const Footer = styled.div`
   height: 55px;
   padding: 0 1rem;
-  border-top: solid 1px rgb(197, 197, 197);
   box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, 0.14);
   position: relative;
   display: flex;

@@ -169,7 +169,6 @@ export const ContentNavItems = styled.label`
   width: auto;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
-  color: gray;
   font-size: 12px;
   cursor: pointer;
   height: 43px;
@@ -194,7 +193,6 @@ export const ContentNavItemsNotification = styled.label`
   width: auto;
   padding: 0.8rem 1rem 0.8rem 1.8rem;
   border-radius: 8px;
-  color: gray;
   font-size: 12px;
   cursor: pointer;
   height: 43px;
@@ -211,18 +209,6 @@ export const NavItem = styled.div`
 
 export const InputRadio = styled.input<StyledProps>`
   display: none;
-  
-  &:checked ~ ${ContentNavItems} {
-    background-color: ${props => props.$theme === E_THEME.lightMode ? '#80808045' : darkTheme.darkSuccess};
-    color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#dbdbdb'};
-    transition: ease-in all 0.2s;
-  }
-
-  &:checked ~ ${ContentNavItemsNotification} {
-    background-color: ${props => props.$theme === E_THEME.lightMode ? '#80808045' : darkTheme.darkSuccess};
-    color: ${props => props.$theme === E_THEME.lightMode ? 'black' : '#dbdbdb'};
-    transition: ease-in all 0.2s;
-  }
 `
 
 export const NavFooter = styled.div`

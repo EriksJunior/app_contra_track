@@ -1,5 +1,9 @@
-export default function Reports () {
+"use client"
+
+import { Title } from "@/components/UI/Title";
+
+export default function Reports() {
   return (
-    <p>Reports</p>
+    <Title fontSize='20px' color='black' text='Reports' />
   )
 }
