@@ -14,6 +14,8 @@ interface Props {
   icon?: ReactNode
   text?: string
   fontSize?: string
+  border?: string
+  borderRadius?: string
   isLoading?: boolean
   disabled?: boolean
   isLoginButton?: boolean
@@ -29,9 +31,11 @@ export function Button({
   icon,
   text,
   fontSize,
+  border,
+  borderRadius,
   isLoading,
   disabled,
-  isLoginButton
+  isLoginButton,
 }: Props) {
   return (
     <C.CustomButton
@@ -43,13 +47,15 @@ export function Button({
       $disabled={isLoading || disabled}
       $fontSize={fontSize}
       $isLoginButton={isLoginButton}
+      $border={border}
+      $borderRadius={borderRadius}
       onClick={click}
     >
-      {icon && icon}
-
       {isLoading ? (
-        <CgSpinner size={20} className="spinner" color="white"/>
+        <CgSpinner size={20} className="spinner" color="white" />
       ) : text && text}
+
+      {icon && icon}
     </C.CustomButton>
   );
 }

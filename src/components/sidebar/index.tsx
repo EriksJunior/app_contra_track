@@ -364,7 +364,7 @@ export function Sidebar({ children }: Props) {
                   </S.Li>
                 </S.Ul>
 
-                <S.ContainerProfile onClick={() => setShowListCompanies(state => !state)}>
+                <S.ContainerProfile onClick={() => setShowListCompanies(state => !state)} ref={dropdownRef}>
                   <S.ImgProfile
                     src="/logo2.png"
                     alt="Logo"

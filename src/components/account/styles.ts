@@ -4,9 +4,11 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  background-color: rgb(43, 42, 55);
+  background-color: white;
   justify-content: center;
   align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   @media screen and (max-width: 1020px) {
     overflow: auto;
@@ -17,6 +19,13 @@ export const Content = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  backdrop-filter: blur( 13.5px );
+  -webkit-backdrop-filter: blur( 13.5px );
+  background: rgba( 255, 255, 255, 0.35 );
+
 
   @media screen and (max-width: 1366px) {
     height: 100%;
@@ -30,14 +39,15 @@ export const Left = styled.div`
   height: 100%;
   background-color: rgb(31, 39, 59);
   padding: 2rem;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  border-radius: 30px;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 80% 100%, 0% 100%);
 
   @media screen and (max-width: 1366px) {
-    border-radius: 0 50px 50px 0;
     box-shadow: 5px 0 3px 0 #00000024;
     width: 35%;
   }
@@ -91,14 +101,20 @@ export const ContentRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  height: 100%;
+  background-color: #ffffffd1;
+  border-radius: 50px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  border: solid 1px #cecece!important;
+  max-width: 600px;
+
   @media screen and (max-width: 1366px) {
     width: 65%;
     padding-top: 1rem;
   }
 
   @media screen and (min-width: 1366px) {
-    width: 60%;
+    width: 50%;
   }
 
   @media screen and (max-width: 1020px) {

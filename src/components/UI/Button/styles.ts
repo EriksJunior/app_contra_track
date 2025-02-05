@@ -7,6 +7,8 @@ interface StyledProps {
   $hoverColor?: string
   $color?: string
   $fontSize?: string
+  $border?: string
+  $borderRadius?: string
   $disabled?: boolean
   $isLoginButton?: boolean
 }
@@ -19,7 +21,7 @@ export const CustomButton = styled.button<StyledProps>`
   gap: 10px;
   border: none;
   height: ${props => props.$height || "35px"} ;
-  border-radius: 8px;
+  border-radius: ${props => props.$borderRadius || '8px'};
   font-size: ${props => props.$fontSize || '13px'};
   box-shadow: 0 1px 4px 0 #00000026;
   padding: 0.375rem 0.75rem;
@@ -43,6 +45,10 @@ export const CustomButton = styled.button<StyledProps>`
     animation: rotating 1.3s linear infinite;
   }
 
+  ${props => props.$border && `
+    border: ${props.$border}!important;
+  `}
+
   ${props => props.$isLoginButton &&
     `
       height: 50px;
@@ -50,14 +56,8 @@ export const CustomButton = styled.button<StyledProps>`
       
       @media screen and (max-width: 1366px){
         & {
-            height: 35px;
+            height: 40px;
             font-size: 15px;
-        }
-      }
-
-      @media screen and (max-width: 1020px){
-        & {
-            margin-bottom: 5rem
         }
       }
     `

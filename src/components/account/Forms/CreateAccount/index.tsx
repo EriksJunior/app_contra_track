@@ -25,7 +25,7 @@ export function CreateAccount({ toggle }: Props) {
         <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'gray' }}>
           Crie uma nova conta e vincule empresas para gerenciá-las!
         </p>
-        <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'white' }} onClick={toggle}>
+        <p style={{ fontSize: '0.7rem', marginTop: '0.5rem', color: 'white', fontWeight: 500 }} onClick={toggle}>
           Já tem uma conta ? <span style={{ color: '#32f9f2', borderBottom: 'solid 1px #32f9f2', cursor: 'pointer' }}>Entrar</span>
         </p>
       </div>
@@ -197,6 +197,7 @@ export function CreateAccount({ toggle }: Props) {
             color="white"
             backgroundColor="#3ab08db1"
             hoverColor="#2f8f72b0"
+            borderRadius="50px"
             isLoading={isLoading}
             click={createAccount}
           />

@@ -6,13 +6,14 @@ interface StyledProps {
   $nowrap?: boolean
   $alignCenter?: boolean
   $height?: string
+  $gap?: string
 }
 
 export const Row = styled.div<StyledProps>`
   width: 100%;
   height: ${props => props.$height && props.$height};
   display: flex;
-  gap: 1rem;
+  gap: ${props => props.$gap || '1rem'};
   flex-wrap: ${props => props.$nowrap ? 'nowrap' : 'wrap'};
   justify-content: ${props => props.$justifyContent || 'flex-start'};
 

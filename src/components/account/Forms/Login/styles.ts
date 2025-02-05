@@ -10,10 +10,6 @@ export const ContentRight = styled.div`
     padding-top: 1rem;
   }
 
-  @media screen and (min-width: 1366px) {
-    width: 60%;
-  }
-
   @media screen and (max-width: 1020px) {
     height: 100%;
     width: 100%;
@@ -35,8 +31,13 @@ export const Right = styled.div`
   justify-content: center;
   gap: 1.3rem;
 
+  @media screen and (max-width: 1366px) {
+    width: 75%;
+  }
+
+
   @media screen and (min-width: 1366px) {
-    width: 65%;
+    width: 75%;
   }
 
   @media screen and (max-width: 1020px) {
@@ -52,14 +53,37 @@ export const Right = styled.div`
 export const CreateAccountText = styled.p`
   margin: 0;
   font-size: 2rem;
-  color: white;
+  color: black;
+  font-weight: 600;
 
   @media screen and (max-width: 1366px) {
     font-size: 1.5rem;
   }
 `
 
-export const TextAddCompany = styled.p`
+export const TextRecoverPass = styled.p`
   font-size: 0.7rem;
-  color: white;
+  color: #2246b1;
+  border-bottom: solid 1px #2246b1;
+  cursor: pointer;
+  font-weight: 500;
+`
+
+export const TextAlert = styled.p`
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: brown;
+`
+
+export const TextCreateAccount = styled.p`
+  font-size: 0.7rem;
+  margin-top: 0.5rem;
+  color: black;
+  font-weight: 500;
+
+  span {
+    color: #2246b1;
+    border-bottom: solid 1px #2246b1;
+    cursor: pointer;
+  }
 `
