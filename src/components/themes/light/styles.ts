@@ -10,6 +10,7 @@ import { ContainerCard } from '@/components/UI/Card/styles'
 import { CustomTitle } from '@/components/UI/Title/styles'
 import { ContentNavItems, ContentNavItemsNotification, InputRadio } from '@/components/sidebar/styles'
 import { BodyItemText, TitleBodyItem } from '@/components/companies/styles'
+import { ContentPaginate } from '@/components/UI/Table/style'
 
 export const LightTheme = css`
   .light-mode {
@@ -83,6 +84,10 @@ export const LightTheme = css`
 
     ${BodyItemText} {
       color: #454545!important;
+    }
+
+    ${ContentPaginate} {
+      border: solid 1px rgba(130,130,130,0.16)!important;
     }
 
     /* GLOBAL SCROLL BAR */

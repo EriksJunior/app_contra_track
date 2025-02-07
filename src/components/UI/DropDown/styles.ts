@@ -1,3 +1,4 @@
+import { darkTheme } from "@/components/themes/dark";
 import styled from "styled-components";
 
 interface StyledProps {
@@ -53,7 +54,7 @@ export const Container = styled.div<StyledProps>`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #44d2db!important;
+    background-color: ${darkTheme.success};
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }

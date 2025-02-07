@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { E_THEME } from "../../../utils/enums/theme";
+import { darkTheme } from "@/components/themes/dark";
 
 interface StyledProps {
-  $theme: string
-  $maxHeight: string
+  $theme?: string
+  $maxHeight?: string
+  $isSelected?: boolean
 }
 
 export const Container = styled.div`
@@ -12,7 +14,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
+
 export const Table = styled.table<StyledProps>`
+  height: calc(100vh - 210px);
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 8px;
@@ -38,9 +42,9 @@ export const Table = styled.table<StyledProps>`
 
   thead {
     display: block;
-    background-color: rgb(96 96 96 / 9%);
+    background-color: rgb(179 179 181 / 14%);
     border-radius: 8px 8px 0 0;
-    padding: 0.8rem 0;
+    padding: 0.7rem 0;
     border: solid 1px rgba(130, 130, 130, 0.16);
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.23);
   }
@@ -53,12 +57,16 @@ export const Table = styled.table<StyledProps>`
 
   
   tbody tr {
+    height: 60px;
     background-color: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: ${props => props.$theme === E_THEME.lightMode ? 'white' : '#494949'};
     padding: 0;
     border: solid 1px rgba(130, 130, 130, 0.16);
+    border-left: solid 2px rgba(130, 130, 130, 0.16);
+    border-right: solid 2px rgba(130, 130, 130, 0.16);
   }
 
   tbody tr:first-child {
@@ -66,13 +74,13 @@ export const Table = styled.table<StyledProps>`
   }
 
   tbody tr:last-child {
-    border-radius: 0 0 8px 8px;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.23);
   }
 
 
   tbody {
     display: block;
+    height: 85%;
     
     &::-webkit-scrollbar {
       width: 5px!important;
@@ -84,27 +92,19 @@ export const Table = styled.table<StyledProps>`
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #47d2a9!important;
+      background-color: ${darkTheme.success};
     }
 
     @media screen and (min-height: 600px) and (max-height: 959px){
-      height: auto;
-      max-height: 500px;
-      min-height: 200px;
       overflow: auto;
     }
 
     @media screen and (max-height: 800px){
-      height: auto;
-      max-height: 300px;
-      min-height: 200px;
+      height: 78%;
       overflow: auto;
     }
 
     @media screen and (max-height: 720px){
-      height: auto;
-      max-height: 250px;
-      min-height: 200px;
       overflow: auto;
     }
   }
@@ -145,33 +145,78 @@ export const Table = styled.table<StyledProps>`
   }
 `
 
-export const ContainerPaginate = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 0 0.5rem;
-  margin-top: 1rem;
-`
+export const ContentPaginate = styled.tbody<StyledProps>`
+  height: 60px!important;
+  max-height: 60px!important;
+  min-height: 60px!important;
+  overflow: hidden!important;
+  border-top: solid 1px rgba(130, 130, 130, 0.24)!important;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.23)!important;
+  border-radius: 0 0 8px 8px!important;
 
-export const ContentPaginate = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  padding: 0 1rem;
-
-  span {
-    transition: ease-in all 0.1s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    width: 35px;
-    height: 35px;
-    background-color: #66a3b7;
-    box-shadow: 0 1px 4px 0 #00000026;
-    cursor: pointer;
-    user-select: none;
-    color: white;
+  tr {
+    border: none!important;
+    box-shadow: none!important;
   }
 `
 
+export const PageActions = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(118 133 201);
+  gap: 10px;
+  box-shadow: 0 1px 4px 0 #00000026;
+  border: solid 1px rgb(118 133 201);
+  border-radius: 10px;
+  padding: 0.375rem 0.75rem;
+  height: 36px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: ease-in all 0.1s;
+  letter-spacing: 1px;
+
+  &:hover {
+    background-color: rgb(100,114,175);
+    transition: ease-in all 0.1s;
+  }
+
+  p {
+    color: white;
+    font-size: 12px!important;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 700px){
+    p {
+      display: none;
+    }
+  }
+`
+
+export const PageNumbers = styled.div<StyledProps>`
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  ${props => props.$isSelected ? `
+    background-color: rgb(118 133 201 / 23%);
+    
+    P {
+      font-weight: 600;
+      font-Size: 1rem;
+      color: rgb(100,114,175);
+    }
+  `
+    :
+    ` 
+    font-weight: 500;
+    font-size: 1rem;
+    color: #6b6b6be4;
+  `
+  }
+`

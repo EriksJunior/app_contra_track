@@ -48,7 +48,7 @@ export function Tab({ tabs }: Props) {
 
   return (
     <>
-      <Row>
+      <Row >
         {cloneTabs.map((tab, idx) => (
           <div key={tab.text} onClick={() => handleClick(idx)}>
             <ContentTabText $theme={theme} $isActive={tab.active}>

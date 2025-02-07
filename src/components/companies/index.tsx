@@ -183,7 +183,8 @@ export function Companies() {
           fontSize='13px'
           color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.titles}
           text='Empresas Registradas'
-          fontWeight='600' />
+          fontWeight='600'
+        />
 
         <div>
           <Button icon={<BsFillPersonPlusFill size={17} color='white' />} click={toggleOffCanvas} height='30px' width='40px' />

@@ -11,11 +11,12 @@ interface Props {
   hoverColor?: string
   color?: string
   click?: () => void
-  icon?: ReactNode
   text?: string
   fontSize?: string
   border?: string
   borderRadius?: string
+  icon?: ReactNode
+  leftIcon?: boolean
   isLoading?: boolean
   disabled?: boolean
   isLoginButton?: boolean
@@ -29,6 +30,7 @@ export function Button({
   color,
   click,
   icon,
+  leftIcon,
   text,
   fontSize,
   border,
@@ -41,6 +43,7 @@ export function Button({
     <C.CustomButton
       $backgroundColor={backgroundColor}
       $width={width}
+      $containsIcon={!!icon}
       $height={height}
       $hoverColor={hoverColor}
       $color={color}
@@ -51,11 +54,13 @@ export function Button({
       $borderRadius={borderRadius}
       onClick={click}
     >
+      {(leftIcon && icon) && icon}
+
       {isLoading ? (
         <CgSpinner size={20} className="spinner" color="white" />
       ) : text && text}
 
-      {icon && icon}
+      {(!leftIcon && icon) && icon}
     </C.CustomButton>
   );
 }

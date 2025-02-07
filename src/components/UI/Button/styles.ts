@@ -11,6 +11,7 @@ interface StyledProps {
   $borderRadius?: string
   $disabled?: boolean
   $isLoginButton?: boolean
+  $containsIcon?: boolean
 }
 
 export const CustomButton = styled.button<StyledProps>`
@@ -74,5 +75,10 @@ export const CustomButton = styled.button<StyledProps>`
         transition: ease-in all 0.1s;
       }
     `
+  }
+
+  ${props => props.$containsIcon && `
+    line-height: 1.3;
+  `
   }
 `

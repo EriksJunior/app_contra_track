@@ -4,12 +4,13 @@ import { darkTheme } from '.'
 
 import { InputText, InputTextArea } from '@/components/UI/Inputs/styles'
 import { CustomInputFile } from '@/components/UI/Inputs/InputFile/styles'
-import { InputSearch, SearchContent } from '@/components/UI/SearchBar/styles'
+import { ContainerFilterOptionsBox, InputSearch, SearchContent } from '@/components/UI/SearchBar/styles'
 import { Content as OffCanvasContent, Title as OffCanvasTitle, Label as OffCanvasLabel, Header as OffCanvasHeader, Footer as OffCanvasFooter } from '@/components/UI/OffCanvas/styles'
 import { ContainerCard } from '@/components/UI/Card/styles'
 import { CustomTitle } from '@/components/UI/Title/styles'
 import { ContentNavItems, ContentNavItemsNotification, InputRadio } from '@/components/sidebar/styles'
 import { BodyItemText, Card as CardCompany, TitleBodyItem } from '@/components/companies/styles'
+import { ContentPaginate } from '@/components/UI/Table/style'
 
 export const DarkTheme = css`
  .dark-mode {
@@ -37,8 +38,12 @@ export const DarkTheme = css`
     } 
 
     ${InputSearch}, ${SearchContent} {
-      background-color: ${darkTheme.secondary};
+      background-color: black;
       color: white;
+    }
+
+    ${SearchContent}, ${ContainerFilterOptionsBox} {
+      border: solid 1px #b3b3b35c;
     }
 
     ${OffCanvasContent} {
@@ -104,6 +109,10 @@ export const DarkTheme = css`
 
     ${BodyItemText} {
       color: ${darkTheme.titles};
+    }
+
+    ${ContentPaginate} {
+      border: solid 1px rgb(130 130 130 / 64%) !important;
     }
 
     /* GLOBAl SCROLL BAR */

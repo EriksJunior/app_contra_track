@@ -5,10 +5,11 @@ import { GeneralContext } from "@/context";
 
 import { Label } from "../Label";
 import { DropDown } from "../DropDown";
-import { defaultActions, defaultTable } from "./common";
-import { IoMdArrowRoundBack, IoMdArrowRoundForward } from "react-icons/io";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import * as T from "./style";
+
+import { defaultActions, defaultTable } from "./common";
 
 interface Props {
   items?: typeof defaultTable
@@ -41,7 +42,7 @@ export function Table({
 
   return (
     <T.Container>
-      <div style={{height: '100%'}}>
+      <div style={{ height: '100%' }}>
         <div style={{ padding: "0", marginBottom: '1rem' }}>{children}</div>
 
         {enableTitleTable && (
@@ -85,15 +86,6 @@ export function Table({
                   </td>
                 </tr>
               ))}
-
-              <tr>
-                <td colSpan={12}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <p style={{ color: 'gray', fontSize: 12, fontWeight: '500' }}>Total</p>
-                    <p style={{ color: 'black', fontSize: 12 }}>{items.body.length || 0}</p>
-                  </div>
-                </td>
-              </tr>
             </tbody>
           ) : (
             <tbody
@@ -101,38 +93,65 @@ export function Table({
               style={{ overflow: "hidden", height: "100%", maxHeight: "100%" }}
             ></tbody>
           )}
+
+          {enablePaginate &&
+            <T.ContentPaginate $theme={theme}>
+              <tr>
+                <td colSpan={12}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <T.PageActions onClick={previousPage}>
+                      <FaArrowLeft size={16} color="white"/>
+                      <p>Anterior</p>
+                    </T.PageActions>
+
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      <T.PageNumbers $isSelected={true}>
+                        <p>{page}</p>
+                      </T.PageNumbers>
+
+                      <T.PageNumbers>
+                        <p>2</p>
+                      </T.PageNumbers>
+
+                      <T.PageNumbers>
+                        <p>3</p>
+                      </T.PageNumbers>
+
+                      <div style={{
+                        width: '36px',
+                        height: '36px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}>
+                        <p>. . .</p>
+                      </div>
+
+                      <T.PageNumbers>
+                        <p>8</p>
+                      </T.PageNumbers>
+
+                      <T.PageNumbers>
+                        <p>9</p>
+                      </T.PageNumbers>
+
+                      <T.PageNumbers>
+                        <p>10</p>
+                      </T.PageNumbers>
+                    </div>
+
+                    <T.PageActions onClick={nextPage}>
+                      <p>Proximo</p>
+
+                      <FaArrowRight size={16} color="white"/>
+                    </T.PageActions>
+                  </div>
+                </td>
+              </tr>
+            </T.ContentPaginate>
+          }
         </T.Table>
       </div>
-
-      {enablePaginate && (
-        <T.ContainerPaginate>
-          <T.ContentPaginate>
-            {page > 1 && (
-              <span onClick={previousPage}>
-                <IoMdArrowRoundBack size={18} />
-              </span>
-            )}
-
-            {(items.body.length > 0 || items.body.length === 0) && (
-              <span
-                style={{
-                  fontWeight: "600",
-                  backgroundColor: "white",
-                  color: "#66a3b7",
-                }}
-              >
-                {page}
-              </span>
-            )}
-
-            {items.body.length === 9 && (
-              <span onClick={nextPage}>
-                <IoMdArrowRoundForward size={18} />
-              </span>
-            )}
-          </T.ContentPaginate>
-        </T.ContainerPaginate>
-      )}
     </T.Container>
   );
 }

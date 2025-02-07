@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
-import { FaFilter } from "react-icons/fa";
+import { IoFilterSharp } from "react-icons/io5";
 
 interface StyledProps {
   $searchIconColor?: string
@@ -50,10 +50,10 @@ export const SearchIcon = styled(FiSearch) <StyledProps>`
   }
 `
 
-export const FilterIcon = styled(FaFilter) <StyledProps>`
+export const FilterIcon = styled(IoFilterSharp) <StyledProps>`
   width: 20px;
   height: 20px;
-  color: ${props => props.$filterIconColor || "red"};
+  color: white!important;
   cursor: pointer;
   user-select: none!important;
 
@@ -74,15 +74,16 @@ export const InputSearch = styled.input`
     height: 2.3rem;
   }
 `
-export const containerFilterOptionsBox = styled.label`
-  width: 43px;
+export const ContainerFilterOptionsBox = styled.label`
+  width: 35px;
+  
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 1px 4px 0 #00000026;
-  background-color: white;
   border-radius: 8px;
+  background-color: rgb(118 133 201);
 
   @media screen and (max-width: 1366px){
     width: 35px;

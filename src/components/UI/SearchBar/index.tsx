@@ -37,8 +37,8 @@ interface Filter {
 
 export function SearchBar({
   placeholder = "Realize aqui a sua busca",
-  searchIconColor = "#40c29c",
-  filterIconColor = "#40c29c",
+  searchIconColor = "rgb(118 133 201)",
+  filterIconColor = "rgb(118 133 201)",
   filterOptions = defaultFilterOptions,
   isActiveOptions = defaultIsActiveOptions,
   situationOptions = defaultSituationOptions,
@@ -109,7 +109,7 @@ export function SearchBar({
         </S.Label>
       </S.SearchContent>
 
-      <S.containerFilterOptionsBox htmlFor="contentFilterOptions">
+      <S.ContainerFilterOptionsBox htmlFor="contentFilterOptions">
         <S.FilterIcon
           size={35}
           $filterIconColor={filterIconColor}
@@ -231,7 +231,7 @@ export function SearchBar({
             </div>
           )}
         </S.ContentBoxOptions>
-      </S.containerFilterOptionsBox>
+      </S.ContainerFilterOptionsBox>
     </S.SearchContainer>
   );
 }
