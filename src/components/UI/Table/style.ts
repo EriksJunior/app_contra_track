@@ -16,7 +16,7 @@ export const Container = styled.div`
 `
 
 export const Table = styled.table<StyledProps>`
-  height: calc(100vh - 210px);
+  height: auto;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 8px;
@@ -41,6 +41,7 @@ export const Table = styled.table<StyledProps>`
   }
 
   thead {
+    width: 99.6%;
     display: block;
     background-color: rgb(179 179 181 / 14%);
     border-radius: 8px 8px 0 0;
@@ -80,7 +81,8 @@ export const Table = styled.table<StyledProps>`
 
   tbody {
     display: block;
-    height: 85%;
+    height: auto;
+    max-height: calc(100vh - 338px)!important;
     
     &::-webkit-scrollbar {
       width: 5px!important;
@@ -146,6 +148,7 @@ export const Table = styled.table<StyledProps>`
 `
 
 export const ContentPaginate = styled.tbody<StyledProps>`
+  width: 99.6%;
   height: 60px!important;
   max-height: 60px!important;
   min-height: 60px!important;
