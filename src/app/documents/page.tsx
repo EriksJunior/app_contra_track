@@ -19,8 +19,9 @@ export default function Documents() {
 
   const defaultFilterOptions = [
     { text: "N.º", value: "numero", isActive: true },
-    { text: "Chave", value: "chave", isActive: false },
     { text: "Emissor", value: "emissor", isActive: false },
+    { text: "CNPJ", value: "cnpj", isActive: true },
+    { text: "Chave", value: "chave", isActive: false },
     { text: "Valor", value: "valor", isActive: false },
   ]
 

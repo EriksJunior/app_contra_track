@@ -29,7 +29,7 @@ export const Container = styled.div<StyledProps>`
   transition: ease-in 0.1s;
   display: none;
   position: absolute;
-  background-color: ${(props) => props.$dropDownColor || "#7be8ef"};
+  background-color: ${(props) => props.$dropDownColor || "rgb(118 133 201)"};
   top: 22px;
   right: 0px;
   width: auto;
@@ -81,7 +81,8 @@ export const Li = styled.li<StyledProps>`
   padding: 0 1rem;
     
   &:hover {
-    background-color: ${(props) => props.$textColorHover || "#44d2db"};
+    background-color: ${(props) => props.$textColorHover || "rgb(146 156 201)"};
+    transition: ease-in 0.1s all;
   }
 
   &:first-child {
