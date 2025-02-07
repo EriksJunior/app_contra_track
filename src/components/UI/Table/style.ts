@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { E_THEME } from "../../../utils/enums/theme";
-import { darkTheme } from "@/components/themes/dark";
 
 interface StyledProps {
   $theme?: string
@@ -41,7 +40,6 @@ export const Table = styled.table<StyledProps>`
   }
 
   thead {
-    width: 99.6%;
     display: block;
     background-color: rgb(179 179 181 / 14%);
     border-radius: 8px 8px 0 0;
@@ -85,16 +83,16 @@ export const Table = styled.table<StyledProps>`
     max-height: calc(100vh - 338px)!important;
     
     &::-webkit-scrollbar {
-      width: 5px!important;
-      height: 8px!important;
+      width: 3px!important;
+      height: 0!important;
     }
 
     &::-webkit-scrollbar-track {
-      background: transparent!important;
+      background: rgb(179 179 181 / 14%)!important;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: ${darkTheme.success};
+      background-color: rgb(118 133 201)!important;
     }
 
     @media screen and (min-height: 600px) and (max-height: 959px){
@@ -148,7 +146,6 @@ export const Table = styled.table<StyledProps>`
 `
 
 export const ContentPaginate = styled.tbody<StyledProps>`
-  width: 99.6%;
   height: 60px!important;
   max-height: 60px!important;
   min-height: 60px!important;
