@@ -17,6 +17,13 @@ import { darkTheme } from "@/components/themes/dark";
 export default function Documents() {
   const { theme } = useContext(GeneralContext)
 
+  const defaultFilterOptions = [
+    { text: "N.º", value: "numero", isActive: true },
+    { text: "Chave", value: "chave", isActive: false },
+    { text: "Emissor", value: "emissor", isActive: false },
+    { text: "Valor", value: "valor", isActive: false },
+  ]
+
   return (
     <div style={{ padding: '0 15px', height: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <Row>
@@ -33,7 +40,12 @@ export default function Documents() {
 
       <Row height="100%">
         <Table enablePaginate>
-          <SearchBar getValues={(values) => console.log(values)} defaultFilter='nome' />
+          <SearchBar
+            getValues={(values) => console.log(values)}
+            defaultFilter='nome'
+            filterOptions={defaultFilterOptions}
+            periodIsEnable
+          />
         </Table>
       </Row>
     </div >

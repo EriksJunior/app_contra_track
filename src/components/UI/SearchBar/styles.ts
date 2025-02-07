@@ -146,7 +146,7 @@ ${(props) => props.$isFilterBoxOpen ?
 `
 
 export const TitleBoxOptions = styled.p`
-  color: #47d2a9;
+  color: rgb(118 133 201);
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 0.3rem;
@@ -175,8 +175,7 @@ export const LabelOptions = styled.label`
   cursor: pointer !important;
 
   input:checked + ${Options} {
-    color: #808080c2;
-    font-weight: 600;
+    color:#6b6b6be4;
     text-decoration: underline;
   }
 `;

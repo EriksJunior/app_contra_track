@@ -1,5 +1,5 @@
 export const defaultFilterOptions = [
-  { text: 'Default 1', value: 'default1', isActive: false },
+  { text: 'Default 1', value: 'default1', isActive: true },
   { text: 'Default 2', value: 'default2', isActive: false },
   { text: 'Default 3', value: 'default3', isActive: false },
   { text: 'Default 4', value: 'default4', isActive: false }

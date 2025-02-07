@@ -138,8 +138,9 @@ export function SearchBar({
                     <S.InputFilterBoxOptions
                       type="radio"
                       id={`filter-${i}`}
-                      onInput={() =>
-                        handleChange('type', option.value)
+                      name="type"
+                      onChange={({ target }) =>
+                        handleChange(target.name, option.value)
                       }
                       defaultChecked={option.isActive}
                     />
