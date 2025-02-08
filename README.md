@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## **Observações**
+Backend esta com repositório privado.
 
-## Getting Started
+## **🚧 EM DESENVOLVIMENTO 🚧** **`Aplicação atualmente em desenvolvimento, ainda falta algumas funcionalidades para serem implementadas.`**
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Novos Recursos em desenvolvimento
+- [ ] Listagem de xmls / download por período.
+- [ ] Exibição de notificações em geral no sidebar e notificações por empresa.
+- [ ] Dashboard com graficos.
+- [ ] Configurações de segurança, como mudança de senha / email e etc.
+- [ ] Área do contador, com geração de SPED fiscal com base nas notas recebidas.
+- [ ] Área de upload de xmls de notas emitidas pela empresa para geração do SPED mais completo.
+- [ ] Assinaturas de documentos por certificado digital.
+- [ ] Perfil da empresa selecionada.
+- [ ] Configurações de sincronização dos xml.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Tecnologias Utilizadas
+  Next/styled-componets/Redux/Context API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Instalação e Configuração
 
-## Learn More
+Realize o clone do projeto usando: **`git clone https://github.com/EriksJunior/app_contra_track.git`**
 
-To learn more about Next.js, take a look at the following resources:
+Acesse o diretório do projeto **`cd app_contra_track`**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Instale as dependências: **`npm install`** obs: certifique-se de ter node instalado
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Inicie o projeto: **`npx run dev`**.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### O Sistema também conta com temas Dark e Light
