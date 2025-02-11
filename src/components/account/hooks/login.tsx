@@ -54,7 +54,7 @@ export function UseLogin() {
           email: result?.companies && result?.companies[0].email,
           token: result?.companies && result?.companies[0].token,
         },
-        companies: result?.companies?.filter((_, idx) => idx !== 0) || [],
+        companies: result?.companies,
       }
 
       localStorage.setItem('tokens', JSON.stringify(data))

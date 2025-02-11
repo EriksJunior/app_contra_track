@@ -9,11 +9,11 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 import * as T from "./style";
 
-import { defaultActions, defaultTable } from "./common";
+import { defaultActions, defaultTable, IDefaultActions, IDefaultTable } from "./common";
 
 interface Props {
-  items?: typeof defaultTable
-  dropDownItems?: typeof defaultActions
+  items?: IDefaultTable
+  dropDownItems?: IDefaultActions[]
   children?: React.ReactNode
   enablePaginate?: boolean
   page?: number
@@ -55,10 +55,10 @@ export function Table({
           <thead>
             <tr>
               {items.headers.map((header) => (
-                <th key={header.key}>{header.text}</th>
+                <th key={header.key} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: `${header.size}` }}>{header.text}</th>
               ))}
 
-              <th style={{ width: "20%", textAlign: 'center' }}>Ações</th>
+              <th style={{  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "20%", minWidth: '55px', textAlign: 'center' }}>Ações</th>
             </tr>
           </thead>
 
@@ -67,7 +67,7 @@ export function Table({
               {items.body.map((item: any, index) => (
                 <tr key={item?.id || index}>
                   {items.headers.map((_, idx) => (
-                    <td key={idx} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <td key={idx} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: `${_.size}` }}>
                       {DateTime.fromISO((item[items.headers[idx]?.key]))?.isValid
                         ? item[items.headers[idx]?.key]
                           ?.split("-")
@@ -77,7 +77,7 @@ export function Table({
                     </td>
                   ))}
 
-                  <td style={{ width: "20%", textAlign: "center" }}>
+                  <td style={{ width: "20%", minWidth: '55px', textAlign: "center" }}>
                     <DropDown
                       items={dropDownItems}
                       htmlFor={`item-${index}-${valueToJoinHtmlFor}`}
@@ -100,7 +100,7 @@ export function Table({
                 <td colSpan={12}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <T.PageActions onClick={previousPage}>
-                      <FaArrowLeft size={16} color="white"/>
+                      <FaArrowLeft size={16} color="white" />
                       <p>Anterior</p>
                     </T.PageActions>
 
@@ -143,7 +143,7 @@ export function Table({
                     <T.PageActions onClick={nextPage}>
                       <p>Proximo</p>
 
-                      <FaArrowRight size={16} color="white"/>
+                      <FaArrowRight size={16} color="white" />
                     </T.PageActions>
                   </div>
                 </td>

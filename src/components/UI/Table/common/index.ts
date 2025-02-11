@@ -1,23 +1,36 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const defaultActions = [
+export interface IDefaultTable {
+  headers: { key: string, text: string, size?: string }[]
+  body: any[],
+}
+
+export interface IDefaultActions {
+  text: string
+  action: (params: any) => void
+}
+
+const defaultActions: IDefaultActions[] = [
   { text: 'Default 1', action: (params: any) => console.log('Ação ao selecionar Default 1', params) },
   { text: 'Default 2', action: (params: any) => console.log('Ação ao selecionar Default 2', params) },
   { text: 'Default 3', action: (params: any) => console.log('Ação ao selecionar Default 3', params) },
 ]
 
-const defaultTable = {
+const defaultTable: IDefaultTable = {
   headers: [
     {
       text: "Default 1",
       key: "default1",
+      size: '1 1 100%'
     },
     {
       text: "Default 2",
       key: "default2",
+      size: '1 1 100%'
     },
     {
       text: "Default 3",
       key: "default3",
+      size: '1 1 100%'
     },
   ],
   body: [
