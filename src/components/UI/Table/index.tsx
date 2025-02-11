@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DateTime } from "luxon";
 import React, { useContext } from "react";
+import { Tooltip } from 'react-tooltip'
 import { GeneralContext } from "@/context";
 
 import { Label } from "../Label";
@@ -55,7 +56,7 @@ export function Table({
           <thead>
             <tr>
               {items.headers.map((header) => (
-                <th key={header.key} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: `${header.size}` }}>{header.text}</th>
+                <th key={header.key} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', ...header.style }}>{header.text}</th>
               ))}
 
               <th style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "20%", minWidth: '55px', textAlign: 'center' }}>Ações</th>
@@ -66,15 +67,18 @@ export function Table({
             <tbody>
               {items.body.map((item: any, index) => (
                 <tr key={item?.id || index}>
-                  {items.headers.map((_, idx) => (
-                    <td key={idx} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: `${_.size}` }}>
+                  {items.headers.map((_, idx: any) => (
+                    <td key={idx} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', ..._.style }} data-tooltip-id="my-tooltip" data-tooltip-content={item[items.headers[idx]?.key]}>
                       {DateTime.fromISO((item[items.headers[idx]?.key]))?.isValid
                         ? DateTime.fromISO(item[items.headers[idx]?.key], { zone: "utc" })
-                        .setZone("America/Sao_Paulo")
-                        .toFormat("dd/MM/yyyy HH:mm:ss")
+                          .setZone("America/Sao_Paulo")
+                          .toFormat("dd/MM/yyyy HH:mm:ss")
                         : item[items.headers[idx]?.key]}
+
+                      <Tooltip id="my-tooltip" />
                     </td>
                   ))}
+
 
                   <td style={{ width: "20%", minWidth: '55px', textAlign: "center" }}>
                     <DropDown
@@ -92,6 +96,7 @@ export function Table({
               style={{ overflow: "hidden", height: "100%", maxHeight: "100%" }}
             ></tbody>
           )}
+
 
           {enablePaginate &&
             <T.ContentPaginate $theme={theme}>

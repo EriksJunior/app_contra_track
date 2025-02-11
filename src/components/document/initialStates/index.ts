@@ -1,3 +1,4 @@
+ 
 import { DateTime } from "luxon"
 
 export interface IDocuments {
@@ -19,9 +20,9 @@ export interface IDocuments {
 }
 
 interface HeaderDocument {
-  key: keyof IDocuments;
-  text: string;
-  size?: string;
+  key: keyof IDocuments
+  text: string
+  style?: React.CSSProperties
 };
 
 export type BodyDocument = Pick<IDocuments, 'dataEmissao' | 'nfChave' | 'nomeEmitente' | 'cpfCnpjEmitente' | 'valorNf' | 'tpNF'>
@@ -33,12 +34,12 @@ interface IListDocuments {
 
 export const INITIAL_STATE_LIST_DOCUMENTS: IListDocuments = {
   headers: [
-    { key: 'dataEmissao', text: 'Data Emissão', size: '1 1 40%' },
-    { key: 'nfChave', text: 'Chave', size: '1 1 50%' },
-    { key: 'nomeEmitente', text: 'Emitente', size: '1 1 100%' },
-    { key: 'cpfCnpjEmitente', text: 'CNPJ Emitente', size: '1 1 40%' },
-    { key: 'valorNf', text: 'Valor', size: '1 1 30%' },
-    { key: 'tpNF', text: 'Tipo', size: '1 1 20%' },
+    { key: 'dataEmissao', text: 'Data Emissão', style: { flex: '1 1 40%' } },
+    { key: 'nfChave', text: 'Chave', style: { flex: '1 1 50%' } },
+    { key: 'nomeEmitente', text: 'Emitente', style: { flex: '1 1 100%' } },
+    { key: 'cpfCnpjEmitente', text: 'CNPJ Emitente', style: { flex: '1 1 40%' } },
+    { key: 'valorNf', text: 'Valor', style: { flex: '1 1 30%', textAlign: 'center' } },
+    { key: 'tpNF', text: 'Tipo', style: { flex: '1 1 20%', textAlign: 'center' } },
   ],
   body: []
 }

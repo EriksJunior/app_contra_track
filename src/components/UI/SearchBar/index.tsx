@@ -110,11 +110,13 @@ export function SearchBar({
       </S.SearchContent>
 
       <S.ContainerFilterOptionsBox htmlFor="contentFilterOptions">
-        <S.FilterIcon
-          size={35}
-          $filterIconColor={filterIconColor}
-          onClick={handleFilterIconClick}
-        />
+
+        <S.ContentFilterIcon onClick={handleFilterIconClick}>
+          <S.FilterIcon
+            size={35}
+            $filterIconColor={filterIconColor}
+          />
+        </S.ContentFilterIcon>
         <S.InputFilterBoxOptions type="radio" id="contentFilterOptions" />
 
         <S.ContentBoxOptions

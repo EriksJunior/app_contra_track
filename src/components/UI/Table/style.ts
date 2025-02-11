@@ -37,6 +37,10 @@ export const Table = styled.table<StyledProps>`
     /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
+
+    @media screen and (max-width: 1366px){
+      font-size: 11px;
+    }
   }
 
   thead {
@@ -118,30 +122,7 @@ export const Table = styled.table<StyledProps>`
     height: 600px!important;
     width: 100%;
     overflow: hidden;
-
-    @media screen and (max-height: 959px){
-      height: 500px!important;
-      background-position: center 50px;
-      background-size: 70%; 
-    }
-
-    @media screen and (max-height: 800px){
-      height: 350px!important;
-      background-position: center 70px;
-      background-size: 70%; 
-    }
-
-    @media screen and (max-height: 768px){
-      height: 350px!important;
-      background-position: center 50px;
-      background-size: 50%; 
-    }
-
-    @media screen and (max-height: 720px){
-      height: 250px!important;
-      background-position: center 40px;
-      background-size: 40%; 
-    }
+    border: solid 1px rgba(130,130,130,0.16);
   }
 `
 
@@ -150,7 +131,7 @@ export const ContentPaginate = styled.tbody<StyledProps>`
   max-height: 60px!important;
   min-height: 60px!important;
   overflow: hidden!important;
-  border-top: solid 1px rgba(130, 130, 130, 0.24)!important;
+  border: solid 2px rgba(130, 130, 130, 0.24)!important;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.23)!important;
   border-radius: 0 0 8px 8px!important;
 

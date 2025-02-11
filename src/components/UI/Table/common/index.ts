@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IDefaultTable {
-  headers: { key: string, text: string, size?: string }[]
+  headers: { key: string, text: string, style?: React.CSSProperties }[]
   body: any[],
 }
 
@@ -20,17 +20,17 @@ const defaultTable: IDefaultTable = {
     {
       text: "Default 1",
       key: "default1",
-      size: '1 1 100%'
+      style: { flex: '1 1 100%', }
     },
     {
       text: "Default 2",
       key: "default2",
-      size: '1 1 100%'
+      style: { flex: '1 1 100%', }
     },
     {
       text: "Default 3",
       key: "default3",
-      size: '1 1 100%'
+      style: { flex: '1 1 100%', }
     },
   ],
   body: [

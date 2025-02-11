@@ -54,7 +54,6 @@ export const FilterIcon = styled(IoFilterSharp) <StyledProps>`
   width: 20px;
   height: 20px;
   color: white!important;
-  cursor: pointer;
   user-select: none!important;
 
   @media screen and (max-width: 1366px){
@@ -75,7 +74,12 @@ export const InputSearch = styled.input`
   }
 `
 export const ContainerFilterOptionsBox = styled.label`
+  position: relative;
+`
+
+export const ContentFilterIcon = styled.label`
   width: 35px;
+  height: 100%;
   
   position: relative;
   display: flex;
@@ -84,9 +88,16 @@ export const ContainerFilterOptionsBox = styled.label`
   box-shadow: 0 1px 4px 0 #00000026;
   border-radius: 8px;
   background-color: rgb(118 133 201);
+  transition: ease-in all 0.1s;
+  cursor: pointer;
 
   @media screen and (max-width: 1366px){
     width: 35px;
+  }
+
+  &:hover {
+    background-color: rgb(100,114,175);
+    transition: ease-in all 0.1s;
   }
 `
 

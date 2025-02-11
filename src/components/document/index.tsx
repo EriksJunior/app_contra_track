@@ -1,7 +1,8 @@
 "use client"
 
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { GeneralContext } from "@/context";
+import { UseDocuments } from "./hook";
 
 import { Col } from "@/components/UI/Col";
 import { Label } from "@/components/UI/Label";
@@ -10,49 +11,14 @@ import { SearchBar } from "@/components/UI/SearchBar";
 import { Table } from "@/components/UI/Table";
 import { Title } from "@/components/UI/Title";
 
-import { E_THEME } from "@/utils/enums/theme";
 import { lightTheme } from "@/components/themes/light";
 import { darkTheme } from "@/components/themes/dark";
 
-import { FindDocuments } from "@/services/NFeService";
-import { BodyDocument, INITIAL_STATE_LIST_DOCUMENTS } from "./initialStates";
+import { E_THEME } from "@/utils/enums/theme";
 
 export default function Document() {
-  const [documents, setDocuments] = useState<typeof INITIAL_STATE_LIST_DOCUMENTS>(INITIAL_STATE_LIST_DOCUMENTS)
-
   const { theme } = useContext(GeneralContext)
-
-  const defaultFilterOptions = [
-    { text: "N.º", value: "numero", isActive: true },
-    { text: "Emissor", value: "emissor", isActive: false },
-    { text: "CNPJ", value: "cnpj", isActive: true },
-    { text: "Chave", value: "chave", isActive: false },
-    { text: "Valor", value: "valor", isActive: false },
-  ]
-
-  const list = async () => {
-    const listDocuments = await FindDocuments()
-
-    if (listDocuments.length) {
-      setDocuments(state => ({
-        ...state,
-        body: listDocuments.map<BodyDocument>(item => {
-          return {
-            dataEmissao: item.dataEmissao,
-            cpfCnpjEmitente: item.cpfCnpjEmitente,
-            nfChave: item.nfChave,
-            nomeEmitente: item.nomeEmitente,
-            tpNF: item.tpNF,
-            valorNf: item.valorNf,
-          }
-        })
-      }))
-    }
-  }
-
-  useEffect(() => {
-    list()
-  }, [])
+  const { documents, filterOptions, handleChange } = UseDocuments()
 
   return (
     <div style={{ padding: '0 15px', height: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -71,9 +37,9 @@ export default function Document() {
       <Row height="100%">
         <Table enablePaginate items={documents}>
           <SearchBar
-            getValues={(values) => console.log(values)}
-            defaultFilter='nome'
-            filterOptions={defaultFilterOptions}
+            getValues={handleChange}
+            defaultFilter='nomeEmitente'
+            filterOptions={filterOptions}
             periodIsEnable
           />
         </Table>
