@@ -20,6 +20,12 @@ export default function Document() {
   const { theme } = useContext(GeneralContext)
   const { documents, filterOptions, handleChange } = UseDocuments()
 
+  const dropdownItems = [
+    {text: 'Download XML', action: () => console.log('Download Realizado')},
+    {text: 'Visualizar DANFE', action: () => console.log('Visualizando DANFE')},
+    {text: 'Ir para SEFAZ', action: () => console.log('Indo para SEFAZ')},
+  ]
+
   return (
     <div style={{ padding: '0 15px', height: '100%', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <Row>
@@ -35,7 +41,7 @@ export default function Document() {
       </Row>
 
       <Row height="100%">
-        <Table enablePaginate items={documents}>
+        <Table enablePaginate items={documents} dropDownItems={dropdownItems}>
           <SearchBar
             getValues={handleChange}
             defaultFilter='nomeEmitente'
