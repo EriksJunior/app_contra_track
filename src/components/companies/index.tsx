@@ -8,7 +8,6 @@ import { GeneralContext } from '@/context'
 import { FormCompany } from './Forms'
 import { Button } from '@/components/UI/Button'
 import { OffCanvas } from '@/components/UI/OffCanvas'
-import { Label } from '@/components/UI/Label'
 
 import * as C from "./styles"
 
@@ -179,12 +178,13 @@ export function Companies() {
         borderBottom: 'solid 1px #6b6b6b76',
         paddingBottom: '0.5rem'
       }}>
-        <Label
-          fontSize='13px'
-          color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.titles}
-          text='Empresas Registradas'
-          fontWeight='600'
-        />
+        <C.Label
+          $labelSize='13'
+          $color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.titles}
+          $fontWeight='600'
+        >
+          Empresas Registradas
+        </C.Label>
 
         <div>
           <Button icon={<BsFillPersonPlusFill size={17} color='white' />} click={toggleOffCanvas} height='30px' width='40px' />
@@ -201,18 +201,22 @@ export function Companies() {
             }>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <C.HeaderCard>
-                <Label
-                  text={comp.name || ''}
-                  color={theme === E_THEME.lightMode ? '#454545' : '#e1e1e1'}
-                  fontSize='13px'
-                  fontWeight='600'
-                />
+                <C.Label
+                  $color={theme === E_THEME.lightMode ? '#454545' : '#e1e1e1'}
+                  $labelSize='13'
+                  $fontWeight='600'
+                >
+                  {comp.name || ''}
+                </C.Label>
 
-                <Label
-                  text={comp.tradeName || ''}
-                  color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.subtitles}
-                  fontSize='11px'
-                  fontWeight='600' />
+                <C.Label
+                  $color={theme === E_THEME.lightMode ? lightTheme.titles : darkTheme.subtitles}
+                  $labelSize='11'
+                  $fontWeight='600'
+                >
+                  {comp.tradeName || ''}
+                </C.Label>
+
               </C.HeaderCard>
 
               {comp.cert ? <TbCertificate size={25} color='#1be25d' /> : <IoMdInformationCircleOutline color='brown' size={25} />}
@@ -220,7 +224,7 @@ export function Companies() {
 
             <C.BodyCard>
               <C.BodyItem>
-                <C.TitleBodyItem>Nota Hoje</C.TitleBodyItem>
+                <C.TitleBodyItem>Notas Hoje</C.TitleBodyItem>
 
                 <C.ContentBodyItem>
                   <C.BodyItemText>150</C.BodyItemText>
@@ -244,12 +248,13 @@ export function Companies() {
                 <HiOutlineMailOpen color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : '#e1e1e1'} />
 
                 <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                  <Label
-                    text={comp.email || ''}
-                    fontSize='11px'
-                    fontWeight='600'
-                    color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : darkTheme.titles}
-                  />
+                  <C.Label
+                    $labelSize='11'
+                    $fontWeight='600'
+                    $color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : darkTheme.titles}
+                  >
+                    {comp.email || ''}
+                  </C.Label>
                 </div>
               </C.FooterItem>
 
@@ -257,12 +262,13 @@ export function Companies() {
                 <FaRegIdCard color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : '#e1e1e1'} />
 
                 <div style={{ padding: '0.3rem', borderRadius: '5px', display: 'flex', alignItems: 'center' }}>
-                  <Label
-                    text={MaskCpf(comp.cpfCnpj || '')}
-                    color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : darkTheme.titles}
-                    fontSize='11px'
-                    fontWeight='600'
-                  />
+                  <C.Label
+                    $color={theme === E_THEME.lightMode ? 'rgb(100,114,175)' : darkTheme.titles}
+                    $labelSize='11'
+                    $fontWeight='600'
+                  >
+                    {MaskCpf(comp.cpfCnpj || '')}
+                  </C.Label>
                 </div>
               </C.FooterItem>
             </C.FooterCard>

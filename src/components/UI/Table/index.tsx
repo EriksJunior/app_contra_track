@@ -58,7 +58,7 @@ export function Table({
                 <th key={header.key} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: `${header.size}` }}>{header.text}</th>
               ))}
 
-              <th style={{  whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "20%", minWidth: '55px', textAlign: 'center' }}>Ações</th>
+              <th style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: "20%", minWidth: '55px', textAlign: 'center' }}>Ações</th>
             </tr>
           </thead>
 
@@ -69,10 +69,9 @@ export function Table({
                   {items.headers.map((_, idx) => (
                     <td key={idx} style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', flex: `${_.size}` }}>
                       {DateTime.fromISO((item[items.headers[idx]?.key]))?.isValid
-                        ? item[items.headers[idx]?.key]
-                          ?.split("-")
-                          ?.reverse()
-                          ?.join("/")
+                        ? DateTime.fromISO(item[items.headers[idx]?.key], { zone: "utc" })
+                        .setZone("America/Sao_Paulo")
+                        .toFormat("dd/MM/yyyy HH:mm:ss")
                         : item[items.headers[idx]?.key]}
                     </td>
                   ))}

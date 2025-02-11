@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 interface StyledProps {
   $borderLeftColor?: string
+  $labelSize?: string
+  $color?: string
+  $fontWeight?: string
 }
 
 export const ContainerCard = styled.div`
@@ -33,6 +36,10 @@ export const Card = styled.div<StyledProps>`
     background-color: rgba(173, 173, 173, 0.14);
     transition: ease-in all 0.1s;
   }
+
+  @media screen and (max-width: 1366px){
+    gap: 0.5rem;
+  }
 `
 
 export const HeaderCard = styled.div`
@@ -54,6 +61,10 @@ export const BodyItem = styled.div`
 
 export const TitleBodyItem = styled.p`
   font-size: 11px;
+
+  @media screen and (max-width: 1366px){
+    font-size: 10px;
+  }
 `
 
 export const ContentBodyItem = styled.div `
@@ -65,6 +76,10 @@ export const ContentBodyItem = styled.div `
 export const BodyItemText = styled.p`
   font-size: 11px;
   font-weight: 600;
+
+  @media screen and (max-width: 1366px){
+    font-size: 10px;
+  }
 `
 
 export const Divider = styled.div`
@@ -87,4 +102,24 @@ export const FooterItem = styled.div`
   display: flex;
   align-items: center;
   gap: 0.3rem;
+`
+
+export const Label = styled.label<StyledProps>`
+  position: relative;
+  font-size: ${props => props.$labelSize + 'px' || '12px'};
+  pointer-events: none;
+  white-space: nowrap !important;
+  text-overflow: ellipsis;
+  color: ${props => props.$color || '#a1a1a1'};
+  font-weight: ${props => props.$fontWeight || 500};
+
+  @media screen and (min-width: 1980px){
+    & {
+      font-size: 0.81rem;
+    }
+  }
+
+  @media screen and (max-width: 1366px){
+    font-size: ${props => Number(props.$labelSize) - 1.5 + 'px'};
+  }
 `
