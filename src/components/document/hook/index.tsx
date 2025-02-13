@@ -21,13 +21,12 @@ export function UseDocuments() {
     { text: "Emissor", value: "nomeEmitente", isActive: true },
     { text: "CNPJ", value: "cpfCnpjEmitente", isActive: false },
     { text: "Chave", value: "nfChave", isActive: false },
-    { text: "Valor", value: "valorNf", isActive: false },
   ]
 
   const list = async () => {
     const listDocuments = await FindDocuments()
 
-    if (listDocuments.length) {
+    if (listDocuments?.length) {
       setDocuments(state => ({
         ...state,
         body: listDocuments.map<BodyDocument>(item => {
