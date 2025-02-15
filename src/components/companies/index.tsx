@@ -28,6 +28,7 @@ import { MaskCpf } from '@/utils/maskCpf'
 import { E_THEME } from '@/utils/enums/theme'
 import { lightTheme } from '../themes/light'
 import { darkTheme } from '../themes/dark'
+import { Tooltip } from 'react-tooltip'
 
 
 type RefValidateKeys = "name" | "tradeName" | "cpfCnpj" | "email" | "uf";
@@ -219,7 +220,13 @@ export function Companies() {
 
               </C.HeaderCard>
 
-              {comp.cert ? <TbCertificate size={25} color='#1be25d' /> : <IoMdInformationCircleOutline color='brown' size={25} />}
+              {comp.cert
+                ?
+                <TbCertificate size={25} color='#1be25d' />
+                :
+                <IoMdInformationCircleOutline color='brown' size={25}  data-tooltip-id="notification" data-tooltip-content={"Empresa sem certificado vinculado"}/>}
+
+              <Tooltip id="notification" />
             </div>
 
             <C.BodyCard>
